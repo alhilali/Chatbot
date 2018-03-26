@@ -73,7 +73,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ConversationServiceProvider = /** @class */ (function () {
     function ConversationServiceProvider(http) {
         this.http = http;
-        this.url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
+        //private url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
+        this.url = "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
         console.log('Hello ConversationServiceProvider Provider');
     }
     ConversationServiceProvider.prototype.getHeaders = function () {

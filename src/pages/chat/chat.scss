@@ -1,5 +1,5 @@
 page-chat {
-  input.text-input.text-input-ios {
+  input.text-input {
     direction: rtl;
   }
 
@@ -209,10 +209,6 @@ page-chat {
   text-align:right;
   float:right;
 }
-
-  .chat .myMessage,.chat .fromThem{
-    font-size:12px;
-  }
   
   .chat .message:hover .myMessage{
     transform: translateY(18px);
@@ -228,7 +224,7 @@ page-chat {
     top: -20px;
     left:auto;
     right:0;
-    font-size:12px;
+    font-size:14px;
   }
   
   .chat .myMessage,

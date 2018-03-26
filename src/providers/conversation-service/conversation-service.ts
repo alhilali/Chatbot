@@ -12,7 +12,8 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ConversationServiceProvider {
-  private url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
+  //private url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
+  private url = "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
 
 
   constructor(private http: Http) {
