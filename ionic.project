@@ -1,10 +1,6 @@
 {
-  "name": "foodee",
+  "name": "proxy-example",
   "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  },
   "proxies": [
     {
       "path": "/api",
