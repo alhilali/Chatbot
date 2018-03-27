@@ -1,5 +1,5 @@
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, Content } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
 /**
  * Generated class for the ChatPage page.
@@ -18,7 +18,7 @@ export class ChatPage {
   messages: Array<Message>;
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams,
+  constructor(public navCtrl: NavController,
     private conversationService: ConversationServiceProvider) {
     this.messages = new Array<Message>();
   }
@@ -41,7 +41,7 @@ export class ChatPage {
   send() {
     this.messages.push(new Message(this.message, false));
     setTimeout(() => {
-      this.content.scrollToBottom(10);
+      this.content.scrollToBottom(200);
     });
 
     this.conversationService.sendMessage(this.message).subscribe(

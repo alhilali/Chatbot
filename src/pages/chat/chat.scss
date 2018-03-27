@@ -10,52 +10,6 @@ page-chat {
   -moz-box-sizing:border-box;
 }
 
-.chat {
-  margin:0;
-  cursor:default;
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  top:0;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* IE/Edge */
-  user-select: none;
-}
-
-.chat span.spinner{
-  -moz-animation: loading-bar 1s 1;
-  -webkit-animation: loading-bar 1s 1;
-  animation: loading-bar 1s 1;
-  display: block;
-  height: 2px;
-  background-color: #00e34d;
-  transition: width 0.2s;
-  position:absolute;
-  top:0; left:0; right:0;
-  z-index:4
-}
-
-.chat{
-  display:block;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position:relative;
-  height:100%;
-  width:100%;
-  padding:2% 3%;
-}
-
-.chat ::-webkit-scrollbar {width: 3px; height:1px;transition:all .5s;z-index:10;}
-.chat ::-webkit-scrollbar-track {background-color: white;}
-.chat ::-webkit-scrollbar-thumb {
-  background-color: #bec4c8; 
-  border-radius:3px;
-}
-
 .chat .message{
   display:block;
   width:98%;
@@ -70,7 +24,7 @@ page-chat {
 .chat .fromThem {
   max-width: 50%;
   word-wrap: break-word;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .chat .message:hover .myMessage{
@@ -89,7 +43,7 @@ page-chat {
 
 .chat .myMessage,.fromThem{
   position: relative;
-  padding: 10px 20px;
+  padding: 5px 20px;
   color: white;
   border-radius: 25px;
   clear: both;
@@ -97,7 +51,7 @@ page-chat {
 }
 
 .chat .myMessage {
-  background: #00e34d;
+  background: #e30000;
   color:white;
   float:right;
   clear:both;
@@ -111,7 +65,7 @@ page-chat {
   bottom: -2px;
   right: -8px;
   height: 19px;
-  border-right: 20px solid #00e34d;
+  border-right: 20px solid #e30000;
   border-bottom-left-radius: 16px 14px;
   -webkit-transform: translate(0, -2px);
   transform: translate(0, -2px);
@@ -266,5 +220,13 @@ page-chat {
   100% {
     width: 100%;
   }
+}
+
+.bottom-bar {
+  margin-top: 10px;
+  height: 55px;
+}
+.scroll-content {
+    margin-bottom: 55px !important;
 }
 }

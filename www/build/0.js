@@ -66,9 +66,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ChatPage = /** @class */ (function () {
-    function ChatPage(navCtrl, navParams, conversationService) {
+    function ChatPage(navCtrl, conversationService) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
         this.conversationService = conversationService;
         this.message = "";
         this.messages = new Array();
@@ -87,7 +86,7 @@ var ChatPage = /** @class */ (function () {
         var _this = this;
         this.messages.push(new Message(this.message, false));
         setTimeout(function () {
-            _this.content.scrollToBottom(10);
+            _this.content.scrollToBottom(200);
         });
         this.conversationService.sendMessage(this.message).subscribe(function (data) {
             console.log(data);
@@ -132,9 +131,9 @@ var ChatPage = /** @class */ (function () {
     ], ChatPage.prototype, "content", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>chat</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n  </div>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="primary" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>🍕 🍔</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n  </div>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_0__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]])
     ], ChatPage);
     return ChatPage;

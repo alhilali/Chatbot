@@ -71,31 +71,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   and Angular DI.
 */
 var ConversationServiceProvider = /** @class */ (function () {
+    //private url = "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
     function ConversationServiceProvider(http) {
-        // console.log('Hello ConversationServiceProvider Provider');
-        // this.assistant = new AssistantV1({
-        //   username: '8511cc8c-6dda-419b-96ed-7f460aed5d6a',
-        //   password: 'afE0uE7CiUQu',
-        //   version: '2018-02-16'
-        // })
-        // this.assistant.message({
-        //   workspace_id: '53e09771-b4bd-4076-99da-0518e2a242fd',
-        //   input: { 'text': 'Hello' }
-        // }, function (err, response) {
-        //   if (err) {
-        //     console.log('error:', err);
-        //   }
-        //   else {
-        //     console.log(JSON.stringify(response, null, 2));
-        //   }
-        // });
         this.http = http;
         this.url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
     }
     ConversationServiceProvider.prototype.getHeaders = function () {
         var token = btoa("8511cc8c-6dda-419b-96ed-7f460aed5d6a:afE0uE7CiUQu");
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
-            // 'Access-Control-Allow-Headers': 'Authorization',
             'Content-Type': 'application/json',
             'Authorization': "Basic " + token,
         });
@@ -108,10 +91,9 @@ var ConversationServiceProvider = /** @class */ (function () {
     };
     ConversationServiceProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
     ], ConversationServiceProvider);
     return ConversationServiceProvider;
-    var _a;
 }());
 
 var ConversationDTO = /** @class */ (function () {
@@ -247,7 +229,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
