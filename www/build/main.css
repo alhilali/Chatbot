@@ -25725,12 +25725,12 @@ page-chat .chat span.spinner {
   z-index: 4;
 }
 
-page-chat .chat .messages {
+page-chat .chat {
   display: block;
   overflow-x: hidden;
   overflow-y: scroll;
   position: relative;
-  height: 90%;
+  height: 100%;
   width: 100%;
   padding: 2% 3%;
 }
@@ -25755,7 +25755,7 @@ page-chat .chat ::-webkit-scrollbar-thumb {
 page-chat .chat .message {
   display: block;
   width: 98%;
-  padding: 0.5%;
+  padding: 2% 3%;
 }
 
 page-chat .chat .message p {
@@ -25871,7 +25871,7 @@ page-chat .chat .fromThem:after {
 page-chat .chat .date {
   position: absolute;
   top: 10px;
-  font-size: 14px;
+  font-size: 12px;
   white-space: nowrap;
   vertical-align: middle;
   color: #8b8b90;
@@ -25923,7 +25923,7 @@ page-chat .chat .myMessage .date, page-chat .chat .fromThem .date {
   top: -20px;
   left: auto;
   right: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 page-chat .chat .myMessage,

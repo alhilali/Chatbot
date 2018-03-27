@@ -72,16 +72,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 */
 var ConversationServiceProvider = /** @class */ (function () {
     function ConversationServiceProvider(http) {
+        // console.log('Hello ConversationServiceProvider Provider');
+        // this.assistant = new AssistantV1({
+        //   username: '8511cc8c-6dda-419b-96ed-7f460aed5d6a',
+        //   password: 'afE0uE7CiUQu',
+        //   version: '2018-02-16'
+        // })
+        // this.assistant.message({
+        //   workspace_id: '53e09771-b4bd-4076-99da-0518e2a242fd',
+        //   input: { 'text': 'Hello' }
+        // }, function (err, response) {
+        //   if (err) {
+        //     console.log('error:', err);
+        //   }
+        //   else {
+        //     console.log(JSON.stringify(response, null, 2));
+        //   }
+        // });
         this.http = http;
-        //private url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
-        this.url = "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
-        console.log('Hello ConversationServiceProvider Provider');
+        this.url = "/api/v1/workspaces/53e09771-b4bd-4076-99da-0518e2a242fd/message?version=2018-02-16";
     }
     ConversationServiceProvider.prototype.getHeaders = function () {
         var token = btoa("8511cc8c-6dda-419b-96ed-7f460aed5d6a:afE0uE7CiUQu");
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            // 'Access-Control-Allow-Headers': 'Authorization',
             'Content-Type': 'application/json',
-            'Authorization': "Basic " + token
+            'Authorization': "Basic " + token,
         });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         return options;
@@ -92,9 +108,10 @@ var ConversationServiceProvider = /** @class */ (function () {
     };
     ConversationServiceProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
     ], ConversationServiceProvider);
     return ConversationServiceProvider;
+    var _a;
 }());
 
 var ConversationDTO = /** @class */ (function () {

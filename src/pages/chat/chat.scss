@@ -23,7 +23,7 @@ page-chat {
   -khtml-user-select: none;    /* Konqueror */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* IE/Edge */
-  user-select: none;   
+  user-select: none;
 }
 
 .chat span.spinner{
@@ -39,12 +39,12 @@ page-chat {
   z-index:4
 }
 
-.chat .messages{
+.chat{
   display:block;
   overflow-x: hidden;
   overflow-y: scroll;
   position:relative;
-  height:90%;
+  height:100%;
   width:100%;
   padding:2% 3%;
 }
@@ -59,7 +59,7 @@ page-chat {
 .chat .message{
   display:block;
   width:98%;
-  padding:0.5%;
+  padding:2% 3%;
 }
 
 .chat .message p{
@@ -172,7 +172,7 @@ page-chat {
 .chat .date {
   position:absolute;
   top: 10px;
-  font-size:14px;
+  font-size:12px;
   white-space:nowrap;
   vertical-align:middle;
   color: #8b8b90;
@@ -224,7 +224,7 @@ page-chat {
     top: -20px;
     left:auto;
     right:0;
-    font-size:14px;
+    font-size:12px;
   }
   
   .chat .myMessage,

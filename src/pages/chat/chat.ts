@@ -40,6 +40,9 @@ export class ChatPage {
 
   send() {
     this.messages.push(new Message(this.message, false));
+    setTimeout(() => {
+      this.content.scrollToBottom(10);
+    });
 
     this.conversationService.sendMessage(this.message).subscribe(
       data => {
@@ -74,8 +77,6 @@ export class ChatPage {
   }
 
   footerTouchStart(event) {
-    console.log(event.target.localName);
-
     if (event.target.localName !== "input") {
       event.preventDefault();
     } else {

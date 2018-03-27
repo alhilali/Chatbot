@@ -14,12 +14,10 @@
 
 
 <ion-content class="chat">
-  <div class="messages">
-    <div class="message" *ngFor="let msg of messages">
-      <div [attr.class]="msg.isWatson ? 'fromThem' : 'myMessage'">
-        <p>{{msg.content}}</p>
-        <p class="date">{{msg.timestamp}}</p>
-      </div>
+  <div class="message" *ngFor="let msg of messages">
+    <div [attr.class]="msg.isWatson ? 'fromThem' : 'myMessage'">
+      <p>{{msg.content}}</p>
+      <p class="date">{{msg.timestamp}}</p>
     </div>
   </div>
 </ion-content>
