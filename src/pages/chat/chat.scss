@@ -3,7 +3,7 @@ page-chat {
     direction: rtl;
   }
 
-.chat *{
+  .chat *{
   transition:all .5s;
   box-sizing:border-box;
   -webkit-box-sizing:border-box;
@@ -24,7 +24,7 @@ page-chat {
 .chat .fromThem {
   max-width: 50%;
   word-wrap: break-word;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .chat .message:hover .myMessage{
@@ -43,7 +43,7 @@ page-chat {
 
 .chat .myMessage,.fromThem{
   position: relative;
-  padding: 5px 20px;
+  padding: 10px 20px;
   color: white;
   border-radius: 25px;
   clear: both;
@@ -183,7 +183,7 @@ page-chat {
   
   .chat .myMessage,
   .chat .fromThem {
-    max-width: 90%;
+    max-width: 100%;
   }
   
 @-moz-keyframes loading-bar {
@@ -223,10 +223,45 @@ page-chat {
 }
 
 .bottom-bar {
-  margin-top: 10px;
+  padding-top: 10px;
   height: 55px;
 }
 .scroll-content {
     margin-bottom: 55px !important;
+}
+
+.restaurant {
+  width: 100%;
+  padding: 10px 5px;
+}
+.menuItem {
+    margin: 0 5px;
+    height: 200px;
+    width: calc(100% - 10px);
+    padding: 0px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 4px;
+}
+.menuItem * {
+  direction: rtl;
+}
+.menuItem ion-card-title {
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-bottom: 0px;
+}
+.menuItem ion-card-content {
+    padding-top: 0px;
+}
+.menuItem .price {
+    text-align: center;
+    font-size: 1.1rem;
+}
+.restaurantLogo {
+  width: 30%;
+  height: 30%;
+  display: block;
+  margin: auto;
 }
 }

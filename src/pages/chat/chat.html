@@ -15,8 +15,34 @@
 
 <ion-content class="chat">
   <div class="message" *ngFor="let msg of messages">
-    <div [attr.class]="msg.isWatson ? 'fromThem' : 'myMessage'">
+    <div *ngIf="!msg.isRestaurant" [attr.class]="msg.isWatson ? 'fromThem' : 'myMessage'">
       <p>{{msg.content}}</p>
+      <p class="date">{{msg.timestamp}}</p>
+    </div>
+    <div class="fromThem restaurant" *ngIf="msg.isRestaurant">
+      <img class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />
+      <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>
+      <ion-grid>
+        <ion-row wrap>
+          <ion-col *ngFor="let item of msg.restaurant.menu" col-6>
+            <ion-card class="menuItem">
+              <img src="{{item.image}}" />
+              <ion-card-content>
+                <ion-card-title>
+                  {{item.name}}
+                </ion-card-title>
+                <p class="price">
+                  {{item.price}} ريال
+                </p>
+                <p>
+                  مع بيبسي وبطاطس.
+                </p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <button ion-button clear large (click)="loadMoreItems(msg.restaurant)">المزيد</button>
+      </ion-grid>
       <p class="date">{{msg.timestamp}}</p>
     </div>
   </div>
