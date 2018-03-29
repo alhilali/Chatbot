@@ -28006,7 +28006,7 @@ page-chat .chat .message:hover .myMessage {
   transform: translateX(-130px);
 }
 
-page-chat .chat .message:hover .fromThem {
+page-chat .chat .message:hover .fromThem:not(.nohover) {
   -webkit-transform: translateX(130px);
   transform: translateX(130px);
 }
@@ -28146,7 +28146,7 @@ page-chat .chat .message:hover .myMessage {
   -webkit-transform: translateY(18px);
 }
 
-page-chat .chat .message:hover .fromThem {
+page-chat .chat .message:hover .fromThem:not(.nohover) {
   transform: translateY(18px);
   -webkit-transform: translateY(18px);
 }
@@ -28229,6 +28229,12 @@ page-chat .menuItem ion-card-content {
 page-chat .menuItem .price {
   text-align: center;
   font-size: 1.1rem;
+}
+
+page-chat .menuItem .restaurants-list-logo {
+  width: 80px !important;
+  height: 80px !important;
+  margin: auto;
 }
 
 page-chat .restaurantLogo {

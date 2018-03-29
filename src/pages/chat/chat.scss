@@ -32,7 +32,7 @@ page-chat {
   transform: translateX(-130px);
 }
 
-.chat .message:hover .fromThem{
+.chat .message:hover .fromThem:not(.nohover){
   -webkit-transform: translateX(130px);
   transform: translateX(130px);
 }
@@ -169,7 +169,7 @@ page-chat {
     -webkit-transform: translateY(18px);
   }
 
-  .chat .message:hover .fromThem{
+  .chat .message:hover .fromThem:not(.nohover){
     transform: translateY(18px);
     -webkit-transform: translateY(18px);
   }
@@ -257,6 +257,11 @@ page-chat {
 .menuItem .price {
     text-align: center;
     font-size: 1.1rem;
+}
+.menuItem .restaurants-list-logo {
+  width: 80px !important;
+  height: 80px !important;
+  margin: auto;
 }
 .restaurantLogo {
   width: 30%;
