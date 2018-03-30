@@ -51,6 +51,7 @@ export class ChatPage {
 
   loadMoreItems(restaurant: Restaurant) {
     restaurant.addMenuItem('وجبة دينر', 16, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/bites_Big_menu.jpg');
+    restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
   }
 
   send() {
@@ -67,6 +68,8 @@ export class ChatPage {
           && data.intents[0] && data.intents[0].intent == 'منيو') {
           this.findRestaurant(data.entities[0].value).then(res => {
           }).then(_ => {
+            this.updateConversation(data);
+          }).catch(err => {
             this.updateConversation(data);
           })
         } else if (data.intents[0] && data.intents[0].intent == 'طلب_كامل') {
@@ -97,7 +100,7 @@ export class ChatPage {
           this.updateConversationWithRestaurant(this.currentRestaurant);
           resolve(res);
         }
-        if (index == this.restaurants.length) {
+        if (index == this.restaurants.length - 1) {
           reject(null)
         }
       })
@@ -122,6 +125,38 @@ export class ChatPage {
     let msg = new Message("", true, 'menu');
     msg.setRestaurant(restaurant);
     this.messages.push(msg);
+    setTimeout(() => {
+      this.content.scrollToBottom(300);
+    });
+  }
+
+  private order(restaurant: Restaurant) {
+    let msg = new Message("", true, 'receipt');
+    restaurant.setTotal().then(res => {
+      console.log(res);
+
+      if (res > 0) {
+        msg.setRestaurant(restaurant);
+        this.messages.push(msg);
+      } else {
+        this.messages.push(new Message("لو سمحت اضف اشياء الي السلة 👀", true));
+      }
+    })
+    setTimeout(() => {
+      this.content.scrollToBottom(300);
+    });
+  }
+
+  private sendOrder(restaurant: Restaurant) {
+    this.conversationService.sendMessage("ارسل").subscribe(
+      data => {
+        console.log(data);
+        this.updateConversation(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   private updateConversation(data: any) {
@@ -138,7 +173,7 @@ export class ChatPage {
 
 
     setTimeout(() => {
-      this.content.scrollToBottom(300);
+      this.content.scrollToBottom(100);
     });
   }
 
@@ -191,7 +226,17 @@ export class MenuItem {
   constructor(name: string, price: number, image?: string) {
     this.name = name;
     this.price = price;
+    this.quantitiy = 0;
     if (image != null) this.image = image;
+  }
+
+  add() {
+    this.quantitiy++;
+  }
+
+  remove() {
+    if (this.quantitiy > 0)
+      this.quantitiy--;
   }
 }
 
@@ -201,12 +246,11 @@ export class Restaurant {
   menu: Array<MenuItem>;
   logoImage: string;
   location: string;
+  total: number = 0;
 
   constructor(name: string, location?: string, logo?: string) {
     this.name = name;
     this.menu = new Array<MenuItem>();
-    console.log(location);
-
     if (logo != null) this.logoImage = logo;
     if (location != null) this.location = location;
   }
@@ -214,5 +258,19 @@ export class Restaurant {
   addMenuItem(name: string, price: number, image: string) {
     const menuItem = new MenuItem(name, price, image);
     this.menu.push(menuItem);
+  }
+
+
+  setTotal(): Promise<number> {
+    return new Promise<number>((resolve, reject) => {
+      let total = 0;
+      this.menu.forEach((item, index) => {
+        total += item.price * item.quantitiy
+        if (index == this.menu.length - 1) {
+          this.total = total;
+          resolve(this.total);
+        }
+      })
+    })
   }
 }

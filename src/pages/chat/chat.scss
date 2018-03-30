@@ -1,272 +1,262 @@
 page-chat {
-  input.text-input {
-    direction: rtl;
-  }
-
-  .chat *{
-  transition:all .5s;
-  box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-}
-
-.chat .message{
-  display:block;
-  width:98%;
-  padding:2% 3%;
-}
-
-.chat .message p{
-  margin:0;
-}
-
-.chat .myMessage,
-.chat .fromThem {
-  max-width: 50%;
-  word-wrap: break-word;
-  margin-bottom: 20px;
-}
-
-.chat .message:hover .myMessage{
-  -webkit-transform: translateX(-130px);
-  transform: translateX(-130px);
-}
-
-.chat .message:hover .fromThem:not(.nohover){
-  -webkit-transform: translateX(130px);
-  transform: translateX(130px);
-}
-
-.chat .message:hover .date {
-  opacity: 1;
-}
-
-.chat .myMessage,.fromThem{
-  position: relative;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 25px;
-  clear: both;
-  font: 400 15px 'Open Sans', sans-serif;
-}
-
-.chat .myMessage {
-  background: #e30000;
-  color:white;
-  float:right;
-  clear:both;
-  border-bottom-right-radius: 20px 0px\9;
-}
-
-.chat .myMessage:before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  bottom: -2px;
-  right: -8px;
-  height: 19px;
-  border-right: 20px solid #e30000;
-  border-bottom-left-radius: 16px 14px;
-  -webkit-transform: translate(0, -2px);
-  transform: translate(0, -2px);
-  border-bottom-left-radius: 15px 0px\9;
-  transform: translate(-1px, -2px)\9;
-}
-
-.chat .myMessage:after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  bottom: -2px;
-  right: -42px;
-  width: 12px;
-  height: 20px;
-  background: white;
-  border-bottom-left-radius: 10px;
-  -webkit-transform: translate(-30px, -2px);
-  transform: translate(-30px, -2px);
-}
-
-.chat .fromThem {
-  background: #E5E5EA;
-  color: black;
-  float: left;
-  clear:both;
-  border-bottom-left-radius: 30px 0px\9;
-}
-.chat .fromThem:before {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  bottom: -2px;
-  left: -7px;
-  height: 19px;
-  border-left: 20px solid #E5E5EA;
-  border-bottom-right-radius: 16px 14px;
-  -webkit-transform: translate(0, -2px);
-  transform: translate(0, -2px);
-  border-bottom-right-radius: 15px 0px\9;
-  transform: translate(-1px, -2px)\9;
-}
-
-.chat .fromThem:after {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  bottom: -2px;
-  left: 4px;
-  width: 26px;
-  height: 20px;
-  background: white;
-  border-bottom-right-radius: 10px;
-  -webkit-transform: translate(-30px, -2px);
-  transform: translate(-30px, -2px);
-}
-
-.chat .date {
-  position:absolute;
-  top: 10px;
-  font-size:12px;
-  white-space:nowrap;
-  vertical-align:middle;
-  color: #8b8b90;
-  opacity: 0;
-  z-index:4;
-}
-
-.chat .myMessage .date {
-  left: 105%;
-}
-
-.chat .fromThem .date {
-  right: 105%;
-}
-
-.chat input{
-  font: 400 13px 'Open Sans', sans-serif;
-  border:0;
-  padding:0 15px;
-  height:10%;
-  outline:0;
-}
-
-.chat input[type='text']{
-  width:73%;
-  float:left;
-}
-
-.chat input[type='submit']{
-  width:23%;
-  background:transparent;
-  color:#00E34D;
-  font-weight:700;
-  text-align:right;
-  float:right;
-}
-  
-  .chat .message:hover .myMessage{
-    transform: translateY(18px);
-    -webkit-transform: translateY(18px);
-  }
-
-  .chat .message:hover .fromThem:not(.nohover){
-    transform: translateY(18px);
-    -webkit-transform: translateY(18px);
-  }
-  
-  .chat .myMessage .date,.chat .fromThem .date {
-    top: -20px;
-    left:auto;
-    right:0;
-    font-size:12px;
-  }
-  
-  .chat .myMessage,
-  .chat .fromThem {
-    max-width: 100%;
-  }
-  
-@-moz-keyframes loading-bar {
-  0% {
-    width: 0%;
-  }
-  90% {
-    width: 90%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@-webkit-keyframes loading-bar {
-  0% {
-    width: 0%;
-  }
-  90% {
-    width: 90%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes loading-bar {
-  0% {
-    width: 0%;
-  }
-  90% {
-    width: 90%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-.bottom-bar {
-  padding-top: 10px;
-  height: 55px;
-}
-.scroll-content {
-    margin-bottom: 55px !important;
-}
-
-.restaurant {
-  width: 100%;
-  padding: 10px 5px;
-}
-.menuItem {
-    margin: 0 5px;
-    height: 200px;
-    width: calc(100% - 10px);
-    padding: 0px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
-    border-radius: 4px;
-}
-.menuItem * {
-  direction: rtl;
-}
-.menuItem ion-card-title {
-    font-weight: 400;
-    font-size: 1.5rem;
-    text-align: center;
-    padding-bottom: 0px;
-}
-.menuItem ion-card-content {
-    padding-top: 0px;
-}
-.menuItem .price {
-    text-align: center;
-    font-size: 1.1rem;
-}
-.menuItem .restaurants-list-logo {
-  width: 80px !important;
-  height: 80px !important;
-  margin: auto;
-}
-.restaurantLogo {
-  width: 30%;
-  height: 30%;
-  display: block;
-  margin: auto;
-}
+    input.text-input {
+        direction: rtl;
+    }
+    .chat * {
+        transition: all .5s;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .chat .message {
+        display: block;
+        width: 98%;
+        padding: 2% 3%;
+    }
+    .chat .message p {
+        margin: 0;
+    }
+    .chat .myMessage,
+    .chat .fromThem {
+        max-width: 50%;
+        word-wrap: break-word;
+        margin-bottom: 20px;
+    }
+    .chat .message:hover .myMessage {
+        -webkit-transform: translateX(-130px);
+        transform: translateX(-130px);
+    }
+    .chat .message:hover .fromThem:not(.nohover) {
+        -webkit-transform: translateX(130px);
+        transform: translateX(130px);
+    }
+    .chat .message:hover .date {
+        opacity: 1;
+    }
+    .chat .myMessage,
+    .fromThem {
+        position: relative;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 25px;
+        clear: both;
+        font: 400 15px 'Open Sans', sans-serif;
+    }
+    .chat .myMessage {
+        background: #e30000;
+        color: white;
+        float: right;
+        clear: both;
+        border-bottom-right-radius: 20px 0px\9;
+    }
+    .chat .myMessage:before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: -2px;
+        right: -8px;
+        height: 19px;
+        border-right: 20px solid #e30000;
+        border-bottom-left-radius: 16px 14px;
+        -webkit-transform: translate(0, -2px);
+        transform: translate(0, -2px);
+        border-bottom-left-radius: 15px 0px\9;
+        transform: translate(-1px, -2px)\9;
+    }
+    .chat .myMessage:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: -2px;
+        right: -42px;
+        width: 12px;
+        height: 20px;
+        background: white;
+        border-bottom-left-radius: 10px;
+        -webkit-transform: translate(-30px, -2px);
+        transform: translate(-30px, -2px);
+    }
+    .chat .fromThem {
+        background: #E5E5EA;
+        color: black;
+        float: left;
+        clear: both;
+        border-bottom-left-radius: 30px 0px\9;
+    }
+    .chat .fromThem:before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        bottom: -2px;
+        left: -7px;
+        height: 19px;
+        border-left: 20px solid #E5E5EA;
+        border-bottom-right-radius: 16px 14px;
+        -webkit-transform: translate(0, -2px);
+        transform: translate(0, -2px);
+        border-bottom-right-radius: 15px 0px\9;
+        transform: translate(-1px, -2px)\9;
+    }
+    .chat .fromThem:after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        bottom: -2px;
+        left: 4px;
+        width: 26px;
+        height: 20px;
+        background: white;
+        border-bottom-right-radius: 10px;
+        -webkit-transform: translate(-30px, -2px);
+        transform: translate(-30px, -2px);
+    }
+    .chat .date {
+        position: absolute;
+        top: 10px;
+        font-size: 12px;
+        white-space: nowrap;
+        vertical-align: middle;
+        color: #8b8b90;
+        opacity: 0;
+        z-index: 4;
+    }
+    .chat .myMessage .date {
+        left: 105%;
+    }
+    .chat .fromThem .date {
+        right: 105%;
+    }
+    .chat input {
+        font: 400 13px 'Open Sans', sans-serif;
+        border: 0;
+        padding: 0 15px;
+        height: 10%;
+        outline: 0;
+    }
+    .chat input[type='text'] {
+        width: 73%;
+        float: left;
+    }
+    .chat input[type='submit'] {
+        width: 23%;
+        background: transparent;
+        color: #00E34D;
+        font-weight: 700;
+        text-align: right;
+        float: right;
+    }
+    .chat .message:hover .myMessage {
+        transform: translateY(18px);
+        -webkit-transform: translateY(18px);
+    }
+    .chat .message:hover .fromThem:not(.nohover) {
+        transform: translateY(18px);
+        -webkit-transform: translateY(18px);
+    }
+    .chat .myMessage .date,
+    .chat .fromThem .date {
+        top: -20px;
+        left: auto;
+        right: 0;
+        font-size: 12px;
+    }
+    .chat .myMessage,
+    .chat .fromThem {
+        max-width: 100%;
+    }
+    @-moz-keyframes loading-bar {
+        0% {
+            width: 0%;
+        }
+        90% {
+            width: 90%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    @-webkit-keyframes loading-bar {
+        0% {
+            width: 0%;
+        }
+        90% {
+            width: 90%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    @keyframes loading-bar {
+        0% {
+            width: 0%;
+        }
+        90% {
+            width: 90%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    .bottom-bar {
+        padding-top: 10px;
+        height: 55px;
+    }
+    .scroll-content {
+        margin-bottom: 55px !important;
+    }
+    .restaurant {
+        width: 100%;
+        padding: 10px 5px;
+    }
+    .menuItem {
+        margin: 0 5px;
+        width: calc(100% - 10px);
+        padding: 0px;
+        box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
+        border-radius: 4px;
+    }
+    .smallCard {
+        height: 170px;
+    }
+    .menuItem ion-card-title {
+        font-weight: 400;
+        font-size: 1.5rem;
+        text-align: center;
+        padding-bottom: 0px;
+        direction: rtl;
+    }
+    .menuItem ion-card-content {
+        padding: 0px;
+    }
+    .menuItem .price {
+        text-align: center;
+        font-size: 1.1rem;
+        direction: rtl;
+    }
+    .menuItem .restaurants-list-logo {
+        width: 80px !important;
+        height: 80px !important;
+        margin: auto;
+    }
+    .restaurantLogo {
+        width: 30%;
+        height: 30%;
+        display: block;
+        margin: auto;
+    }
+    .bottom-btns {
+        padding: 0px 9px;
+    }
+    .receipt h3 {
+        direction: rtl;
+    }
+    .receipt-header {
+        border-bottom: 1px solid;
+    }
+    .fromThem>p {
+        direction: rtl;
+    }
+    .red {
+        color: #e30000;
+    }
 }

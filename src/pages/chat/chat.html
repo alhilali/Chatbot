@@ -34,23 +34,37 @@
                 <p class="price">
                   {{item.price}} ريال
                 </p>
-                <p text-center>
-                  مع بيبسي وبطاطس.
-                </p>
+                <ion-row class="button-bar" wrap align-items-center justify-content-around>
+                  <button color="smoke" ion-button icon-only small>
+                    <ion-icon color="red" name="ios-settings"></ion-icon>
+                  </button>
+                  <button ion-button icon-only clear (click)="item.remove()">
+                    <ion-icon color="red" name="remove"></ion-icon>
+                  </button>
+                  <p>{{item.quantitiy}}</p>
+                  <button ion-button icon-only clear (click)="item.add()">
+                    <ion-icon color="red" name="add"></ion-icon>
+                  </button>
+                </ion-row>
               </ion-card-content>
             </ion-card>
           </ion-col>
         </ion-row>
-        <button ion-button clear large (click)="loadMoreItems(msg.restaurant)">المزيد</button>
+        <div class="bottom-btns">
+          <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>
+          <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">
+            <ion-icon color="red" name="ios-arrow-down"></ion-icon>
+          </button>
+        </div>
       </ion-grid>
     </div>
     <div class="fromThem nohover restaurant" *ngIf="msg.type === 'restaurants-list'">
       <ion-grid>
         <ion-row wrap>
           <ion-col *ngFor="let restaurant of restaurants" col-6>
-            <ion-card class="menuItem">
+            <ion-card class="menuItem smallCard">
               <img class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
-              <ion-card-content>
+              <ion-card-content padding-horizontal>
                 <ion-card-title>
                   {{restaurant.name}}
                 </ion-card-title>
@@ -58,12 +72,50 @@
                   {{restaurant.location}}
                 </p>
 
-                <button ion-button outline full color="red" (click)="loadMoreItems(msg.restaurant)">اطلب</button>
+                <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>
               </ion-card-content>
             </ion-card>
           </ion-col>
         </ion-row>
-        <button ion-button clear large (click)="loadMoreItems(msg.restaurant)">المزيد</button>
+        <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">
+          <ion-icon color="red" name="ios-arrow-down"></ion-icon>
+        </button>
+      </ion-grid>
+    </div>
+    <div class="fromThem nohover restaurant" *ngIf="msg.type === 'receipt'">
+      <ion-grid>
+        <div>
+          <ion-card class="receipt menuItem">
+            <ion-card-header class="receipt-header" text-center>
+              ملخص الطلب من {{msg.restaurant.name}}
+            </ion-card-header>
+
+            <ion-list>
+              <span *ngFor="let item of msg.restaurant.menu">
+                <ion-item *ngIf="item.quantitiy > 0">
+                  <ion-avatar item-start>
+                    <img src="{{item.image}}">
+                  </ion-avatar>
+                  <ion-row justify-content-between>
+                    <h2>{{item.name}}</h2>
+                    <h2 class="red">x {{item.quantitiy}}</h2>
+                  </ion-row>
+                  <p>
+                    {{item.price}} ريال
+                  </p>
+                </ion-item>
+              </span>
+              <ion-item item-end>
+                <h3>الاجمالي</h3>
+                <h3 class="red">{{msg.restaurant.total}} ريال</h3>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+          <div class="bottom-btns">
+            <button ion-button color="red" block (click)="sendOrder(msg.restaurant)">ارسل الطلب</button>
+            <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>
+          </div>
+        </div>
       </ion-grid>
     </div>
   </div>
