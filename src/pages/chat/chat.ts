@@ -1,3 +1,5 @@
+import { Restaurant } from "./../../models/restaurant";
+import { Message } from "./../../models/message";
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
 import { IonicPage, NavController, Content } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
@@ -18,16 +20,14 @@ export class ChatPage {
   message: string = "";
   messages: Array<Message>;
   restaurants: Array<Restaurant>;
-  currentRestaurant: Restaurant;
 
   constructor(public navCtrl: NavController,
     private conversationService: ConversationServiceProvider) {
     this.messages = new Array<Message>();
+    this.restaurants = new Array<Restaurant>();
   }
 
   ionViewDidEnter() {
-    this.messages = new Array<Message>();
-    this.restaurants = new Array<Restaurant>();
     this.conversationService.sendMessage("").subscribe(
       data => {
         console.log(data);
@@ -54,13 +54,16 @@ export class ChatPage {
     restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
   }
 
-  send() {
-    this.messages.push(new Message(this.message, false));
+  send(msg?: string) {
+    let message = this.message;
+    if (msg !== null) message = msg;
+
+    this.messages.push(new Message(message, false));
     setTimeout(() => {
       this.content.scrollToBottom(200);
     });
 
-    this.conversationService.sendMessage(this.message).subscribe(
+    this.conversationService.sendMessage(message).subscribe(
       data => {
         console.log(data);
 
@@ -95,9 +98,8 @@ export class ChatPage {
     return new Promise((resolve, reject) => {
       this.restaurants.forEach((res, index) => {
         if (res.name === name) {
-          this.currentRestaurant = res;
-          console.log(this.currentRestaurant);
-          this.updateConversationWithRestaurant(this.currentRestaurant);
+          const restaurant: Restaurant = res;
+          this.updateConversationWithRestaurant(restaurant);
           resolve(res);
         }
         if (index == this.restaurants.length - 1) {
@@ -107,13 +109,7 @@ export class ChatPage {
     })
   }
 
-
-  processOrder(data: any): Promise<string> {
-    return new Promise((resolve, reject) => {
-    })
-  }
-
-  listAvailableRestaurants(): Promise<any> {
+  private listAvailableRestaurants(): Promise<any> {
     return new Promise((resolve, reject) => {
       let msg = new Message("", true, 'restaurants-list');
       this.messages.push(msg);
@@ -126,15 +122,13 @@ export class ChatPage {
     msg.setRestaurant(restaurant);
     this.messages.push(msg);
     setTimeout(() => {
-      this.content.scrollToBottom(300);
-    });
+      this.content.scrollToBottom(500);
+    }, 100);
   }
 
   private order(restaurant: Restaurant) {
     let msg = new Message("", true, 'receipt');
     restaurant.setTotal().then(res => {
-      console.log(res);
-
       if (res > 0) {
         msg.setRestaurant(restaurant);
         this.messages.push(msg);
@@ -143,7 +137,7 @@ export class ChatPage {
       }
     })
     setTimeout(() => {
-      this.content.scrollToBottom(300);
+      this.content.scrollToBottom(500);
     });
   }
 
@@ -169,12 +163,13 @@ export class ChatPage {
     }
 
     this.messages.push(new Message(msg, true));
-    console.log(this.messages);
-
-
     setTimeout(() => {
       this.content.scrollToBottom(100);
     });
+  }
+
+  private pickSuggestion(suggestion: string) {
+    this.send(suggestion);
   }
 
   footerTouchStart(event) {
@@ -192,85 +187,4 @@ export class ChatPage {
     this.send();
   }
 
-}
-
-export class Message {
-  content: string;
-  isWatson: boolean;
-  timestamp: string;
-  type: string;
-  restaurant?: Restaurant;
-
-  constructor(content: string, isWatson: boolean,
-    type?: string) {
-    this.content = content;
-    this.isWatson = isWatson;
-    const date = new Date();
-    this.timestamp = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-    if (type != null) {
-      this.type = type;
-    } else this.type = 'regular';
-  }
-
-  setRestaurant(restaurant: Restaurant) {
-    this.restaurant = restaurant;
-  }
-}
-
-export class MenuItem {
-  name: string;
-  price: number;
-  quantitiy: number;
-  image: string;
-
-  constructor(name: string, price: number, image?: string) {
-    this.name = name;
-    this.price = price;
-    this.quantitiy = 0;
-    if (image != null) this.image = image;
-  }
-
-  add() {
-    this.quantitiy++;
-  }
-
-  remove() {
-    if (this.quantitiy > 0)
-      this.quantitiy--;
-  }
-}
-
-
-export class Restaurant {
-  name: string;
-  menu: Array<MenuItem>;
-  logoImage: string;
-  location: string;
-  total: number = 0;
-
-  constructor(name: string, location?: string, logo?: string) {
-    this.name = name;
-    this.menu = new Array<MenuItem>();
-    if (logo != null) this.logoImage = logo;
-    if (location != null) this.location = location;
-  }
-
-  addMenuItem(name: string, price: number, image: string) {
-    const menuItem = new MenuItem(name, price, image);
-    this.menu.push(menuItem);
-  }
-
-
-  setTotal(): Promise<number> {
-    return new Promise<number>((resolve, reject) => {
-      let total = 0;
-      this.menu.forEach((item, index) => {
-        total += item.price * item.quantitiy
-        if (index == this.menu.length - 1) {
-          this.total = total;
-          resolve(this.total);
-        }
-      })
-    })
-  }
 }

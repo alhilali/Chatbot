@@ -1,0 +1,20 @@
+suggestions {
+    .suggestions {
+        position: absolute;
+        bottom: 0;
+        margin: auto;
+        width: 95%;
+        left: 0;
+        right: 0;
+    }
+    .suggestions * {
+        text-align: center;
+    }
+    .suggestion-chip {
+        background-color: #e30000;
+    }
+    .suggestion-chip * {
+        color: white;
+        font-size: 1.2rem;
+    }
+}

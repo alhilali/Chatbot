@@ -1,4 +1,8 @@
 page-chat {
+    .title-image {
+        margin-top: 10px;
+        height: 40px;
+    }
     input.text-input {
         direction: rtl;
     }
@@ -40,7 +44,6 @@ page-chat {
         color: white;
         border-radius: 25px;
         clear: both;
-        font: 400 15px 'Open Sans', sans-serif;
     }
     .chat .myMessage {
         background: #e30000;
@@ -127,7 +130,6 @@ page-chat {
         right: 105%;
     }
     .chat input {
-        font: 400 13px 'Open Sans', sans-serif;
         border: 0;
         padding: 0 15px;
         height: 10%;
@@ -155,7 +157,7 @@ page-chat {
     }
     .chat .myMessage .date,
     .chat .fromThem .date {
-        top: -20px;
+        top: -24px;
         left: auto;
         right: 0;
         font-size: 12px;
@@ -209,11 +211,13 @@ page-chat {
         padding: 10px 5px;
     }
     .menuItem {
-        margin: 0 5px;
-        width: calc(100% - 10px);
         padding: 0px;
         box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
         border-radius: 4px;
+    }
+    .sm-card {
+        min-width: 150px;
+        max-width: 160px;
     }
     .smallCard {
         height: 170px;
@@ -247,6 +251,7 @@ page-chat {
     .bottom-btns {
         padding: 0px 9px;
     }
+    .receipt {}
     .receipt h3 {
         direction: rtl;
     }

@@ -6,8 +6,11 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>🍕 🍔</ion-title>
+  <ion-navbar color="gold">
+    <ion-title>
+      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"
+        alt="">
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,9 +26,9 @@
       <img class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />
       <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>
       <ion-grid>
-        <ion-row wrap>
-          <ion-col *ngFor="let item of msg.restaurant.menu" col-6>
-            <ion-card class="menuItem">
+        <ion-row wrap style="text-align: -webkit-center;">
+          <ion-col *ngFor="let item of msg.restaurant.menu">
+            <ion-card class="menuItem sm-card" no-margin>
               <img src="{{item.image}}" />
               <ion-card-content>
                 <ion-card-title>
@@ -60,9 +63,9 @@
     </div>
     <div class="fromThem nohover restaurant" *ngIf="msg.type === 'restaurants-list'">
       <ion-grid>
-        <ion-row wrap>
+        <ion-row wrap style="text-align: -webkit-center;">
           <ion-col *ngFor="let restaurant of restaurants" col-6>
-            <ion-card class="menuItem smallCard">
+            <ion-card class="menuItem sm-card smallCard" no-margin>
               <img class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
               <ion-card-content padding-horizontal>
                 <ion-card-title>
@@ -119,6 +122,7 @@
       </ion-grid>
     </div>
   </div>
+  <suggestions (notify)='pickSuggestion($event)'></suggestions>
 </ion-content>
 
 <ion-footer (touchstart)="footerTouchStart($event)">

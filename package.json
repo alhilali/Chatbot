@@ -13,7 +13,7 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
-    "@angular/animations": "5.2.9",
+    "@angular/animations": "^5.2.9",
     "@angular/common": "5.2.9",
     "@angular/compiler": "5.2.9",
     "@angular/compiler-cli": "5.2.9",
@@ -31,6 +31,7 @@
     "rxjs": "5.5.7",
     "sw-toolbox": "3.6.0",
     "watson-developer-cloud": "^3.2.1",
+    "web-animations-js": "^2.3.1",
     "zone.js": "0.8.20"
   },
   "devDependencies": {
