@@ -38,4 +38,8 @@ export class SuggestionsComponent {
     this.notify.emit(suggestion);
   }
 
+  hideSuggestions() {
+    this.state = '*';
+  }
+
 }

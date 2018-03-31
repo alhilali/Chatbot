@@ -6,7 +6,7 @@ webpackJsonp([0],{
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(278);
@@ -45,40 +45,6 @@ var ChatPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(277);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var ComponentsModule = /** @class */ (function () {
-    function ComponentsModule() {
-    }
-    ComponentsModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */])],
-            exports: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */]]
-        })
-    ], ComponentsModule);
-    return ComponentsModule;
-}());
-
-//# sourceMappingURL=components.module.js.map
-
-/***/ }),
-
-/***/ 277:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SuggestionsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -112,6 +78,9 @@ var SuggestionsComponent = /** @class */ (function () {
         this.state = '*';
         this.notify.emit(suggestion);
     };
+    SuggestionsComponent.prototype.hideSuggestions = function () {
+        this.state = '*';
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
@@ -136,6 +105,40 @@ var SuggestionsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 277:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(276);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ComponentsModule = /** @class */ (function () {
+    function ComponentsModule() {
+    }
+    ComponentsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */])],
+            exports: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */]]
+        })
+    ], ComponentsModule);
+    return ComponentsModule;
+}());
+
+//# sourceMappingURL=components.module.js.map
+
+/***/ }),
+
 /***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -146,6 +149,7 @@ var SuggestionsComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_conversation_service_conversation_service__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_suggestions_suggestions__ = __webpack_require__(276);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -155,6 +159,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -198,8 +203,10 @@ var ChatPage = /** @class */ (function () {
     };
     ChatPage.prototype.send = function (msg) {
         var _this = this;
+        this.suggestions.hideSuggestions();
         var message = this.message;
-        if (msg !== null)
+        console.log(msg);
+        if (msg != null)
             message = msg;
         this.messages.push(new __WEBPACK_IMPORTED_MODULE_1__models_message__["a" /* Message */](message, false));
         setTimeout(function () {
@@ -325,9 +332,13 @@ var ChatPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Content */]),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Content */])
     ], ChatPage.prototype, "content", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_8" /* ViewChild */])('suggestions'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5__components_suggestions_suggestions__["a" /* SuggestionsComponent */])
+    ], ChatPage.prototype, "suggestions", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n      <img class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n      <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let item of msg.restaurant.menu">\n            <ion-card class="menuItem sm-card" no-margin>\n              <img src="{{item.image}}" />\n              <ion-card-content>\n                <ion-card-title>\n                  {{item.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{item.price}} ريال\n                </p>\n                <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                  <button color="smoke" ion-button icon-only small>\n                    <ion-icon color="red" name="ios-settings"></ion-icon>\n                  </button>\n                  <button ion-button icon-only clear (click)="item.remove()">\n                    <ion-icon color="red" name="remove"></ion-icon>\n                  </button>\n                  <p>{{item.quantitiy}}</p>\n                  <button ion-button icon-only clear (click)="item.add()">\n                    <ion-icon color="red" name="add"></ion-icon>\n                  </button>\n                </ion-row>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n          <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </div>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let restaurant of restaurants" col-6>\n            <ion-card class="menuItem sm-card smallCard" no-margin>\n              <img class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n              <ion-card-content padding-horizontal>\n                <ion-card-title>\n                  {{restaurant.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{restaurant.location}}\n                </p>\n\n                <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n          <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n        </button>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n      <ion-grid>\n        <div>\n          <ion-card class="receipt menuItem">\n            <ion-card-header class="receipt-header" text-center>\n              ملخص الطلب من {{msg.restaurant.name}}\n            </ion-card-header>\n\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-end>\n                <h3>الاجمالي</h3>\n                <h3 class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="sendOrder(msg.restaurant)">ارسل الطلب</button>\n            <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n          </div>\n        </div>\n      </ion-grid>\n    </div>\n  </div>\n  <suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n      <img class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n      <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let item of msg.restaurant.menu">\n            <ion-card class="menuItem sm-card" no-margin>\n              <img src="{{item.image}}" />\n              <ion-card-content>\n                <ion-card-title>\n                  {{item.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{item.price}} ريال\n                </p>\n                <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                  <button color="smoke" ion-button icon-only small>\n                    <ion-icon color="red" name="ios-settings"></ion-icon>\n                  </button>\n                  <button ion-button icon-only clear (click)="item.remove()">\n                    <ion-icon color="red" name="remove"></ion-icon>\n                  </button>\n                  <p>{{item.quantitiy}}</p>\n                  <button ion-button icon-only clear (click)="item.add()">\n                    <ion-icon color="red" name="add"></ion-icon>\n                  </button>\n                </ion-row>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n          <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </div>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let restaurant of restaurants" col-6>\n            <ion-card class="menuItem sm-card smallCard" no-margin>\n              <img class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n              <ion-card-content padding-horizontal>\n                <ion-card-title>\n                  {{restaurant.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{restaurant.location}}\n                </p>\n\n                <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n          <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n        </button>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n      <ion-grid>\n        <div>\n          <ion-card class="receipt menuItem">\n            <ion-card-header class="receipt-header" text-center>\n              ملخص الطلب من {{msg.restaurant.name}}\n            </ion-card-header>\n\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-end>\n                <h3>الاجمالي</h3>\n                <h3 class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="sendOrder(msg.restaurant)">ارسل الطلب</button>\n            <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n          </div>\n        </div>\n      </ion-grid>\n    </div>\n  </div>\n  <suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]])

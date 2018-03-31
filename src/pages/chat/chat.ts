@@ -3,6 +3,7 @@ import { Message } from "./../../models/message";
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
 import { IonicPage, NavController, Content } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
+import { SuggestionsComponent } from "../../components/suggestions/suggestions";
 /**
  * Generated class for the ChatPage page.
  *
@@ -13,10 +14,11 @@ import { Component, ViewChild } from '@angular/core';
 @IonicPage()
 @Component({
   selector: 'page-chat',
-  templateUrl: 'chat.html',
+  templateUrl: 'chat.html'
 })
 export class ChatPage {
   @ViewChild(Content) content: Content;
+  @ViewChild('suggestions') suggestions: SuggestionsComponent;
   message: string = "";
   messages: Array<Message>;
   restaurants: Array<Restaurant>;
@@ -55,8 +57,12 @@ export class ChatPage {
   }
 
   send(msg?: string) {
+
+    this.suggestions.hideSuggestions();
     let message = this.message;
-    if (msg !== null) message = msg;
+    console.log(msg);
+
+    if (msg != null) message = msg;
 
     this.messages.push(new Message(message, false));
     setTimeout(() => {

@@ -122,7 +122,7 @@
       </ion-grid>
     </div>
   </div>
-  <suggestions (notify)='pickSuggestion($event)'></suggestions>
+  <suggestions #suggestions (notify)='pickSuggestion($event)'></suggestions>
 </ion-content>
 
 <ion-footer (touchstart)="footerTouchStart($event)">
