@@ -33370,8 +33370,7 @@ ion-navbar.toolbar {
 }
 
 payment .receipt-header {
-  border-bottom: 1px solid;
-  color: #efefef;
+  border-bottom: 1px solid #efefef;
 }
 
 payment .payment-button {
@@ -33395,18 +33394,18 @@ payment .change-button {
   border: none !important;
   color: #bdbdbd !important;
   background-color: transparent !important;
-  height: 8.8rem !important;
+  height: 7.8rem !important;
   border-radius: 5px !important;
 }
 
 payment .change-button.segment-activated {
   color: #e50000 !important;
-  background-color: #ffffff !important;
+  background-color: #efefef !important;
 }
 
 payment .change-button ion-icon {
-  font-size: 4.6rem !important;
-  line-height: 5.8rem !important;
+  font-size: 3.6rem !important;
+  line-height: 4.8rem !important;
 }
 
 payment .change-button h4 {
@@ -33759,7 +33758,7 @@ page-chat .receipt h3 {
 }
 
 page-chat .receipt-header {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #efefef;
 }
 
 page-chat .fromThem > p {
@@ -33768,4 +33767,8 @@ page-chat .fromThem > p {
 
 page-chat .red {
   color: #e30000;
+}
+
+page-chat .card-content {
+  padding-top: 1px !important;
 }

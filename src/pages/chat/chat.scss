@@ -254,12 +254,15 @@ page-chat {
         direction: rtl;
     }
     .receipt-header {
-        border-bottom: 1px solid;
+        border-bottom: 1px solid #efefef;
     }
     .fromThem>p {
         direction: rtl;
     }
     .red {
         color: #e30000;
+    }
+    .card-content {
+        padding-top: 1px !important;
     }
 }

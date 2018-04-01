@@ -90,27 +90,28 @@
         <ion-card-header class="receipt-header" text-center>
           ملخص الطلب من {{msg.restaurant.name}}
         </ion-card-header>
-
-        <ion-list>
-          <span *ngFor="let item of msg.restaurant.menu">
-            <ion-item *ngIf="item.quantitiy > 0">
-              <ion-avatar item-start>
-                <img src="{{item.image}}">
-              </ion-avatar>
-              <ion-row justify-content-between>
-                <h2>{{item.name}}</h2>
-                <h2 class="red">x {{item.quantitiy}}</h2>
-              </ion-row>
-              <p>
-                {{item.price}} ريال
-              </p>
+        <ion-card-content>
+          <ion-list>
+            <span *ngFor="let item of msg.restaurant.menu">
+              <ion-item *ngIf="item.quantitiy > 0">
+                <ion-avatar item-start>
+                  <img src="{{item.image}}">
+                </ion-avatar>
+                <ion-row justify-content-between>
+                  <h2>{{item.name}}</h2>
+                  <h2 class="red">x {{item.quantitiy}}</h2>
+                </ion-row>
+                <p>
+                  {{item.price}} ريال
+                </p>
+              </ion-item>
+            </span>
+            <ion-item item-end>
+              <h3>الاجمالي</h3>
+              <h3 class="red">{{msg.restaurant.total}} ريال</h3>
             </ion-item>
-          </span>
-          <ion-item item-end>
-            <h3>الاجمالي</h3>
-            <h3 class="red">{{msg.restaurant.total}} ريال</h3>
-          </ion-item>
-        </ion-list>
+          </ion-list>
+        </ion-card-content>
       </ion-card>
       <div class="bottom-btns">
         <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>
