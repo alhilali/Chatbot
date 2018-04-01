@@ -1,10 +1,12 @@
 <!-- Generated template for the SuggestionsComponent component -->
 <div [@fadeInOut]="state" class="suggestions">
-  <ion-row style="direction: rtl;" nowrap>
-    <ion-col *ngFor="let suggestion of suggestions">
-      <ion-chip (click)='pickSuggestion(suggestion)' class="suggestion-chip">
-        <ion-label>{{suggestion}}</ion-label>
-      </ion-chip>
-    </ion-col>
-  </ion-row>
+  <ion-scroll class="scrollable" scrollX="true">
+    <ion-row style="direction: rtl; width: 100vh;" nowrap>
+      <span *ngFor="let suggestion of suggestions">
+        <ion-chip (click)='pickSuggestion(suggestion)' class="suggestion-chip">
+          <ion-label>{{suggestion}}</ion-label>
+        </ion-chip>
+      </span>
+    </ion-row>
+  </ion-scroll>
 </div>

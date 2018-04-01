@@ -1,9 +1,15 @@
 import { IonicPageModule } from "ionic-angular";
 import { NgModule } from '@angular/core';
 import { SuggestionsComponent } from './suggestions/suggestions';
+import { PaymentComponent } from './payment/payment';
 @NgModule({
-	declarations: [SuggestionsComponent],
-	imports: [IonicPageModule.forChild(SuggestionsComponent)],
-	exports: [SuggestionsComponent]
+	declarations: [SuggestionsComponent,
+		PaymentComponent],
+	imports: [
+		IonicPageModule.forChild(SuggestionsComponent),
+		IonicPageModule.forChild(PaymentComponent)
+	],
+	exports: [SuggestionsComponent,
+		PaymentComponent]
 })
 export class ComponentsModule { }

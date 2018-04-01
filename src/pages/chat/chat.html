@@ -28,7 +28,7 @@
       <ion-grid>
         <ion-row wrap style="text-align: -webkit-center;">
           <ion-col *ngFor="let item of msg.restaurant.menu">
-            <ion-card class="menuItem sm-card" no-margin>
+            <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>
               <img src="{{item.image}}" />
               <ion-card-content>
                 <ion-card-title>
@@ -64,8 +64,8 @@
     <div class="fromThem nohover restaurant" *ngIf="msg.type === 'restaurants-list'">
       <ion-grid>
         <ion-row wrap style="text-align: -webkit-center;">
-          <ion-col *ngFor="let restaurant of restaurants" col-6>
-            <ion-card class="menuItem sm-card smallCard" no-margin>
+          <ion-col *ngFor="let restaurant of restaurants">
+            <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>
               <img class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
               <ion-card-content padding-horizontal>
                 <ion-card-title>
@@ -80,46 +80,45 @@
             </ion-card>
           </ion-col>
         </ion-row>
-        <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">
+        <button ion-button clear block icon-only (click)="loadMoreRestuarants()">
           <ion-icon color="red" name="ios-arrow-down"></ion-icon>
         </button>
       </ion-grid>
     </div>
     <div class="fromThem nohover restaurant" *ngIf="msg.type === 'receipt'">
-      <ion-grid>
-        <div>
-          <ion-card class="receipt menuItem">
-            <ion-card-header class="receipt-header" text-center>
-              ملخص الطلب من {{msg.restaurant.name}}
-            </ion-card-header>
+      <ion-card class="receipt menuItem">
+        <ion-card-header class="receipt-header" text-center>
+          ملخص الطلب من {{msg.restaurant.name}}
+        </ion-card-header>
 
-            <ion-list>
-              <span *ngFor="let item of msg.restaurant.menu">
-                <ion-item *ngIf="item.quantitiy > 0">
-                  <ion-avatar item-start>
-                    <img src="{{item.image}}">
-                  </ion-avatar>
-                  <ion-row justify-content-between>
-                    <h2>{{item.name}}</h2>
-                    <h2 class="red">x {{item.quantitiy}}</h2>
-                  </ion-row>
-                  <p>
-                    {{item.price}} ريال
-                  </p>
-                </ion-item>
-              </span>
-              <ion-item item-end>
-                <h3>الاجمالي</h3>
-                <h3 class="red">{{msg.restaurant.total}} ريال</h3>
-              </ion-item>
-            </ion-list>
-          </ion-card>
-          <div class="bottom-btns">
-            <button ion-button color="red" block (click)="sendOrder(msg.restaurant)">ارسل الطلب</button>
-            <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>
-          </div>
-        </div>
-      </ion-grid>
+        <ion-list>
+          <span *ngFor="let item of msg.restaurant.menu">
+            <ion-item *ngIf="item.quantitiy > 0">
+              <ion-avatar item-start>
+                <img src="{{item.image}}">
+              </ion-avatar>
+              <ion-row justify-content-between>
+                <h2>{{item.name}}</h2>
+                <h2 class="red">x {{item.quantitiy}}</h2>
+              </ion-row>
+              <p>
+                {{item.price}} ريال
+              </p>
+            </ion-item>
+          </span>
+          <ion-item item-end>
+            <h3>الاجمالي</h3>
+            <h3 class="red">{{msg.restaurant.total}} ريال</h3>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <div class="bottom-btns">
+        <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>
+        <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>
+      </div>
+    </div>
+    <div class="fromThem nohover restaurant" *ngIf="msg.type === 'payment'">
+      <payment (notify)='sendOrder($event, msg.restaurant)'></payment>
     </div>
   </div>
   <suggestions #suggestions (notify)='pickSuggestion($event)'></suggestions>
@@ -133,7 +132,7 @@
       </button>
     </ion-buttons>
     <form>
-      <ion-input type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>
+      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>
     </form>
   </ion-toolbar>
 </ion-footer>

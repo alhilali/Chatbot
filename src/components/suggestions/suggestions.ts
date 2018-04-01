@@ -22,7 +22,7 @@ import {
 })
 export class SuggestionsComponent {
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-  suggestions: Array<string> = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من كنتاكي', 'وريني آخر العروض'];
+  suggestions: Array<string> = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من كنتاكي', 'وريني آخر العروض', 'ايش فيه مطاعم برقر كويسه؟', 'وش صار على الطلب؟'];
   state: string = '*';
 
   constructor() {

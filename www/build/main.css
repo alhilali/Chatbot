@@ -33362,11 +33362,89 @@ ion-navbar.toolbar {
   font-family: "Helvetica Neue";
 }
 
+.menuItem {
+  padding: 0px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
+  border-radius: 4px;
+}
+
+payment .receipt-header {
+  border-bottom: 1px solid;
+  color: #efefef;
+}
+
+payment .payment-button {
+  border: none !important;
+  color: #bdbdbd !important;
+  background-color: transparent !important;
+  height: 5.8rem !important;
+}
+
+payment .payment-button.segment-activated {
+  color: #e50000 !important;
+  background-color: #ffffff !important;
+}
+
+payment .payment-button ion-icon {
+  font-size: 4.6rem !important;
+  line-height: 5.8rem !important;
+}
+
+payment .change-button {
+  border: none !important;
+  color: #bdbdbd !important;
+  background-color: transparent !important;
+  height: 8.8rem !important;
+  border-radius: 5px !important;
+}
+
+payment .change-button.segment-activated {
+  color: #e50000 !important;
+  background-color: #ffffff !important;
+}
+
+payment .change-button ion-icon {
+  font-size: 4.6rem !important;
+  line-height: 5.8rem !important;
+}
+
+payment .change-button h4 {
+  direction: rtl;
+}
+
+payment .medium {
+  width: 50px;
+  margin: auto;
+}
+
+payment .card-container {
+  background-color: whitesmoke;
+  padding: 20px;
+  margin: 10px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+payment .card-container ion-item {
+  padding: 0px;
+  margin: 10px 0px;
+  font-size: 1.2rem;
+}
+
+payment .card-container ion-col {
+  padding-left: 0px;
+}
+
+payment .card-container input[type='text'] {
+  width: 100% !important;
+}
+
 suggestions .suggestions {
   position: absolute;
   bottom: 0;
   margin: auto;
-  width: 95%;
+  width: 100%;
   left: 0;
   right: 0;
 }
@@ -33377,6 +33455,7 @@ suggestions .suggestions * {
 
 suggestions .suggestion-chip {
   background-color: #e30000;
+  margin: 0px 5px;
 }
 
 suggestions .suggestion-chip * {
@@ -33384,18 +33463,28 @@ suggestions .suggestion-chip * {
   font-size: 1.1rem;
 }
 
+suggestions .scrollable {
+  width: 100vw;
+  height: 40px;
+  direction: rtl;
+}
+
+suggestions .scrollable .scroll-content {
+  margin-bottom: 0px !important;
+}
+
 page-chat .title-image {
   margin-top: 10px;
   height: 40px;
 }
 
-page-chat input.text-input {
+page-chat .message > input.text-input {
   direction: rtl;
 }
 
 page-chat .chat * {
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all .2s;
+  transition: all .2s;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -33436,7 +33525,7 @@ page-chat .chat .message:hover .date {
 page-chat .chat .myMessage,
 page-chat .fromThem {
   position: relative;
-  padding: 10px 20px;
+  padding: 5px 20px;
   color: white;
   border-radius: 25px;
   clear: both;
@@ -33619,13 +33708,6 @@ page-chat .restaurant {
   padding: 10px 5px;
 }
 
-page-chat .menuItem {
-  padding: 0px;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
-  box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
-  border-radius: 4px;
-}
-
 page-chat .sm-card {
   min-width: 150px;
   max-width: 160px;
@@ -33657,6 +33739,7 @@ page-chat .menuItem .restaurants-list-logo {
   width: 80px !important;
   height: 80px !important;
   margin: auto;
+  border-radius: 10px;
 }
 
 page-chat .restaurantLogo {
@@ -33664,6 +33747,7 @@ page-chat .restaurantLogo {
   height: 30%;
   display: block;
   margin: auto;
+  border-radius: 10px;
 }
 
 page-chat .bottom-btns {

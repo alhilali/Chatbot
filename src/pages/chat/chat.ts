@@ -2,7 +2,7 @@ import { Restaurant } from "./../../models/restaurant";
 import { Message } from "./../../models/message";
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
 import { IonicPage, NavController, Content } from 'ionic-angular';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, trigger, state, style, animate, transition } from '@angular/core';
 import { SuggestionsComponent } from "../../components/suggestions/suggestions";
 /**
  * Generated class for the ChatPage page.
@@ -14,7 +14,14 @@ import { SuggestionsComponent } from "../../components/suggestions/suggestions";
 @IonicPage()
 @Component({
   selector: 'page-chat',
-  templateUrl: 'chat.html'
+  templateUrl: 'chat.html',
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: '0' })),
+      state('*', style({ opacity: '1' })),
+      transition('void <=> *', animate('300ms ease-in'))
+    ])
+  ]
 })
 export class ChatPage {
   @ViewChild(Content) content: Content;
@@ -40,7 +47,7 @@ export class ChatPage {
       }
     )
     this.generateMenue(new Restaurant('كنتاكي', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'));
-    this.generateMenue(new Restaurant('برقر كنق', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
+    this.generateMenue(new Restaurant('شاورمر', 'الملك عبدالعزيز - الربيع', 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'));
   }
 
   generateMenue(restaurant: Restaurant) {
@@ -54,6 +61,11 @@ export class ChatPage {
   loadMoreItems(restaurant: Restaurant) {
     restaurant.addMenuItem('وجبة دينر', 16, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/bites_Big_menu.jpg');
     restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
+  }
+
+  loadMoreRestuarants() {
+    this.generateMenue(new Restaurant('برقر كنق', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
+    this.generateMenue(new Restaurant('البيك', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
   }
 
   send(msg?: string) {
@@ -147,7 +159,7 @@ export class ChatPage {
     });
   }
 
-  private sendOrder(restaurant: Restaurant) {
+  private sendOrder(type: string, restaurant: Restaurant) {
     this.conversationService.sendMessage("ارسل").subscribe(
       data => {
         console.log(data);
@@ -157,6 +169,15 @@ export class ChatPage {
         console.log(error);
       }
     )
+  }
+
+  pay(restaurant: Restaurant) {
+    let msg = new Message("", true, 'payment');
+    msg.setRestaurant(restaurant);
+    this.messages.push(msg);
+    setTimeout(() => {
+      this.content.scrollToBottom(500);
+    }, 100);
   }
 
   private updateConversation(data: any) {

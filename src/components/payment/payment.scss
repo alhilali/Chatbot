@@ -1,0 +1,60 @@
+payment {
+    .receipt-header {
+        border-bottom: 1px solid;
+        color: #efefef;
+    }
+    .payment-button {
+        border: none !important;
+        color: #bdbdbd !important;
+        background-color: transparent !important;
+        height: 5.8rem !important;
+    }
+    .payment-button.segment-activated {
+        color: #e50000 !important;
+        background-color: #ffffff !important;
+    }
+    .payment-button ion-icon {
+        font-size: 4.6rem !important;
+        line-height: 5.8rem !important;
+    }
+    .change-button {
+        border: none !important;
+        color: #bdbdbd !important;
+        background-color: transparent !important;
+        height: 8.8rem !important;
+        border-radius: 5px !important;
+    }
+    .change-button.segment-activated {
+        color: #e50000 !important;
+        background-color: #ffffff !important;
+    }
+    .change-button ion-icon {
+        font-size: 4.6rem !important;
+        line-height: 5.8rem !important;
+    }
+    .change-button h4 {
+        direction: rtl;
+    }
+    .medium {
+        width: 50px;
+        margin: auto;
+    }
+    .card-container {
+        background-color: whitesmoke;
+        padding: 20px;
+        margin: 10px;
+        height: 100%;
+        border-radius: 10px;
+    }
+    .card-container ion-item {
+        padding: 0px;
+        margin: 10px 0px;
+        font-size: 1.2rem;
+    }
+    .card-container ion-col {
+        padding-left: 0px;
+    }
+    .card-container input[type='text'] {
+        width: 100% !important;
+    }
+}
