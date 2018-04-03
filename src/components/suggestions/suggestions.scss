@@ -1,29 +1,29 @@
 suggestions {
-    .suggestions {
-        position: absolute;
-        bottom: 0;
-        margin: auto;
-        width: 100%;
-        left: 0;
-        right: 0;
-    }
-    .suggestions * {
-        text-align: center;
-    }
-    .suggestion-chip {
-        background-color: #e30000;
-        margin: 0px 5px;
-    }
-    .suggestion-chip * {
-        color: white;
-        font-size: 1.1rem;
-    }
-    .scrollable {
-        width: 100vw;
-        height: 40px;
-        direction: rtl;
-    }
-    .scrollable .scroll-content {
-        margin-bottom: 0px !important;
-    }
+  .suggestions {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  .suggestions * {
+    text-align: center;
+  }
+  .suggestion-chip {
+    background-color: #e30000;
+    margin: 0px 5px;
+  }
+  .suggestion-chip * {
+    color: white;
+    font-size: 1.4rem;
+  }
+  .scrollable {
+    width: 100vw;
+    height: 40px;
+    direction: rtl;
+  }
+  .scrollable .scroll-content {
+    margin-bottom: 0px !important;
+  }
 }

@@ -67,7 +67,7 @@ var SuggestionsComponent = /** @class */ (function () {
     function SuggestionsComponent() {
         var _this = this;
         this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
-        this.suggestions = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من كنتاكي', 'وريني آخر العروض', 'ايش فيه مطاعم برقر كويسه؟', 'وش صار على الطلب؟'];
+        this.suggestions = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من كنتاكي', 'ايش فيه مطاعم برقر كويسه؟', 'وريني آخر العروض', 'وش صار على الطلب؟'];
         this.state = '*';
         console.log('Hello SuggestionsComponent Component');
         setTimeout(function () {
@@ -184,7 +184,7 @@ var PaymentComponent = /** @class */ (function () {
     ], PaymentComponent.prototype, "notify", void 0);
     PaymentComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'payment',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/'<!-- Generated template for the PaymentComponent component -->\n<ion-card class="receipt menuItem">\n  <ion-card-header class="receipt-header" text-center>\n    <ion-segment [(ngModel)]="type">\n      <ion-segment-button class="payment-button" value="cash">\n        <ion-icon name="cash"></ion-icon>\n      </ion-segment-button>\n      <ion-segment-button class="payment-button" value="card">\n        <ion-icon name="card"></ion-icon>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-card-header>\n  <ion-card-content padding-horizontal>\n    <div [ngSwitch]="type">\n      <div *ngSwitchCase="\'cash\'">\n        <div padding text-center>\n          <p padding-vertical>💰 تحتاج صرف؟</p>\n          <ion-segment dir="rtl" [(ngModel)]="change">\n            <ion-segment-button class="change-button" value="50">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>50 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="100">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>100 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="500">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>500 ريال</h4>\n            </ion-segment-button>\n          </ion-segment>\n        </div>\n      </div>\n      <div *ngSwitchCase="\'card\'">\n        <div class="card-container">\n          <img src="http://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-Transparent-PNG.png" alt="">\n          <ion-item>\n            <ion-input type="text" placeholder="NAME ON CARD"></ion-input>\n          </ion-item>\n\n          <ion-item>\n            <ion-input type="text" placeholder="CARD NUMBER"></ion-input>\n          </ion-item>\n          <ion-row wrap justify-content-start>\n            <ion-col col-3>\n              <ion-item>\n                <ion-input type="text" placeholder="02"></ion-input>\n              </ion-item>\n\n            </ion-col>\n            <ion-col col-4>\n              <ion-item>\n                <ion-input type="text" placeholder="2017"></ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col push-1 col-4 style="padding-right: 0px;">\n              <ion-item>\n                <ion-input type="text" placeholder="CV"></ion-input>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n\n        </div>\n      </div>\n    </div>\n  </ion-card-content>\n</ion-card>\n<div class="bottom-btns">\n  <button ion-button color="red" block (click)="sendOrder()">ارسل الطلب</button>\n</div>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/
+            selector: 'payment',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/'<!-- Generated template for the PaymentComponent component -->\n<ion-card class="receipt menuItem">\n  <ion-card-header class="receipt-header" text-center>\n    <ion-segment [(ngModel)]="type">\n      <ion-segment-button class="payment-button" value="cash">\n        <ion-icon name="cash"></ion-icon>\n      </ion-segment-button>\n      <ion-segment-button class="payment-button" value="card">\n        <ion-icon name="card"></ion-icon>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-card-header>\n  <ion-card-content padding-horizontal>\n    <div [ngSwitch]="type">\n      <div *ngSwitchCase="\'cash\'">\n        <div padding text-center>\n          <p padding-bottom>💰 تحتاج صرف؟</p>\n          <ion-segment dir="rtl" [(ngModel)]="change">\n            <ion-segment-button class="change-button" value="50">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>50 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="100">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>100 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="500">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>500 ريال</h4>\n            </ion-segment-button>\n          </ion-segment>\n        </div>\n      </div>\n      <div *ngSwitchCase="\'card\'">\n        <div class="card-container">\n          <img src="http://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-Transparent-PNG.png" alt="">\n          <ion-item>\n            <ion-input type="text" placeholder="NAME ON CARD"></ion-input>\n          </ion-item>\n\n          <ion-item>\n            <ion-input type="text" placeholder="CARD NUMBER"></ion-input>\n          </ion-item>\n          <ion-row wrap justify-content-start>\n            <ion-col col-3>\n              <ion-item>\n                <ion-input type="text" placeholder="02"></ion-input>\n              </ion-item>\n\n            </ion-col>\n            <ion-col col-4>\n              <ion-item>\n                <ion-input type="text" placeholder="2017"></ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col push-1 col-4 style="padding-right: 0px;">\n              <ion-item>\n                <ion-input type="text" placeholder="CV"></ion-input>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n\n        </div>\n      </div>\n    </div>\n  </ion-card-content>\n</ion-card>\n<div class="bottom-btns">\n  <button ion-button color="red" block (click)="sendOrder()">ارسل الطلب</button>\n</div>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], PaymentComponent);
@@ -232,6 +232,36 @@ var ChatPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.conversationService = conversationService;
         this.message = "";
+        this.rest = [
+            { 'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png' },
+            { 'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg' },
+            { 'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png' },
+            { 'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png' }
+        ];
+        this.menus = [[
+                { 'name': 'وجبة تويستر', 'price': 15, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg' },
+                { 'name': 'وجبة مايتي زينجر', 'price': 20, 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ39B3QamHch8oECAqWnQ2gx68UQfbX6kQmkOL-5C5YwkJ6vLtQ' },
+                { 'name': 'وجبة كريسبي ستريبس', 'price': 19, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/strips-menu-1.jpg' },
+                { 'name': 'وجبة مطافي', 'price': 18, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/longer-menu-1.jpg' }
+            ],
+            [
+                { 'name': 'وجبة ديو', 'price': 15, 'image': 'http://www.shawarmer.com//images/Content/Products/Duo.jpg' },
+                { 'name': 'وجبة تنوري', 'price': 20, 'image': 'https://pbs.twimg.com/media/DOS4KaEW4AY89Bt.jpg' },
+                { 'name': 'وجبة شطشويش', 'price': 19, 'image': 'http://www.shawarmer.com//images/Content/Products/Shatshaweesh.jpg' },
+                { 'name': 'جمعات', 'price': 40, 'image': 'http://www.shawarmer.com//images/Content/Products/Gatherings.jpg' }
+            ],
+            [
+                { 'name': 'وجبة وابر', 'price': 15, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70b/f1f/x59770bf1f40cc722126399.png.pagespeed.ic.xu4DWti9sV.webp' },
+                { 'name': 'وجبة دوبل وابر', 'price': 20, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70d/07c/x59770d07c4fcc720357782.png.pagespeed.ic.o7BWGIJnWO.webp' },
+                { 'name': 'وجبة تشيكن رويال', 'price': 19, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70e/f05/x59770ef0528e0263459403.png.pagespeed.ic.fZ2QV-VNM6.webp' },
+                { 'name': 'وجبة تشيكن وابر', 'price': 18, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70f/687/x59770f6872fba728528016.png.pagespeed.ic.dxKvB-3gta.webp' }
+            ],
+            [
+                { 'name': 'وجبة بروستد', 'price': 15, 'image': 'http://www.recipesaresimple.com/wp-content/uploads/2015/06/al-baik-style-broasted-chicken-recipe.jpg' },
+                { 'name': 'وجبة مسحب', 'price': 20, 'image': 'http://www.dishocean.com/media/uploads/foods/chicken-crispy-qtr-broast-chest-al-shaikh-restaurant-gulshan-e-iqbal-karachi.jpg' },
+                { 'name': 'وجبة العائلة', 'price': 49, 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbuVLiU2aKG9VJLclvPTbef0eDVg1pkRslFOyBREUcN3zcKf718w' },
+                { 'name': 'وجبة برقر بروستد', 'price': 18, 'image': 'http://albaikpizza.com.au/images/burger_zinger_menu.jpg' }
+            ]];
         this.messages = new Array();
         this.restaurants = new Array();
     }
@@ -243,8 +273,17 @@ var ChatPage = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
-        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('كنتاكي', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'));
-        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('شاورمر', 'الملك عبدالعزيز - الربيع', 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'));
+        this.loadRestuarants();
+    };
+    ChatPage.prototype.loadRestuarants = function () {
+        var _this = this;
+        this.rest.forEach(function (res, index) {
+            var ress = res;
+            var restaurant = new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */](ress.name, ress.location, ress.logoImage);
+            var menu = _this.menus[index];
+            restaurant.addMenu(menu);
+            _this.restaurants.push(restaurant);
+        });
     };
     ChatPage.prototype.generateMenue = function (restaurant) {
         restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
@@ -446,6 +485,12 @@ var Restaurant = /** @class */ (function () {
     Restaurant.prototype.addMenuItem = function (name, price, image) {
         var menuItem = new __WEBPACK_IMPORTED_MODULE_0__menuItem__["a" /* MenuItem */](name, price, image);
         this.menu.push(menuItem);
+    };
+    Restaurant.prototype.addMenu = function (menu) {
+        var _this = this;
+        menu.forEach(function (item) {
+            _this.addMenuItem(item.name, item.price, item.image);
+        });
     };
     Restaurant.prototype.setTotal = function () {
         var _this = this;

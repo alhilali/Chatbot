@@ -18,6 +18,12 @@ export class Restaurant {
     this.menu.push(menuItem);
   }
 
+  addMenu(menu: Array<MenuItem>) {
+    menu.forEach(item => {
+      this.addMenuItem(item.name, item.price, item.image)
+    })
+  }
+
 
   setTotal(): Promise<number> {
     return new Promise<number>((resolve, reject) => {

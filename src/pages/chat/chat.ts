@@ -1,3 +1,4 @@
+import { MenuItem } from "./../../models/menuItem";
 import { Restaurant } from "./../../models/restaurant";
 import { Message } from "./../../models/message";
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
@@ -29,6 +30,36 @@ export class ChatPage {
   message: string = "";
   messages: Array<Message>;
   restaurants: Array<Restaurant>;
+  rest: Array<any> = [
+    { 'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png' },
+    { 'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg' },
+    { 'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png' },
+    { 'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png' }
+  ]
+  menus: Array<any> = [[
+    { 'name': 'وجبة تويستر', 'price': 15, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg' },
+    { 'name': 'وجبة مايتي زينجر', 'price': 20, 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ39B3QamHch8oECAqWnQ2gx68UQfbX6kQmkOL-5C5YwkJ6vLtQ' },
+    { 'name': 'وجبة كريسبي ستريبس', 'price': 19, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/strips-menu-1.jpg' },
+    { 'name': 'وجبة مطافي', 'price': 18, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/longer-menu-1.jpg' }
+  ],
+  [
+    { 'name': 'وجبة ديو', 'price': 15, 'image': 'http://www.shawarmer.com//images/Content/Products/Duo.jpg' },
+    { 'name': 'وجبة تنوري', 'price': 20, 'image': 'https://pbs.twimg.com/media/DOS4KaEW4AY89Bt.jpg' },
+    { 'name': 'وجبة شطشويش', 'price': 19, 'image': 'http://www.shawarmer.com//images/Content/Products/Shatshaweesh.jpg' },
+    { 'name': 'جمعات', 'price': 40, 'image': 'http://www.shawarmer.com//images/Content/Products/Gatherings.jpg' }
+  ],
+  [
+    { 'name': 'وجبة وابر', 'price': 15, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70b/f1f/x59770bf1f40cc722126399.png.pagespeed.ic.xu4DWti9sV.webp' },
+    { 'name': 'وجبة دوبل وابر', 'price': 20, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70d/07c/x59770d07c4fcc720357782.png.pagespeed.ic.o7BWGIJnWO.webp' },
+    { 'name': 'وجبة تشيكن رويال', 'price': 19, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70e/f05/x59770ef0528e0263459403.png.pagespeed.ic.fZ2QV-VNM6.webp' },
+    { 'name': 'وجبة تشيكن وابر', 'price': 18, 'image': 'https://www.burgerking.delivery/storage/app/uploads/public/597/70f/687/x59770f6872fba728528016.png.pagespeed.ic.dxKvB-3gta.webp' }
+  ],
+  [
+    { 'name': 'وجبة بروستد', 'price': 15, 'image': 'http://www.recipesaresimple.com/wp-content/uploads/2015/06/al-baik-style-broasted-chicken-recipe.jpg' },
+    { 'name': 'وجبة مسحب', 'price': 20, 'image': 'http://www.dishocean.com/media/uploads/foods/chicken-crispy-qtr-broast-chest-al-shaikh-restaurant-gulshan-e-iqbal-karachi.jpg' },
+    { 'name': 'وجبة العائلة', 'price': 49, 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbuVLiU2aKG9VJLclvPTbef0eDVg1pkRslFOyBREUcN3zcKf718w' },
+    { 'name': 'وجبة برقر بروستد', 'price': 18, 'image': 'http://albaikpizza.com.au/images/burger_zinger_menu.jpg' }
+  ]]
 
   constructor(public navCtrl: NavController,
     private conversationService: ConversationServiceProvider) {
@@ -46,8 +77,17 @@ export class ChatPage {
         console.log(error);
       }
     )
-    this.generateMenue(new Restaurant('كنتاكي', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'));
-    this.generateMenue(new Restaurant('شاورمر', 'الملك عبدالعزيز - الربيع', 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'));
+    this.loadRestuarants();
+  }
+
+  loadRestuarants() {
+    this.rest.forEach((res, index) => {
+      let ress: Restaurant = res as Restaurant;
+      let restaurant = new Restaurant(ress.name, ress.location, ress.logoImage);
+      let menu: Array<MenuItem> = this.menus[index] as Array<MenuItem>;
+      (restaurant as Restaurant).addMenu(menu);
+      this.restaurants.push(restaurant);
+    })
   }
 
   generateMenue(restaurant: Restaurant) {
@@ -69,7 +109,6 @@ export class ChatPage {
   }
 
   send(msg?: string) {
-
     this.suggestions.hideSuggestions();
     let message = this.message;
     console.log(msg);
