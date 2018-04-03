@@ -23,13 +23,15 @@
       <p class="date">{{msg.timestamp}}</p>
     </div>
     <div class="fromThem nohover restaurant" *ngIf="msg.type === 'menu'">
-      <img class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />
+      <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />
       <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>
       <ion-grid>
         <ion-row wrap style="text-align: -webkit-center;">
           <ion-col *ngFor="let item of msg.restaurant.menu">
             <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>
-              <img src="{{item.image}}" />
+              <div class="image-placeholder">
+                <img class="restaurants-menu-logo" [@fadeInOut] src="{{item.image}}" />
+              </div>
               <ion-card-content>
                 <ion-card-title>
                   {{item.name}}
@@ -66,7 +68,9 @@
         <ion-row wrap style="text-align: -webkit-center;">
           <ion-col *ngFor="let restaurant of restaurants">
             <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>
-              <img class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
+              <div>
+                <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
+              </div>
               <ion-card-content padding-horizontal>
                 <ion-card-title>
                   {{restaurant.name}}
