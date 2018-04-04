@@ -29,12 +29,25 @@ export class ChatPage {
   @ViewChild('suggestions') suggestions: SuggestionsComponent;
   message: string = "";
   messages: Array<Message>;
+  origRestaurants: Array<Restaurant>;
   restaurants: Array<Restaurant>;
   rest: Array<any> = [
-    { 'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png' },
-    { 'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg' },
-    { 'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png' },
-    { 'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png' }
+    {
+      'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+      'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'
+    },
+    {
+      'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'type': 'شاورما',
+      'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'
+    },
+    {
+      'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+      'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'
+    },
+    {
+      'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'type': 'بروستد',
+      'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'
+    }
   ]
   menus: Array<any> = [[
     { 'name': 'وجبة تويستر', 'price': 15, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg' },
@@ -65,6 +78,7 @@ export class ChatPage {
     private conversationService: ConversationServiceProvider) {
     this.messages = new Array<Message>();
     this.restaurants = new Array<Restaurant>();
+    this.origRestaurants = new Array<Restaurant>();
   }
 
   ionViewDidEnter() {
@@ -83,10 +97,11 @@ export class ChatPage {
   loadRestuarants() {
     this.rest.forEach((res, index) => {
       let ress: Restaurant = res as Restaurant;
-      let restaurant = new Restaurant(ress.name, ress.location, ress.logoImage);
+      let restaurant = new Restaurant(ress.name, ress.type, ress.location, ress.logoImage);
       let menu: Array<MenuItem> = this.menus[index] as Array<MenuItem>;
       (restaurant as Restaurant).addMenu(menu);
       this.restaurants.push(restaurant);
+      this.origRestaurants.push(restaurant);
     })
   }
 
@@ -104,15 +119,15 @@ export class ChatPage {
   }
 
   loadMoreRestuarants() {
-    this.generateMenue(new Restaurant('برقر كنق', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
-    this.generateMenue(new Restaurant('البيك', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
+    this.generateMenue(new Restaurant('برقر كنق', 'الملك عبدالعزيز - النفل', 'برقر',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
+    this.generateMenue(new Restaurant('البيك', 'الملك عبدالعزيز - النفل', 'بروستد',
+      'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
   }
 
   send(msg?: string) {
     this.suggestions.hideSuggestions();
     let message = this.message;
-    console.log(msg);
-
     if (msg != null) message = msg;
 
     this.messages.push(new Message(message, false));
@@ -123,23 +138,37 @@ export class ChatPage {
     this.conversationService.sendMessage(message).subscribe(
       data => {
         console.log(data);
+        let restaurantIndex = data.entities.findIndex(k => k.entity == 'مطعم');
+        let cuisineIndex = data.entities.findIndex(k => k.entity == 'كوزين');
+        let menuIntent = data.intents.findIndex(k => k.intent == 'منيو');
+        let availRestaurantsIntent = data.intents.findIndex(k => k.intent == 'مطاعم_متوفره');
+        let somethingElse = data.output.nodes_visited.findIndex(k => k == 'أي شيء آخر');
 
-        if (data.entities[0] && data.entities[0].entity == 'مطعم'
-          && data.intents[0] && data.intents[0].intent == 'منيو') {
-          this.findRestaurant(data.entities[0].value).then(res => {
+
+        if (somethingElse >= 0) {
+          this.updateConversation(data);
+          // setTimeout(() => {
+          //   this.suggestions.showSuggestions();
+          // }, 2000)
+        } else if (restaurantIndex >= 0 && menuIntent >= 0) {
+          this.findRestaurant(data.entities[restaurantIndex].value).then(res => {
           }).then(_ => {
             this.updateConversation(data);
           }).catch(err => {
             this.updateConversation(data);
           })
-        } else if (data.intents[0] && data.intents[0].intent == 'طلب_كامل') {
-          //this.processOrder(data);
-        } else if (data.intents[0] && data.intents[0].intent == 'مطاعم_متوفره') {
+        } else if (cuisineIndex >= 0) {
+          this.restaurants = this.origRestaurants.filter(res => res.type === data.entities[cuisineIndex].value)
+          console.log(this.restaurants);
+
+          this.listAvailableRestaurants().then(_ => {
+            this.updateConversation(data);
+          })
+        } else if (availRestaurantsIntent >= 0) {
           this.listAvailableRestaurants().then(_ => {
             this.updateConversation(data);
           })
         } else {
-
           this.updateConversation(data);
         }
       },

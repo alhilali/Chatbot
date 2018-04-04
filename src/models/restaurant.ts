@@ -1,13 +1,16 @@
 import { MenuItem } from "./menuItem";
 export class Restaurant {
   name: string;
-  menu: Array<MenuItem>;
-  logoImage: string;
+  type: string;
   location: string;
+  logoImage: string;
+
+  menu: Array<MenuItem>;
   total: number = 0;
 
-  constructor(name: string, location?: string, logo?: string) {
+  constructor(name: string, type: string, location?: string, logo?: string) {
     this.name = name;
+    this.type = type;
     this.menu = new Array<MenuItem>();
     if (logo != null) this.logoImage = logo;
     if (location != null) this.location = location;

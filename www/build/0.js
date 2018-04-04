@@ -81,6 +81,9 @@ var SuggestionsComponent = /** @class */ (function () {
     SuggestionsComponent.prototype.hideSuggestions = function () {
         this.state = '*';
     };
+    SuggestionsComponent.prototype.showSuggestions = function () {
+        this.state = 'show';
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
@@ -233,10 +236,22 @@ var ChatPage = /** @class */ (function () {
         this.conversationService = conversationService;
         this.message = "";
         this.rest = [
-            { 'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png' },
-            { 'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg' },
-            { 'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png' },
-            { 'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png' }
+            {
+                'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+                'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'
+            },
+            {
+                'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'type': 'شاورما',
+                'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'
+            },
+            {
+                'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+                'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'
+            },
+            {
+                'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'type': 'بروستد',
+                'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'
+            }
         ];
         this.menus = [[
                 { 'name': 'وجبة تويستر', 'price': 15, 'image': 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg' },
@@ -264,6 +279,7 @@ var ChatPage = /** @class */ (function () {
             ]];
         this.messages = new Array();
         this.restaurants = new Array();
+        this.origRestaurants = new Array();
     }
     ChatPage.prototype.ionViewDidEnter = function () {
         var _this = this;
@@ -279,10 +295,11 @@ var ChatPage = /** @class */ (function () {
         var _this = this;
         this.rest.forEach(function (res, index) {
             var ress = res;
-            var restaurant = new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */](ress.name, ress.location, ress.logoImage);
+            var restaurant = new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */](ress.name, ress.type, ress.location, ress.logoImage);
             var menu = _this.menus[index];
             restaurant.addMenu(menu);
             _this.restaurants.push(restaurant);
+            _this.origRestaurants.push(restaurant);
         });
     };
     ChatPage.prototype.generateMenue = function (restaurant) {
@@ -297,14 +314,13 @@ var ChatPage = /** @class */ (function () {
         restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
     };
     ChatPage.prototype.loadMoreRestuarants = function () {
-        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('برقر كنق', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
-        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('البيك', 'الملك عبدالعزيز - النفل', 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
+        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('برقر كنق', 'الملك عبدالعزيز - النفل', 'برقر', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
+        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('البيك', 'الملك عبدالعزيز - النفل', 'بروستد', 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
     };
     ChatPage.prototype.send = function (msg) {
         var _this = this;
         this.suggestions.hideSuggestions();
         var message = this.message;
-        console.log(msg);
         if (msg != null)
             message = msg;
         this.messages.push(new __WEBPACK_IMPORTED_MODULE_1__models_message__["a" /* Message */](message, false));
@@ -313,19 +329,33 @@ var ChatPage = /** @class */ (function () {
         });
         this.conversationService.sendMessage(message).subscribe(function (data) {
             console.log(data);
-            if (data.entities[0] && data.entities[0].entity == 'مطعم'
-                && data.intents[0] && data.intents[0].intent == 'منيو') {
-                _this.findRestaurant(data.entities[0].value).then(function (res) {
+            var restaurantIndex = data.entities.findIndex(function (k) { return k.entity == 'مطعم'; });
+            var cuisineIndex = data.entities.findIndex(function (k) { return k.entity == 'كوزين'; });
+            var menuIntent = data.intents.findIndex(function (k) { return k.intent == 'منيو'; });
+            var availRestaurantsIntent = data.intents.findIndex(function (k) { return k.intent == 'مطاعم_متوفره'; });
+            var somethingElse = data.output.nodes_visited.findIndex(function (k) { return k == 'أي شيء آخر'; });
+            if (somethingElse >= 0) {
+                _this.updateConversation(data);
+                setTimeout(function () {
+                    _this.suggestions.showSuggestions();
+                }, 2000);
+            }
+            else if (restaurantIndex >= 0 && menuIntent >= 0) {
+                _this.findRestaurant(data.entities[restaurantIndex].value).then(function (res) {
                 }).then(function (_) {
                     _this.updateConversation(data);
                 }).catch(function (err) {
                     _this.updateConversation(data);
                 });
             }
-            else if (data.intents[0] && data.intents[0].intent == 'طلب_كامل') {
-                //this.processOrder(data);
+            else if (cuisineIndex >= 0) {
+                _this.restaurants = _this.origRestaurants.filter(function (res) { return res.type === data.entities[cuisineIndex].value; });
+                console.log(_this.restaurants);
+                _this.listAvailableRestaurants().then(function (_) {
+                    _this.updateConversation(data);
+                });
             }
-            else if (data.intents[0] && data.intents[0].intent == 'مطاعم_متوفره') {
+            else if (availRestaurantsIntent >= 0) {
                 _this.listAvailableRestaurants().then(function (_) {
                     _this.updateConversation(data);
                 });
@@ -438,15 +468,15 @@ var ChatPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Content */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* Content */]) === "function" && _a || Object)
     ], ChatPage.prototype, "content", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_8" /* ViewChild */])('suggestions'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5__components_suggestions_suggestions__["a" /* SuggestionsComponent */])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__components_suggestions_suggestions__["a" /* SuggestionsComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__components_suggestions_suggestions__["a" /* SuggestionsComponent */]) === "function" && _b || Object)
     ], ChatPage.prototype, "suggestions", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n      <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n      <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let item of msg.restaurant.menu">\n            <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n              <div class="image-placeholder">\n                <img class="restaurants-menu-logo" [@fadeInOut] src="{{item.image}}" />\n              </div>\n              <ion-card-content>\n                <ion-card-title>\n                  {{item.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{item.price}} ريال\n                </p>\n                <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                  <button color="smoke" ion-button icon-only small>\n                    <ion-icon color="red" name="ios-settings"></ion-icon>\n                  </button>\n                  <button ion-button icon-only clear (click)="item.remove()">\n                    <ion-icon color="red" name="remove"></ion-icon>\n                  </button>\n                  <p>{{item.quantitiy}}</p>\n                  <button ion-button icon-only clear (click)="item.add()">\n                    <ion-icon color="red" name="add"></ion-icon>\n                  </button>\n                </ion-row>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n          <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </div>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let restaurant of restaurants">\n            <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n              <div>\n                <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n              </div>\n              <ion-card-content padding-horizontal>\n                <ion-card-title>\n                  {{restaurant.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{restaurant.location}}\n                </p>\n\n                <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n          <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n        </button>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n      <ion-card class="receipt menuItem">\n        <ion-card-header class="receipt-header" text-center>\n          ملخص الطلب من {{msg.restaurant.name}}\n        </ion-card-header>\n        <ion-card-content>\n          <ion-list>\n            <span *ngFor="let item of msg.restaurant.menu">\n              <ion-item *ngIf="item.quantitiy > 0">\n                <ion-avatar item-start>\n                  <img src="{{item.image}}">\n                </ion-avatar>\n                <ion-row justify-content-between>\n                  <h2>{{item.name}}</h2>\n                  <h2 class="red">x {{item.quantitiy}}</h2>\n                </ion-row>\n                <p>\n                  {{item.price}} ريال\n                </p>\n              </ion-item>\n            </span>\n            <ion-item item-end>\n              <h3>الاجمالي</h3>\n              <h3 class="red">{{msg.restaurant.total}} ريال</h3>\n            </ion-item>\n          </ion-list>\n        </ion-card-content>\n      </ion-card>\n      <div class="bottom-btns">\n        <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n        <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n      </div>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n      <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n    </div>\n  </div>\n  <suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n      <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n      <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let item of msg.restaurant.menu">\n            <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n              <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n              </div>\n              <ion-card-content>\n                <ion-card-title>\n                  {{item.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{item.price}} ريال\n                </p>\n                <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                  <button color="smoke" ion-button icon-only small>\n                    <ion-icon color="red" name="ios-settings"></ion-icon>\n                  </button>\n                  <button ion-button icon-only clear (click)="item.remove()">\n                    <ion-icon color="red" name="remove"></ion-icon>\n                  </button>\n                  <p>{{item.quantitiy}}</p>\n                  <button ion-button icon-only clear (click)="item.add()">\n                    <ion-icon color="red" name="add"></ion-icon>\n                  </button>\n                </ion-row>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n          <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </div>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let restaurant of restaurants">\n            <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n              <div>\n                <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n              </div>\n              <ion-card-content padding-horizontal>\n                <ion-card-title>\n                  {{restaurant.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{restaurant.location}}\n                </p>\n\n                <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n          <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n        </button>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n      <ion-card class="receipt menuItem">\n        <ion-card-header class="receipt-header" text-center>\n          ملخص الطلب من {{msg.restaurant.name}}\n        </ion-card-header>\n        <ion-card-content>\n          <ion-list>\n            <span *ngFor="let item of msg.restaurant.menu">\n              <ion-item *ngIf="item.quantitiy > 0">\n                <ion-avatar item-start>\n                  <img src="{{item.image}}">\n                </ion-avatar>\n                <ion-row justify-content-between>\n                  <h2>{{item.name}}</h2>\n                  <h2 class="red">x {{item.quantitiy}}</h2>\n                </ion-row>\n                <p>\n                  {{item.price}} ريال\n                </p>\n              </ion-item>\n            </span>\n            <ion-item item-end>\n              <h3>الاجمالي</h3>\n              <h3 class="red">{{msg.restaurant.total}} ريال</h3>\n            </ion-item>\n          </ion-list>\n        </ion-card-content>\n      </ion-card>\n      <div class="bottom-btns">\n        <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n        <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n      </div>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n      <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n    </div>\n  </div>\n  <suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
             animations: [
                 Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_23" /* trigger */])('fadeInOut', [
                     Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_21" /* style */])({ opacity: '0' })),
@@ -455,10 +485,10 @@ var ChatPage = /** @class */ (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _d || Object])
     ], ChatPage);
     return ChatPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=chat.js.map
@@ -473,9 +503,10 @@ var ChatPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(281);
 
 var Restaurant = /** @class */ (function () {
-    function Restaurant(name, location, logo) {
+    function Restaurant(name, type, location, logo) {
         this.total = 0;
         this.name = name;
+        this.type = type;
         this.menu = new Array();
         if (logo != null)
             this.logoImage = logo;

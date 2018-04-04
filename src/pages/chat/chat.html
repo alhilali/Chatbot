@@ -29,8 +29,7 @@
         <ion-row wrap style="text-align: -webkit-center;">
           <ion-col *ngFor="let item of msg.restaurant.menu">
             <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>
-              <div class="image-placeholder">
-                <img class="restaurants-menu-logo" [@fadeInOut] src="{{item.image}}" />
+              <div class="image-placeholder" [ngStyle]="{ 'background-image': 'url('+item.image+')'}">
               </div>
               <ion-card-content>
                 <ion-card-title>

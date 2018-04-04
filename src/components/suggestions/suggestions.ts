@@ -42,4 +42,8 @@ export class SuggestionsComponent {
     this.state = '*';
   }
 
+  showSuggestions() {
+    this.state = 'show';
+  }
+
 }

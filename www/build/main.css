@@ -33749,6 +33749,12 @@ page-chat .restaurantLogo {
   border-radius: 10px;
 }
 
+page-chat .image-placeholder {
+  height: 130px;
+  background-size: cover;
+  background-color: whitesmoke;
+}
+
 page-chat .bottom-btns {
   padding: 0px 9px;
 }
