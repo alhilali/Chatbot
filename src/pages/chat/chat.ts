@@ -1,3 +1,4 @@
+import { Context } from "./../../models/context";
 import { MenuItem } from "./../../models/menuItem";
 import { Restaurant } from "./../../models/restaurant";
 import { Message } from "./../../models/message";
@@ -29,8 +30,11 @@ export class ChatPage {
   @ViewChild('suggestions') suggestions: SuggestionsComponent;
   message: string = "";
   messages: Array<Message>;
+
   origRestaurants: Array<Restaurant>;
   restaurants: Array<Restaurant>;
+
+  context: Context;
   rest: Array<any> = [
     {
       'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
@@ -41,7 +45,7 @@ export class ChatPage {
       'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'
     },
     {
-      'name': 'برقر كنق', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+      'name': 'برقركنق', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
       'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'
     },
     {
@@ -79,6 +83,7 @@ export class ChatPage {
     this.messages = new Array<Message>();
     this.restaurants = new Array<Restaurant>();
     this.origRestaurants = new Array<Restaurant>();
+    this.context = new Context();
   }
 
   ionViewDidEnter() {
@@ -125,7 +130,7 @@ export class ChatPage {
       'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
   }
 
-  send(msg?: string) {
+  async send(msg?: string) {
     this.suggestions.hideSuggestions();
     let message = this.message;
     if (msg != null) message = msg;
@@ -135,14 +140,20 @@ export class ChatPage {
       this.content.scrollToBottom(200);
     });
 
-    this.conversationService.sendMessage(message).subscribe(
+    const contextPayload: Context = await this.context.getPayload();
+
+
+    this.conversationService.sendMessage(message, contextPayload).subscribe(
       data => {
         console.log(data);
         let restaurantIndex = data.entities.findIndex(k => k.entity == 'مطعم');
         let cuisineIndex = data.entities.findIndex(k => k.entity == 'كوزين');
+        let orderStatusIntent = data.intents.findIndex(k => k.intent == 'حالة_الطلب');
         let menuIntent = data.intents.findIndex(k => k.intent == 'منيو');
         let availRestaurantsIntent = data.intents.findIndex(k => k.intent == 'مطاعم_متوفره');
         let somethingElse = data.output.nodes_visited.findIndex(k => k == 'أي شيء آخر');
+        let name = data.context.name;
+        if (name) this.context.name = name;
 
 
         if (somethingElse >= 0) {
@@ -159,13 +170,16 @@ export class ChatPage {
           })
         } else if (cuisineIndex >= 0) {
           this.restaurants = this.origRestaurants.filter(res => res.type === data.entities[cuisineIndex].value)
-          console.log(this.restaurants);
 
           this.listAvailableRestaurants().then(_ => {
             this.updateConversation(data);
           })
         } else if (availRestaurantsIntent >= 0) {
           this.listAvailableRestaurants().then(_ => {
+            this.updateConversation(data);
+          })
+        } else if (orderStatusIntent >= 0 && data.context.order_status == 'true') {
+          this.showOrderStatus().then(_ => {
             this.updateConversation(data);
           })
         } else {
@@ -203,6 +217,14 @@ export class ChatPage {
     })
   }
 
+  private showOrderStatus(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let msg = new Message("", true, 'order_status');
+      this.messages.push(msg);
+      resolve(null)
+    })
+  }
+
   private updateConversationWithRestaurant(restaurant: Restaurant) {
     let msg = new Message("", true, 'menu');
     msg.setRestaurant(restaurant);
@@ -228,6 +250,7 @@ export class ChatPage {
   }
 
   private sendOrder(type: string, restaurant: Restaurant) {
+    this.context.order_stats = 'true';
     this.conversationService.sendMessage("ارسل").subscribe(
       data => {
         console.log(data);

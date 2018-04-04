@@ -28,8 +28,8 @@ export class ConversationServiceProvider {
     return options;
   }
 
-  sendMessage(message: string): Observable<any> {
-    let res = new ConversationDTO(message);
+  sendMessage(message: string, context?: any): Observable<any> {
+    let res = new ConversationDTO(message, context);
     return this.http.post(this.url, res.payload, this.getHeaders()).map(res => res.json());
   }
 
@@ -39,12 +39,13 @@ export class ConversationDTO {
   message: string;
   payload: any;
 
-  constructor(message: string) {
+  constructor(message: string, contextBody?: any) {
     this.message = message;
     const bodyObject = {
       input: {
         text: this.message,
-      }
+      },
+      context: contextBody
     };
     this.payload = JSON.stringify(bodyObject); // Stringify payload
   }

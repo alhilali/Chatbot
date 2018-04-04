@@ -16,12 +16,14 @@ var assistant = new watson.AssistantV1({
 app.post('/api/*', function (req, res) {
   var params = req.body;
   var input = params.input;
+  var context = params.context;
   assistant.message({
     workspace_id: '53e09771-b4bd-4076-99da-0518e2a242fd',
-    input: input
+    input: input,
+    context: context,
   }, function (err, response) {
     if (err) {
-      //console.log('error:', err);
+      console.log('error:', err);
     }
     else {
       //console.log(JSON.stringify(response, null, 2));

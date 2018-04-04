@@ -85,8 +85,8 @@ var ConversationServiceProvider = /** @class */ (function () {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         return options;
     };
-    ConversationServiceProvider.prototype.sendMessage = function (message) {
-        var res = new ConversationDTO(message);
+    ConversationServiceProvider.prototype.sendMessage = function (message, context) {
+        var res = new ConversationDTO(message, context);
         return this.http.post(this.url, res.payload, this.getHeaders()).map(function (res) { return res.json(); });
     };
     ConversationServiceProvider = __decorate([
@@ -97,12 +97,13 @@ var ConversationServiceProvider = /** @class */ (function () {
 }());
 
 var ConversationDTO = /** @class */ (function () {
-    function ConversationDTO(message) {
+    function ConversationDTO(message, contextBody) {
         this.message = message;
         var bodyObject = {
             input: {
                 text: this.message,
-            }
+            },
+            context: contextBody
         };
         this.payload = JSON.stringify(bodyObject); // Stringify payload
     }

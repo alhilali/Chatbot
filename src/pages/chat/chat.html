@@ -124,6 +124,9 @@
     <div class="fromThem nohover restaurant" *ngIf="msg.type === 'payment'">
       <payment (notify)='sendOrder($event, msg.restaurant)'></payment>
     </div>
+    <div class="fromThem nohover restaurant" *ngIf="msg.type === 'order_status'">
+      <order-status></order-status>
+    </div>
   </div>
   <suggestions #suggestions (notify)='pickSuggestion($event)'></suggestions>
 </ion-content>
