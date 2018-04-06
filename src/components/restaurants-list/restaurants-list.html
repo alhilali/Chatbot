@@ -1,0 +1,25 @@
+<!-- Generated template for the RestaurantsListComponent component -->
+<ion-grid>
+  <ion-row wrap style="text-align: -webkit-center;">
+    <ion-col *ngFor="let restaurant of restaurants">
+      <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>
+        <div>
+          <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
+        </div>
+        <ion-card-content padding-horizontal>
+          <ion-card-title>
+            {{restaurant.name}}
+          </ion-card-title>
+          <p class="price">
+            {{restaurant.location}}
+          </p>
+
+          <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <button ion-button clear block icon-only (click)="loadMoreRestuarants()">
+    <ion-icon color="red" name="ios-arrow-down"></ion-icon>
+  </button>
+</ion-grid>

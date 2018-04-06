@@ -33496,7 +33496,7 @@ payment .card-container input[type='text'] {
 
 suggestions .suggestions {
   position: absolute;
-  bottom: 0;
+  bottom: 55px;
   margin: auto;
   width: 100%;
   left: 0;
@@ -33754,7 +33754,7 @@ page-chat .bottom-bar {
 }
 
 page-chat .scroll-content {
-  margin-bottom: 55px !important;
+  margin-bottom: 80px !important;
 }
 
 page-chat .restaurant {
@@ -33832,4 +33832,13 @@ page-chat .red {
 
 page-chat .card-content {
   padding-top: 1px !important;
+}
+
+page-chat #map {
+  height: 200px;
+  overflow: hidden;
+}
+
+page-chat .card-header {
+  padding: 6px !important;
 }

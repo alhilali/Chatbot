@@ -6,10 +6,10 @@ webpackJsonp([0],{
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(284);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -45,6 +45,54 @@ var ChatPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Restaurant; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(282);
+
+var Restaurant = /** @class */ (function () {
+    function Restaurant(name, type, location, logo) {
+        this.total = 0;
+        this.name = name;
+        this.type = type;
+        this.menu = new Array();
+        if (logo != null)
+            this.logoImage = logo;
+        if (location != null)
+            this.location = location;
+    }
+    Restaurant.prototype.addMenuItem = function (name, price, image) {
+        var menuItem = new __WEBPACK_IMPORTED_MODULE_0__menuItem__["a" /* MenuItem */](name, price, image);
+        this.menu.push(menuItem);
+    };
+    Restaurant.prototype.addMenu = function (menu) {
+        var _this = this;
+        menu.forEach(function (item) {
+            _this.addMenuItem(item.name, item.price, item.image);
+        });
+    };
+    Restaurant.prototype.setTotal = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var total = 0;
+            _this.menu.forEach(function (item, index) {
+                total += item.price * item.quantitiy;
+                if (index == _this.menu.length - 1) {
+                    _this.total = total;
+                    resolve(_this.total);
+                }
+            });
+        });
+    };
+    return Restaurant;
+}());
+
+//# sourceMappingURL=restaurant.js.map
+
+/***/ }),
+
+/***/ 277:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SuggestionsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -67,7 +115,8 @@ var SuggestionsComponent = /** @class */ (function () {
     function SuggestionsComponent() {
         var _this = this;
         this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
-        this.suggestions = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من كنتاكي', 'ايش فيه مطاعم برقر كويسه؟', 'وش صار على الطلب؟', 'وريني آخر العروض'];
+        this.originalSuggestions = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من شاورمر', 'مشتهي برقر وش تنصح؟', 'وش صار على الطلب؟', 'وريني آخر العروض'];
+        this.suggestions = this.originalSuggestions;
         this.state = '*';
         console.log('Hello SuggestionsComponent Component');
         setTimeout(function () {
@@ -78,10 +127,15 @@ var SuggestionsComponent = /** @class */ (function () {
         this.state = '*';
         this.notify.emit(suggestion);
     };
+    SuggestionsComponent.prototype.displaySuggestion = function (suggestion) {
+        this.suggestions = [suggestion];
+        this.state = 'show';
+    };
     SuggestionsComponent.prototype.hideSuggestions = function () {
         this.state = '*';
     };
     SuggestionsComponent.prototype.showSuggestions = function () {
+        this.suggestions = this.originalSuggestions;
         this.state = 'show';
     };
     __decorate([
@@ -108,22 +162,26 @@ var SuggestionsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 277:
+/***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_payment__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_payment__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__ = __webpack_require__(283);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -136,15 +194,21 @@ var ComponentsModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */],
                 __WEBPACK_IMPORTED_MODULE_3__payment_payment__["a" /* PaymentComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */]],
+                __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__["a" /* MenuListComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__["a" /* RestaurantsListComponent */]],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */]),
                 __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__payment_payment__["a" /* PaymentComponent */]),
-                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */])
+                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */]),
+                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__["a" /* MenuListComponent */]),
+                __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__["a" /* RestaurantsListComponent */])
             ],
             exports: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */],
                 __WEBPACK_IMPORTED_MODULE_3__payment_payment__["a" /* PaymentComponent */],
-                __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */]]
+                __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__["a" /* MenuListComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__["a" /* RestaurantsListComponent */]]
         })
     ], ComponentsModule);
     return ComponentsModule;
@@ -154,7 +218,7 @@ var ComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 278:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -203,7 +267,7 @@ var PaymentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 279:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -243,18 +307,163 @@ var OrderStatusComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 280:
+/***/ 281:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_restaurant__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the MenuListComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var MenuListComponent = /** @class */ (function () {
+    function MenuListComponent() {
+    }
+    MenuListComponent.prototype.loadMoreItems = function (restaurant) {
+        restaurant.addMenuItem('وجبة دينر', 16, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/bites_Big_menu.jpg');
+        restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Input */])('restaurant'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */])
+    ], MenuListComponent.prototype, "restaurant", void 0);
+    MenuListComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'menu-list',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/menu-list/menu-list.html"*/'<img [@fadeInOut] class="restaurantLogo" src="{{restaurant.logoImage}}" />\n<h3 text-center no-margin>مطعم {{restaurant.name}}</h3>\n<ion-grid>\n  <ion-row wrap style="text-align: -webkit-center;">\n    <ion-col *ngFor="let item of restaurant.menu">\n      <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n        <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n        </div>\n        <ion-card-content>\n          <ion-card-title>\n            {{item.name}}\n          </ion-card-title>\n          <p class="price">\n            {{item.price}} ريال\n          </p>\n          <ion-row class="button-bar" wrap align-items-center justify-content-around>\n            <button color="smoke" ion-button icon-only small>\n              <ion-icon color="red" name="ios-settings"></ion-icon>\n            </button>\n            <button ion-button icon-only clear (click)="item.remove()">\n              <ion-icon color="red" name="remove"></ion-icon>\n            </button>\n            <p>{{item.quantitiy}}</p>\n            <button ion-button icon-only clear (click)="item.add()">\n              <ion-icon color="red" name="add"></ion-icon>\n            </button>\n          </ion-row>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n  </ion-row>\n  <div class="bottom-btns">\n    <button ion-button color="red" block (click)="order(restaurant)">اطلب</button>\n    <button ion-button clear block icon-only (click)="loadMoreItems(restaurant)">\n      <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n    </button>\n  </div>\n</ion-grid>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/menu-list/menu-list.html"*/,
+            animations: [
+                Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* trigger */])('fadeInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '0' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '1' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* animate */])('300ms ease-in'))
+                ])
+            ]
+        }),
+        __metadata("design:paramtypes", [])
+    ], MenuListComponent);
+    return MenuListComponent;
+}());
+
+//# sourceMappingURL=menu-list.js.map
+
+/***/ }),
+
+/***/ 282:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuItem; });
+var MenuItem = /** @class */ (function () {
+    function MenuItem(name, price, image) {
+        this.name = name;
+        this.price = price;
+        this.quantitiy = 0;
+        if (image != null)
+            this.image = image;
+    }
+    MenuItem.prototype.add = function () {
+        this.quantitiy++;
+    };
+    MenuItem.prototype.remove = function () {
+        if (this.quantitiy > 0)
+            this.quantitiy--;
+    };
+    return MenuItem;
+}());
+
+//# sourceMappingURL=menuItem.js.map
+
+/***/ }),
+
+/***/ 283:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantsListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_restaurant__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the RestaurantsListComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var RestaurantsListComponent = /** @class */ (function () {
+    function RestaurantsListComponent() {
+        console.log('Hello RestaurantsListComponent Component');
+    }
+    RestaurantsListComponent.prototype.generateMenue = function (restaurant) {
+        restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
+        restaurant.addMenuItem('وجبة مايتي زينجر', 20, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ39B3QamHch8oECAqWnQ2gx68UQfbX6kQmkOL-5C5YwkJ6vLtQ');
+        restaurant.addMenuItem('وجبة كريسبي ستريبس', 19, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/strips-menu-1.jpg');
+        restaurant.addMenuItem('وجبة مطافي', 18, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/longer-menu-1.jpg');
+        this.restaurants.push(restaurant);
+    };
+    RestaurantsListComponent.prototype.loadMoreRestuarants = function () {
+        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('برقر كنق', 'الملك عبدالعزيز - النفل', 'برقر', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'));
+        this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('البيك', 'الملك عبدالعزيز - النفل', 'بروستد', 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Input */])('restaurants'),
+        __metadata("design:type", Array)
+    ], RestaurantsListComponent.prototype, "restaurants", void 0);
+    RestaurantsListComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'restaurants-list',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/restaurants-list/restaurants-list.html"*/'<!-- Generated template for the RestaurantsListComponent component -->\n<ion-grid>\n  <ion-row wrap style="text-align: -webkit-center;">\n    <ion-col *ngFor="let restaurant of restaurants">\n      <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n        <div>\n          <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n        </div>\n        <ion-card-content padding-horizontal>\n          <ion-card-title>\n            {{restaurant.name}}\n          </ion-card-title>\n          <p class="price">\n            {{restaurant.location}}\n          </p>\n\n          <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n  </ion-row>\n  <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n    <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n  </button>\n</ion-grid>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/restaurants-list/restaurants-list.html"*/,
+            animations: [
+                Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* trigger */])('fadeInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '0' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '1' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* animate */])('300ms ease-in'))
+                ])
+            ]
+        }),
+        __metadata("design:paramtypes", [])
+    ], RestaurantsListComponent);
+    return RestaurantsListComponent;
+}());
+
+//# sourceMappingURL=restaurants-list.js.map
+
+/***/ }),
+
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_context__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_restaurant__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_message__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_context__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_restaurant__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_message__ = __webpack_require__(286);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__ = __webpack_require__(277);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -374,6 +583,67 @@ var ChatPage = /** @class */ (function () {
         });
         this.loadRestuarants();
     };
+    ChatPage.prototype.initMap = function () {
+        var posRiyadh = { lat: 24.713552, lng: 46.675296 };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, {
+            zoom: 6,
+            center: posRiyadh,
+            mapTypeId: 'roadmap',
+            streetViewControl: false,
+            fullscreenControl: false,
+            mapTypeControl: false
+        });
+        this.map.setCenter(posRiyadh);
+        this.getMyLocation();
+        var vis = this;
+        google.maps.event.addListener(this.map, "click", function (event) {
+            if (this.marker)
+                this.marker.setMap(null);
+            var infoWindow = new google.maps.InfoWindow({ map: vis.map });
+            this.marker = new google.maps.Marker({
+                position: event.latLng,
+                map: vis.map,
+                draggable: true,
+                title: "Drag me!"
+            });
+            vis.map.setCenter(event.latLng);
+            vis.map.setZoom(15);
+        });
+    };
+    ChatPage.prototype.getMyLocation = function () {
+        var _this = this;
+        var infoWindow = new google.maps.InfoWindow({ map: this.map });
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                console.log(pos);
+                // infoWindow.setPosition(pos);
+                // infoWindow.setContent('My location');
+                _this.marker = new google.maps.Marker({
+                    position: pos,
+                    map: _this.map
+                });
+                _this.map.setCenter(pos);
+                _this.map.setZoom(15);
+            }, function () {
+                _this.handleLocationError(true, infoWindow, _this.map.getCenter());
+            });
+        }
+        else {
+            // Browser doesn't support Geolocation
+            this.handleLocationError(false, infoWindow, this.map.getCenter());
+        }
+    };
+    ChatPage.prototype.handleLocationError = function (browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        console.log(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+    };
     ChatPage.prototype.loadRestuarants = function () {
         var _this = this;
         this.rest.forEach(function (res, index) {
@@ -392,6 +662,9 @@ var ChatPage = /** @class */ (function () {
         restaurant.addMenuItem('وجبة مطافي', 18, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/longer-menu-1.jpg');
         this.restaurants.push(restaurant);
     };
+    ChatPage.prototype.controlSuggestions = function () {
+        this.suggestions.state == '*' ? this.suggestions.showSuggestions() : this.suggestions.hideSuggestions();
+    };
     ChatPage.prototype.loadMoreItems = function (restaurant) {
         restaurant.addMenuItem('وجبة دينر', 16, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/bites_Big_menu.jpg');
         restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
@@ -407,10 +680,12 @@ var ChatPage = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.suggestions.hideSuggestions();
                         message = this.message;
                         if (msg != null)
                             message = msg;
+                        if (message == null || message.length == 0)
+                            return [2 /*return*/];
+                        this.suggestions.hideSuggestions();
                         this.messages.push(new __WEBPACK_IMPORTED_MODULE_2__models_message__["a" /* Message */](message, false));
                         setTimeout(function () {
                             _this.content.scrollToBottom(200);
@@ -423,6 +698,7 @@ var ChatPage = /** @class */ (function () {
                             var restaurantIndex = data.entities.findIndex(function (k) { return k.entity == 'مطعم'; });
                             var cuisineIndex = data.entities.findIndex(function (k) { return k.entity == 'كوزين'; });
                             var orderStatusIntent = data.intents.findIndex(function (k) { return k.intent == 'حالة_الطلب'; });
+                            var sentOrder = data.intents.findIndex(function (k) { return k.intent == 'جاهز'; });
                             var menuIntent = data.intents.findIndex(function (k) { return k.intent == 'منيو'; });
                             var availRestaurantsIntent = data.intents.findIndex(function (k) { return k.intent == 'مطاعم_متوفره'; });
                             var somethingElse = data.output.nodes_visited.findIndex(function (k) { return k == 'أي شيء آخر'; });
@@ -431,6 +707,7 @@ var ChatPage = /** @class */ (function () {
                                 _this.context.name = name;
                             if (somethingElse >= 0) {
                                 _this.updateConversation(data);
+                                _this.controlSuggestions();
                                 // setTimeout(() => {
                                 //   this.suggestions.showSuggestions();
                                 // }, 2000)
@@ -450,6 +727,7 @@ var ChatPage = /** @class */ (function () {
                                 });
                             }
                             else if (availRestaurantsIntent >= 0) {
+                                _this.restaurants = _this.origRestaurants;
                                 _this.listAvailableRestaurants().then(function (_) {
                                     _this.updateConversation(data);
                                 });
@@ -518,6 +796,9 @@ var ChatPage = /** @class */ (function () {
             if (res > 0) {
                 msg.setRestaurant(restaurant);
                 _this.messages.push(msg);
+                // setTimeout(_ => {
+                //   this.initMap();
+                // }, 800)
             }
             else {
                 _this.messages.push(new __WEBPACK_IMPORTED_MODULE_2__models_message__["a" /* Message */]("لو سمحت اضف اشياء الي السلة 👀", true));
@@ -533,6 +814,7 @@ var ChatPage = /** @class */ (function () {
         this.conversationService.sendMessage("ارسل").subscribe(function (data) {
             console.log(data);
             _this.updateConversation(data);
+            _this.suggestions.displaySuggestion('وش صار على الطلب؟');
         }, function (error) {
             console.log(error);
         });
@@ -586,9 +868,13 @@ var ChatPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_8" /* ViewChild */])('suggestions'),
         __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__["a" /* SuggestionsComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__["a" /* SuggestionsComponent */]) === "function" && _b || Object)
     ], ChatPage.prototype, "suggestions", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_core__["t" /* ElementRef */]) === "function" && _c || Object)
+    ], ChatPage.prototype, "mapElement", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="message" *ngFor="let msg of messages">\n    <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n      <p>{{msg.content}}</p>\n      <p class="date">{{msg.timestamp}}</p>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n      <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n      <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let item of msg.restaurant.menu">\n            <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n              <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n              </div>\n              <ion-card-content>\n                <ion-card-title>\n                  {{item.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{item.price}} ريال\n                </p>\n                <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                  <button color="smoke" ion-button icon-only small>\n                    <ion-icon color="red" name="ios-settings"></ion-icon>\n                  </button>\n                  <button ion-button icon-only clear (click)="item.remove()">\n                    <ion-icon color="red" name="remove"></ion-icon>\n                  </button>\n                  <p>{{item.quantitiy}}</p>\n                  <button ion-button icon-only clear (click)="item.add()">\n                    <ion-icon color="red" name="add"></ion-icon>\n                  </button>\n                </ion-row>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n          <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </div>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n      <ion-grid>\n        <ion-row wrap style="text-align: -webkit-center;">\n          <ion-col *ngFor="let restaurant of restaurants">\n            <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n              <div>\n                <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n              </div>\n              <ion-card-content padding-horizontal>\n                <ion-card-title>\n                  {{restaurant.name}}\n                </ion-card-title>\n                <p class="price">\n                  {{restaurant.location}}\n                </p>\n\n                <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n              </ion-card-content>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n        <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n          <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n        </button>\n      </ion-grid>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n      <ion-card class="receipt menuItem">\n        <ion-card-header class="receipt-header" text-center>\n          ملخص الطلب من {{msg.restaurant.name}}\n        </ion-card-header>\n        <ion-card-content>\n          <ion-list>\n            <span *ngFor="let item of msg.restaurant.menu">\n              <ion-item *ngIf="item.quantitiy > 0">\n                <ion-avatar item-start>\n                  <img src="{{item.image}}">\n                </ion-avatar>\n                <ion-row justify-content-between>\n                  <h2>{{item.name}}</h2>\n                  <h2 class="red">x {{item.quantitiy}}</h2>\n                </ion-row>\n                <p>\n                  {{item.price}} ريال\n                </p>\n              </ion-item>\n            </span>\n            <ion-item item-end>\n              <h3>الاجمالي</h3>\n              <h3 class="red">{{msg.restaurant.total}} ريال</h3>\n            </ion-item>\n          </ion-list>\n        </ion-card-content>\n      </ion-card>\n      <div class="bottom-btns">\n        <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n        <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n      </div>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n      <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n    </div>\n    <div class="fromThem nohover restaurant" *ngIf="msg.type === \'order_status\'">\n      <order-status></order-status>\n    </div>\n  </div>\n  <suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n</ion-content>\n\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-buttons end>\n      <button ion-button icon-only (click)="controlSuggestions()">\n        <ion-icon color="red" name="ios-information-circle-outline"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="chat">\n    <div class="message" *ngFor="let msg of messages">\n      <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n        <p>{{msg.content}}</p>\n        <p class="date">{{msg.timestamp}}</p>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n        <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n        <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let item of msg.restaurant.menu">\n              <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n                <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n                </div>\n                <ion-card-content>\n                  <ion-card-title>\n                    {{item.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{item.price}} ريال\n                  </p>\n                  <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                    <button color="smoke" ion-button icon-only small>\n                      <ion-icon color="red" name="ios-settings"></ion-icon>\n                    </button>\n                    <button ion-button icon-only clear (click)="item.remove()">\n                      <ion-icon color="red" name="remove"></ion-icon>\n                    </button>\n                    <p>{{item.quantitiy}}</p>\n                    <button ion-button icon-only clear (click)="item.add()">\n                      <ion-icon color="red" name="add"></ion-icon>\n                    </button>\n                  </ion-row>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n            <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n              <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n            </button>\n          </div>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let restaurant of restaurants">\n              <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n                <div>\n                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n                </div>\n                <ion-card-content padding-horizontal>\n                  <ion-card-title>\n                    {{restaurant.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{restaurant.location}}\n                  </p>\n\n                  <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n        <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            ملخص الطلب من {{msg.restaurant.name}}\n          </ion-card-header>\n          <ion-card-content>\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-start>\n                <h3 dir="rtl">الاجمالي</h3>\n                <h3 dir="rtl" class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card-content>\n\n        </ion-card>\n\n        <!-- <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            موقع التوصيل\n          </ion-card-header>\n          <ion-card-content>\n            <div #map id="map"></div>\n          </ion-card-content>\n\n        </ion-card> -->\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n          <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n        </div>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n        <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'order_status\'">\n        <order-status></order-status>\n      </div>\n    </div>\n  </div>\n</ion-content>\n<suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
             animations: [
                 Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_23" /* trigger */])('fadeInOut', [
                     Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_21" /* style */])({ opacity: '0' })),
@@ -597,17 +883,17 @@ var ChatPage = /** @class */ (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _e || Object])
     ], ChatPage);
     return ChatPage;
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=chat.js.map
 
 /***/ }),
 
-/***/ 281:
+/***/ 285:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -667,82 +953,7 @@ var Context = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 282:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Restaurant; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(283);
-
-var Restaurant = /** @class */ (function () {
-    function Restaurant(name, type, location, logo) {
-        this.total = 0;
-        this.name = name;
-        this.type = type;
-        this.menu = new Array();
-        if (logo != null)
-            this.logoImage = logo;
-        if (location != null)
-            this.location = location;
-    }
-    Restaurant.prototype.addMenuItem = function (name, price, image) {
-        var menuItem = new __WEBPACK_IMPORTED_MODULE_0__menuItem__["a" /* MenuItem */](name, price, image);
-        this.menu.push(menuItem);
-    };
-    Restaurant.prototype.addMenu = function (menu) {
-        var _this = this;
-        menu.forEach(function (item) {
-            _this.addMenuItem(item.name, item.price, item.image);
-        });
-    };
-    Restaurant.prototype.setTotal = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var total = 0;
-            _this.menu.forEach(function (item, index) {
-                total += item.price * item.quantitiy;
-                if (index == _this.menu.length - 1) {
-                    _this.total = total;
-                    resolve(_this.total);
-                }
-            });
-        });
-    };
-    return Restaurant;
-}());
-
-//# sourceMappingURL=restaurant.js.map
-
-/***/ }),
-
-/***/ 283:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuItem; });
-var MenuItem = /** @class */ (function () {
-    function MenuItem(name, price, image) {
-        this.name = name;
-        this.price = price;
-        this.quantitiy = 0;
-        if (image != null)
-            this.image = image;
-    }
-    MenuItem.prototype.add = function () {
-        this.quantitiy++;
-    };
-    MenuItem.prototype.remove = function () {
-        if (this.quantitiy > 0)
-            this.quantitiy--;
-    };
-    return MenuItem;
-}());
-
-//# sourceMappingURL=menuItem.js.map
-
-/***/ }),
-
-/***/ 284:
+/***/ 286:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

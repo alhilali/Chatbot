@@ -205,7 +205,7 @@ page-chat {
     height: 55px;
   }
   .scroll-content {
-    margin-bottom: 55px !important;
+    margin-bottom: 80px !important;
   }
   .restaurant {
     width: 100%;
@@ -268,5 +268,12 @@ page-chat {
   }
   .card-content {
     padding-top: 1px !important;
+  }
+  #map {
+    height: 200px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 6px !important;
   }
 }

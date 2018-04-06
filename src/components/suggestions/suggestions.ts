@@ -22,7 +22,8 @@ import {
 })
 export class SuggestionsComponent {
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-  suggestions: Array<string> = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من كنتاكي', 'ايش فيه مطاعم برقر كويسه؟', 'وش صار على الطلب؟', 'وريني آخر العروض'];
+  originalSuggestions = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من شاورمر', 'مشتهي برقر وش تنصح؟', 'وش صار على الطلب؟', 'وريني آخر العروض'];
+  suggestions: Array<string> = this.originalSuggestions;
   state: string = '*';
 
   constructor() {
@@ -38,11 +39,17 @@ export class SuggestionsComponent {
     this.notify.emit(suggestion);
   }
 
+  displaySuggestion(suggestion: string) {
+    this.suggestions = [suggestion]
+    this.state = 'show';
+  }
+
   hideSuggestions() {
     this.state = '*';
   }
 
   showSuggestions() {
+    this.suggestions = this.originalSuggestions;
     this.state = 'show';
   }
 

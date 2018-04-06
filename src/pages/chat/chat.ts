@@ -4,15 +4,15 @@ import { Restaurant } from "./../../models/restaurant";
 import { Message } from "./../../models/message";
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
 import { IonicPage, NavController, Content } from 'ionic-angular';
-import { Component, ViewChild, trigger, state, style, animate, transition } from '@angular/core';
+import { Component, ViewChild, ElementRef, trigger, state, style, animate, transition } from '@angular/core';
 import { SuggestionsComponent } from "../../components/suggestions/suggestions";
+declare const google;
 /**
  * Generated class for the ChatPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-chat',
@@ -28,12 +28,14 @@ import { SuggestionsComponent } from "../../components/suggestions/suggestions";
 export class ChatPage {
   @ViewChild(Content) content: Content;
   @ViewChild('suggestions') suggestions: SuggestionsComponent;
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
   message: string = "";
   messages: Array<Message>;
+  marker: any
 
   origRestaurants: Array<Restaurant>;
   restaurants: Array<Restaurant>;
-
   context: Context;
   rest: Array<any> = [
     {
@@ -99,6 +101,71 @@ export class ChatPage {
     this.loadRestuarants();
   }
 
+  initMap() {
+    let posRiyadh = { lat: 24.713552, lng: 46.675296 }
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 6,
+      center: posRiyadh,
+      mapTypeId: 'roadmap',
+      streetViewControl: false,
+      fullscreenControl: false,
+      mapTypeControl: false
+    });
+    this.map.setCenter(posRiyadh);
+    this.getMyLocation();
+    const vis = this
+    google.maps.event.addListener(this.map, "click", function (event) {
+      if (this.marker) this.marker.setMap(null);
+      let infoWindow = new google.maps.InfoWindow({ map: vis.map });
+      this.marker = new google.maps.Marker({
+        position: event.latLng,
+        map: vis.map,
+        draggable: true,
+        title: "Drag me!"
+      });
+      vis.map.setCenter(event.latLng);
+      vis.map.setZoom(15);
+    });
+  }
+
+  getMyLocation() {
+    let infoWindow = new google.maps.InfoWindow({ map: this.map });
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        console.log(pos);
+
+        // infoWindow.setPosition(pos);
+        // infoWindow.setContent('My location');
+
+
+        this.marker = new google.maps.Marker({
+          position: pos,
+          map: this.map
+        });
+        this.map.setCenter(pos);
+        this.map.setZoom(15);
+      }, () => {
+        this.handleLocationError(true, infoWindow, this.map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      this.handleLocationError(false, infoWindow, this.map.getCenter());
+    }
+  }
+
+
+  handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    console.log(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+  }
+
   loadRestuarants() {
     this.rest.forEach((res, index) => {
       let ress: Restaurant = res as Restaurant;
@@ -118,6 +185,10 @@ export class ChatPage {
     this.restaurants.push(restaurant);
   }
 
+  controlSuggestions() {
+    this.suggestions.state == '*' ? this.suggestions.showSuggestions() : this.suggestions.hideSuggestions();
+  }
+
   loadMoreItems(restaurant: Restaurant) {
     restaurant.addMenuItem('وجبة دينر', 16, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/bites_Big_menu.jpg');
     restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
@@ -131,9 +202,12 @@ export class ChatPage {
   }
 
   async send(msg?: string) {
-    this.suggestions.hideSuggestions();
     let message = this.message;
     if (msg != null) message = msg;
+    if (message == null || message.length == 0) return;
+
+
+    this.suggestions.hideSuggestions();
 
     this.messages.push(new Message(message, false));
     setTimeout(() => {
@@ -149,6 +223,7 @@ export class ChatPage {
         let restaurantIndex = data.entities.findIndex(k => k.entity == 'مطعم');
         let cuisineIndex = data.entities.findIndex(k => k.entity == 'كوزين');
         let orderStatusIntent = data.intents.findIndex(k => k.intent == 'حالة_الطلب');
+        let sentOrder = data.intents.findIndex(k => k.intent == 'جاهز');
         let menuIntent = data.intents.findIndex(k => k.intent == 'منيو');
         let availRestaurantsIntent = data.intents.findIndex(k => k.intent == 'مطاعم_متوفره');
         let somethingElse = data.output.nodes_visited.findIndex(k => k == 'أي شيء آخر');
@@ -158,6 +233,7 @@ export class ChatPage {
 
         if (somethingElse >= 0) {
           this.updateConversation(data);
+          this.controlSuggestions();
           // setTimeout(() => {
           //   this.suggestions.showSuggestions();
           // }, 2000)
@@ -175,6 +251,7 @@ export class ChatPage {
             this.updateConversation(data);
           })
         } else if (availRestaurantsIntent >= 0) {
+          this.restaurants = this.origRestaurants;
           this.listAvailableRestaurants().then(_ => {
             this.updateConversation(data);
           })
@@ -240,6 +317,9 @@ export class ChatPage {
       if (res > 0) {
         msg.setRestaurant(restaurant);
         this.messages.push(msg);
+        // setTimeout(_ => {
+        //   this.initMap();
+        // }, 800)
       } else {
         this.messages.push(new Message("لو سمحت اضف اشياء الي السلة 👀", true));
       }
@@ -255,6 +335,7 @@ export class ChatPage {
       data => {
         console.log(data);
         this.updateConversation(data);
+        this.suggestions.displaySuggestion('وش صار على الطلب؟')
       },
       error => {
         console.log(error);
