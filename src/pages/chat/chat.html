@@ -21,8 +21,8 @@
 </ion-header>
 
 
-<ion-content class="chat">
-  <div class="chat">
+<ion-content class="chat" padding-bottom padding-bottom>
+  <div class="chat-content">
     <div class="message" *ngFor="let msg of messages">
       <div *ngIf="msg.type === 'regular'" [attr.class]="msg.isWatson ? 'fromThem' : 'myMessage'">
         <p>{{msg.content}}</p>
@@ -52,7 +52,7 @@
                       <ion-icon color="red" name="remove"></ion-icon>
                     </button>
                     <p>{{item.quantitiy}}</p>
-                    <button ion-button icon-only clear (click)="item.add()">
+                    <button ion-button icon-only clear (click)="item.add(1)">
                       <ion-icon color="red" name="add"></ion-icon>
                     </button>
                   </ion-row>
@@ -151,9 +151,15 @@
 <ion-footer (touchstart)="footerTouchStart($event)">
   <ion-toolbar class="bottom-bar">
     <ion-buttons left>
-      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == ''">
-        <ion-icon name="send"></ion-icon>
-      </button>
+      <ion-row wrap>
+        <button ion-button icon-only clear color="red" (touchstart)="touchSendButton($event);" [disabled]="message == ''">
+          <ion-icon name="send"></ion-icon>
+        </button>
+        <button ion-button icon-only clear [ngStyle]="{'color': recording ? '#e30000' : '#f7c74d'}" (touchstart)="touchSpeakButton($event);">
+          <ion-icon name="ios-mic"></ion-icon>
+        </button>
+      </ion-row>
+
     </ion-buttons>
     <form>
       <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>

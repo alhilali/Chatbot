@@ -4,8 +4,10 @@ import { Restaurant } from "./../../models/restaurant";
 import { Message } from "./../../models/message";
 import { ConversationServiceProvider } from "./../../providers/conversation-service/conversation-service";
 import { IonicPage, NavController, Content } from 'ionic-angular';
-import { Component, ViewChild, ElementRef, trigger, state, style, animate, transition } from '@angular/core';
+import { Component, ViewChild, ElementRef, trigger, state, style, animate, transition, NgZone } from '@angular/core';
 import { SuggestionsComponent } from "../../components/suggestions/suggestions";
+import { SpeechRecognition, SpeechRecognitionListeningOptionsIOS } from '@ionic-native/speech-recognition';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 declare const google;
 /**
  * Generated class for the ChatPage page.
@@ -33,6 +35,8 @@ export class ChatPage {
   message: string = "";
   messages: Array<Message>;
   marker: any
+  recording = false
+  usingVoice = false
 
   origRestaurants: Array<Restaurant>;
   restaurants: Array<Restaurant>;
@@ -81,7 +85,10 @@ export class ChatPage {
   ]]
 
   constructor(public navCtrl: NavController,
-    private conversationService: ConversationServiceProvider) {
+    private conversationService: ConversationServiceProvider,
+    private speechRecognition: SpeechRecognition,
+    private ngZone: NgZone,
+    private tts: TextToSpeech) {
     this.messages = new Array<Message>();
     this.restaurants = new Array<Restaurant>();
     this.origRestaurants = new Array<Restaurant>();
@@ -225,10 +232,14 @@ export class ChatPage {
         let orderStatusIntent = data.intents.findIndex(k => k.intent == 'حالة_الطلب');
         let sentOrder = data.intents.findIndex(k => k.intent == 'جاهز');
         let menuIntent = data.intents.findIndex(k => k.intent == 'منيو');
+        let fullOrder = data.intents.findIndex(k => k.intent == 'طلب_كامل');
         let availRestaurantsIntent = data.intents.findIndex(k => k.intent == 'مطاعم_متوفره');
         let somethingElse = data.output.nodes_visited.findIndex(k => k == 'أي شيء آخر');
         let name = data.context.name;
         if (name) this.context.name = name;
+        if (this.usingVoice) {
+          this.speak(data.output.text[0])
+        }
 
 
         if (somethingElse >= 0) {
@@ -237,8 +248,27 @@ export class ChatPage {
           // setTimeout(() => {
           //   this.suggestions.showSuggestions();
           // }, 2000)
+        } else if (fullOrder >= 0) {
+          console.log("full order");
+
+          this.findRestaurant(data.entities[restaurantIndex].value).then((res: Restaurant) => {
+            if (res != null) {
+              this.conversationService.processFullOrder(data, res).then(data => {
+                console.log(data);
+
+                this.order(data)
+              }).catch(err => {
+                console.log(err);
+                this.updateConversation({ output: { text: ["للأسف الطلب هذا مو موجود عندنا لسى"] } });
+              })
+            } else {
+              this.updateConversation({ output: { text: ["للأسف المطعم مو موجود عندنا لسى"] } });
+            }
+          })
         } else if (restaurantIndex >= 0 && menuIntent >= 0) {
           this.findRestaurant(data.entities[restaurantIndex].value).then(res => {
+            if (res != null)
+              this.updateConversationWithRestaurant(res);
           }).then(_ => {
             this.updateConversation(data);
           }).catch(err => {
@@ -276,7 +306,7 @@ export class ChatPage {
       this.restaurants.forEach((res, index) => {
         if (res.name === name) {
           const restaurant: Restaurant = res;
-          this.updateConversationWithRestaurant(restaurant);
+          // this.updateConversationWithRestaurant(restaurant);
           resolve(res);
         }
         if (index == this.restaurants.length - 1) {
@@ -365,10 +395,20 @@ export class ChatPage {
     setTimeout(() => {
       this.content.scrollToBottom(100);
     });
+    setTimeout(() => {
+      if (this.usingVoice) this.listenForSpeach();
+    }, 3000);
   }
 
   private pickSuggestion(suggestion: string) {
     this.send(suggestion);
+    setTimeout(() => {
+      this.suggestions.hideSuggestions();
+    }, 400);
+    if (this.recording) {
+      this.speechRecognition.stopListening()
+      this.recording = false
+    }
   }
 
   footerTouchStart(event) {
@@ -384,6 +424,87 @@ export class ChatPage {
   touchSendButton(event: Event) {
     event.preventDefault();
     this.send();
+  }
+
+  async getPermission(): Promise<void> {
+    try {
+      const permission = await this.speechRecognition.requestPermission();
+      console.log(permission);
+      return permission;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async hasPermission(): Promise<boolean> {
+    try {
+      const permission = await this.speechRecognition.hasPermission();
+      console.log(permission);
+      return permission;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  listenForSpeach(): void {
+    let text = '';
+    this.usingVoice = true
+    let options: SpeechRecognitionListeningOptionsIOS = {
+      language: 'ar-SA',
+      showPartial: true
+    }
+    console.log("startedd listenling..");
+    this.recording = true
+
+    this.speechRecognition.startListening(options)
+      .subscribe((matches: Array<string>) => {
+        this.ngZone.run(() => {
+          text = matches[0];
+          console.log(text);
+          // this.message = matches[0];
+          this.suggestions.displaySuggestion(text);
+        });
+      },
+        (onerror) => {
+          this.speechRecognition.stopListening()
+          this.recording = false
+          console.log('error:', onerror)
+        }, () => {
+          this.speechRecognition.stopListening()
+          this.recording = false
+        }
+      )
+    setTimeout(() => {
+      if (text.length > 0) {
+        this.pickSuggestion(text)
+      }
+    }, 5000);
+  }
+
+  async touchSpeakButton(event: Event) {
+    if (this.recording) {
+      this.speechRecognition.stopListening()
+      this.recording = false
+      this.usingVoice = false
+    } else {
+      const permission = await this.hasPermission();
+      console.log(permission);
+      if (permission) {
+        this.listenForSpeach();
+      } else {
+        this.getPermission();
+      }
+    }
+  }
+
+  speak(text: string) {
+    this.tts.speak({
+      text: text,
+      locale: 'ar-SA',
+      rate: 1.65
+    })
+      .then(() => console.log('Success'))
+      .catch((reason: any) => console.log(reason));
   }
 
 }

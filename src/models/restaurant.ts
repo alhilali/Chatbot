@@ -27,6 +27,27 @@ export class Restaurant {
     })
   }
 
+  findOrder(item: string, item2: string): Promise<[number, boolean]> {
+    return new Promise<[number, boolean]>((resolve, reject) => {
+      let text = item + " " + item2;
+      console.log(text);
+
+      let twoWordIndex = this.menu.findIndex(k => k.name.indexOf(text) >= 0)
+      console.log(twoWordIndex);
+
+      if (twoWordIndex >= 0)
+        resolve([twoWordIndex, true]);
+      else
+        resolve([this.menu.findIndex(k => k.name.indexOf(item) >= 0), false]);
+    })
+  }
+
+  resetMenu() {
+    this.menu.forEach(item => {
+      item.quantitiy = 0;
+    })
+  }
+
 
   setTotal(): Promise<number> {
     return new Promise<number>((resolve, reject) => {

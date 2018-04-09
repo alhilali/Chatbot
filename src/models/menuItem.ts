@@ -11,8 +11,12 @@ export class MenuItem {
     if (image != null) this.image = image;
   }
 
-  add() {
-    this.quantitiy++;
+  add(num: number) {
+    this.quantitiy += num;
+  }
+
+  set(num: number) {
+    this.quantitiy = num;
   }
 
   remove() {

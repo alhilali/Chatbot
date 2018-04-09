@@ -1,15 +1,15 @@
 webpackJsonp([0],{
 
-/***/ 275:
+/***/ 416:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(419);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(425);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,12 +41,12 @@ var ChatPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 276:
+/***/ 417:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Restaurant; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(423);
 
 var Restaurant = /** @class */ (function () {
     function Restaurant(name, type, location, logo) {
@@ -69,6 +69,24 @@ var Restaurant = /** @class */ (function () {
             _this.addMenuItem(item.name, item.price, item.image);
         });
     };
+    Restaurant.prototype.findOrder = function (item, item2) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var text = item + " " + item2;
+            console.log(text);
+            var twoWordIndex = _this.menu.findIndex(function (k) { return k.name.indexOf(text) >= 0; });
+            console.log(twoWordIndex);
+            if (twoWordIndex >= 0)
+                resolve([twoWordIndex, true]);
+            else
+                resolve([_this.menu.findIndex(function (k) { return k.name.indexOf(item) >= 0; }), false]);
+        });
+    };
+    Restaurant.prototype.resetMenu = function () {
+        this.menu.forEach(function (item) {
+            item.quantitiy = 0;
+        });
+    };
     Restaurant.prototype.setTotal = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -89,7 +107,7 @@ var Restaurant = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 277:
+/***/ 418:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -162,18 +180,18 @@ var SuggestionsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 278:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_payment__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_payment__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__ = __webpack_require__(424);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -218,7 +236,7 @@ var ComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 279:
+/***/ 420:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -267,7 +285,7 @@ var PaymentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 280:
+/***/ 421:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -307,12 +325,12 @@ var OrderStatusComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 281:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuListComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_restaurant__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_restaurant__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -362,7 +380,7 @@ var MenuListComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 282:
+/***/ 423:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -375,8 +393,11 @@ var MenuItem = /** @class */ (function () {
         if (image != null)
             this.image = image;
     }
-    MenuItem.prototype.add = function () {
-        this.quantitiy++;
+    MenuItem.prototype.add = function (num) {
+        this.quantitiy += num;
+    };
+    MenuItem.prototype.set = function (num) {
+        this.quantitiy = num;
     };
     MenuItem.prototype.remove = function () {
         if (this.quantitiy > 0)
@@ -389,12 +410,12 @@ var MenuItem = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 283:
+/***/ 424:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantsListComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_restaurant__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_restaurant__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -452,18 +473,20 @@ var RestaurantsListComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 284:
+/***/ 425:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_context__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_restaurant__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_message__ = __webpack_require__(286);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_context__ = __webpack_require__(426);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_restaurant__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_message__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__ = __webpack_require__(249);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -515,6 +538,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
+
 /**
  * Generated class for the ChatPage page.
  *
@@ -522,10 +547,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  * Ionic pages and navigation.
  */
 var ChatPage = /** @class */ (function () {
-    function ChatPage(navCtrl, conversationService) {
+    function ChatPage(navCtrl, conversationService, speechRecognition, ngZone, tts) {
         this.navCtrl = navCtrl;
         this.conversationService = conversationService;
+        this.speechRecognition = speechRecognition;
+        this.ngZone = ngZone;
+        this.tts = tts;
         this.message = "";
+        this.recording = false;
+        this.usingVoice = false;
         this.rest = [
             {
                 'name': 'كنتاكي', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
@@ -700,11 +730,15 @@ var ChatPage = /** @class */ (function () {
                             var orderStatusIntent = data.intents.findIndex(function (k) { return k.intent == 'حالة_الطلب'; });
                             var sentOrder = data.intents.findIndex(function (k) { return k.intent == 'جاهز'; });
                             var menuIntent = data.intents.findIndex(function (k) { return k.intent == 'منيو'; });
+                            var fullOrder = data.intents.findIndex(function (k) { return k.intent == 'طلب_كامل'; });
                             var availRestaurantsIntent = data.intents.findIndex(function (k) { return k.intent == 'مطاعم_متوفره'; });
                             var somethingElse = data.output.nodes_visited.findIndex(function (k) { return k == 'أي شيء آخر'; });
                             var name = data.context.name;
                             if (name)
                                 _this.context.name = name;
+                            if (_this.usingVoice) {
+                                _this.speak(data.output.text[0]);
+                            }
                             if (somethingElse >= 0) {
                                 _this.updateConversation(data);
                                 _this.controlSuggestions();
@@ -712,8 +746,27 @@ var ChatPage = /** @class */ (function () {
                                 //   this.suggestions.showSuggestions();
                                 // }, 2000)
                             }
+                            else if (fullOrder >= 0) {
+                                console.log("full order");
+                                _this.findRestaurant(data.entities[restaurantIndex].value).then(function (res) {
+                                    if (res != null) {
+                                        _this.conversationService.processFullOrder(data, res).then(function (data) {
+                                            console.log(data);
+                                            _this.order(data);
+                                        }).catch(function (err) {
+                                            console.log(err);
+                                            _this.updateConversation({ output: { text: ["للأسف الطلب هذا مو موجود عندنا لسى"] } });
+                                        });
+                                    }
+                                    else {
+                                        _this.updateConversation({ output: { text: ["للأسف المطعم مو موجود عندنا لسى"] } });
+                                    }
+                                });
+                            }
                             else if (restaurantIndex >= 0 && menuIntent >= 0) {
                                 _this.findRestaurant(data.entities[restaurantIndex].value).then(function (res) {
+                                    if (res != null)
+                                        _this.updateConversationWithRestaurant(res);
                                 }).then(function (_) {
                                     _this.updateConversation(data);
                                 }).catch(function (err) {
@@ -755,7 +808,7 @@ var ChatPage = /** @class */ (function () {
             _this.restaurants.forEach(function (res, index) {
                 if (res.name === name) {
                     var restaurant = res;
-                    _this.updateConversationWithRestaurant(restaurant);
+                    // this.updateConversationWithRestaurant(restaurant);
                     resolve(res);
                 }
                 if (index == _this.restaurants.length - 1) {
@@ -841,9 +894,21 @@ var ChatPage = /** @class */ (function () {
         setTimeout(function () {
             _this.content.scrollToBottom(100);
         });
+        setTimeout(function () {
+            if (_this.usingVoice)
+                _this.listenForSpeach();
+        }, 3000);
     };
     ChatPage.prototype.pickSuggestion = function (suggestion) {
+        var _this = this;
         this.send(suggestion);
+        setTimeout(function () {
+            _this.suggestions.hideSuggestions();
+        }, 400);
+        if (this.recording) {
+            this.speechRecognition.stopListening();
+            this.recording = false;
+        }
     };
     ChatPage.prototype.footerTouchStart = function (event) {
         var _this = this;
@@ -860,6 +925,116 @@ var ChatPage = /** @class */ (function () {
         event.preventDefault();
         this.send();
     };
+    ChatPage.prototype.getPermission = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var permission, e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.speechRecognition.requestPermission()];
+                    case 1:
+                        permission = _a.sent();
+                        console.log(permission);
+                        return [2 /*return*/, permission];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.error(e_1);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ChatPage.prototype.hasPermission = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var permission, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.speechRecognition.hasPermission()];
+                    case 1:
+                        permission = _a.sent();
+                        console.log(permission);
+                        return [2 /*return*/, permission];
+                    case 2:
+                        e_2 = _a.sent();
+                        console.error(e_2);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ChatPage.prototype.listenForSpeach = function () {
+        var _this = this;
+        var text = '';
+        this.usingVoice = true;
+        var options = {
+            language: 'ar-SA',
+            showPartial: true
+        };
+        console.log("startedd listenling..");
+        this.recording = true;
+        this.speechRecognition.startListening(options)
+            .subscribe(function (matches) {
+            _this.ngZone.run(function () {
+                text = matches[0];
+                console.log(text);
+                // this.message = matches[0];
+                _this.suggestions.displaySuggestion(text);
+            });
+        }, function (onerror) {
+            _this.speechRecognition.stopListening();
+            _this.recording = false;
+            console.log('error:', onerror);
+        }, function () {
+            _this.speechRecognition.stopListening();
+            _this.recording = false;
+        });
+        setTimeout(function () {
+            if (text.length > 0) {
+                _this.pickSuggestion(text);
+            }
+        }, 5000);
+    };
+    ChatPage.prototype.touchSpeakButton = function (event) {
+        return __awaiter(this, void 0, void 0, function () {
+            var permission;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.recording) return [3 /*break*/, 1];
+                        this.speechRecognition.stopListening();
+                        this.recording = false;
+                        this.usingVoice = false;
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.hasPermission()];
+                    case 2:
+                        permission = _a.sent();
+                        console.log(permission);
+                        if (permission) {
+                            this.listenForSpeach();
+                        }
+                        else {
+                            this.getPermission();
+                        }
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ChatPage.prototype.speak = function (text) {
+        this.tts.speak({
+            text: text,
+            locale: 'ar-SA',
+            rate: 1.65
+        })
+            .then(function () { return console.log('Success'); })
+            .catch(function (reason) { return console.log(reason); });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */]),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */]) === "function" && _a || Object)
@@ -874,7 +1049,7 @@ var ChatPage = /** @class */ (function () {
     ], ChatPage.prototype, "mapElement", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-buttons end>\n      <button ion-button icon-only (click)="controlSuggestions()">\n        <ion-icon color="red" name="ios-information-circle-outline"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat">\n  <div class="chat">\n    <div class="message" *ngFor="let msg of messages">\n      <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n        <p>{{msg.content}}</p>\n        <p class="date">{{msg.timestamp}}</p>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n        <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n        <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let item of msg.restaurant.menu">\n              <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n                <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n                </div>\n                <ion-card-content>\n                  <ion-card-title>\n                    {{item.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{item.price}} ريال\n                  </p>\n                  <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                    <button color="smoke" ion-button icon-only small>\n                      <ion-icon color="red" name="ios-settings"></ion-icon>\n                    </button>\n                    <button ion-button icon-only clear (click)="item.remove()">\n                      <ion-icon color="red" name="remove"></ion-icon>\n                    </button>\n                    <p>{{item.quantitiy}}</p>\n                    <button ion-button icon-only clear (click)="item.add()">\n                      <ion-icon color="red" name="add"></ion-icon>\n                    </button>\n                  </ion-row>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n            <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n              <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n            </button>\n          </div>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let restaurant of restaurants">\n              <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n                <div>\n                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n                </div>\n                <ion-card-content padding-horizontal>\n                  <ion-card-title>\n                    {{restaurant.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{restaurant.location}}\n                  </p>\n\n                  <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n        <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            ملخص الطلب من {{msg.restaurant.name}}\n          </ion-card-header>\n          <ion-card-content>\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-start>\n                <h3 dir="rtl">الاجمالي</h3>\n                <h3 dir="rtl" class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card-content>\n\n        </ion-card>\n\n        <!-- <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            موقع التوصيل\n          </ion-card-header>\n          <ion-card-content>\n            <div #map id="map"></div>\n          </ion-card-content>\n\n        </ion-card> -->\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n          <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n        </div>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n        <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'order_status\'">\n        <order-status></order-status>\n      </div>\n    </div>\n  </div>\n</ion-content>\n<suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <button ion-button color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-buttons end>\n      <button ion-button icon-only (click)="controlSuggestions()">\n        <ion-icon color="red" name="ios-information-circle-outline"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat" padding-bottom padding-bottom>\n  <div class="chat-content">\n    <div class="message" *ngFor="let msg of messages">\n      <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n        <p>{{msg.content}}</p>\n        <p class="date">{{msg.timestamp}}</p>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n        <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n        <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let item of msg.restaurant.menu">\n              <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n                <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n                </div>\n                <ion-card-content>\n                  <ion-card-title>\n                    {{item.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{item.price}} ريال\n                  </p>\n                  <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                    <button color="smoke" ion-button icon-only small>\n                      <ion-icon color="red" name="ios-settings"></ion-icon>\n                    </button>\n                    <button ion-button icon-only clear (click)="item.remove()">\n                      <ion-icon color="red" name="remove"></ion-icon>\n                    </button>\n                    <p>{{item.quantitiy}}</p>\n                    <button ion-button icon-only clear (click)="item.add(1)">\n                      <ion-icon color="red" name="add"></ion-icon>\n                    </button>\n                  </ion-row>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n            <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n              <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n            </button>\n          </div>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let restaurant of restaurants">\n              <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n                <div>\n                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n                </div>\n                <ion-card-content padding-horizontal>\n                  <ion-card-title>\n                    {{restaurant.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{restaurant.location}}\n                  </p>\n\n                  <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n        <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            ملخص الطلب من {{msg.restaurant.name}}\n          </ion-card-header>\n          <ion-card-content>\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-start>\n                <h3 dir="rtl">الاجمالي</h3>\n                <h3 dir="rtl" class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card-content>\n\n        </ion-card>\n\n        <!-- <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            موقع التوصيل\n          </ion-card-header>\n          <ion-card-content>\n            <div #map id="map"></div>\n          </ion-card-content>\n\n        </ion-card> -->\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n          <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n        </div>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n        <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'order_status\'">\n        <order-status></order-status>\n      </div>\n    </div>\n  </div>\n</ion-content>\n<suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <ion-row wrap>\n        <button ion-button icon-only clear color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n          <ion-icon name="send"></ion-icon>\n        </button>\n        <button ion-button icon-only clear [ngStyle]="{\'color\': recording ? \'#e30000\' : \'#f7c74d\'}" (touchstart)="touchSpeakButton($event);">\n          <ion-icon name="ios-mic"></ion-icon>\n        </button>\n      </ion-row>\n\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
             animations: [
                 Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_23" /* trigger */])('fadeInOut', [
                     Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_21" /* style */])({ opacity: '0' })),
@@ -883,17 +1058,17 @@ var ChatPage = /** @class */ (function () {
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__["a" /* SpeechRecognition */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__["a" /* SpeechRecognition */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["M" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_core__["M" /* NgZone */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__["a" /* TextToSpeech */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__["a" /* TextToSpeech */]) === "function" && _h || Object])
     ], ChatPage);
     return ChatPage;
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=chat.js.map
 
 /***/ }),
 
-/***/ 285:
+/***/ 426:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -953,7 +1128,7 @@ var Context = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 286:
+/***/ 427:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

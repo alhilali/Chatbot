@@ -31,3 +31,15 @@
 .receipt-header {
   border-bottom: 1px solid #efefef;
 }
+
+ion-app>[padding-bottom-XL] {
+  padding-bottom: 80px;
+}
+
+ion-app>[padding-bottom] .scroll-content {
+  padding-bottom: 80px;
+}
+
+ion-app.ios [padding-bottom] .scroll-content {
+  padding-bottom: 30px;
+}

@@ -204,8 +204,16 @@ page-chat {
     padding-top: 10px;
     height: 55px;
   }
+  .chat-content {
+    margin-bottom: 80px;
+  }
   .scroll-content {
-    margin-bottom: 80px !important;
+    margin-bottom: 80px;
+    margin-bottom: calc(env(safe-area-inset-bottom) + 80px);
+    margin-bottom: calc(constant(safe-area-inset-bottom) + 80px);
+  }
+  ion-app.ios [padding-bottom] .scroll-content {
+    padding-bottom: 30px;
   }
   .restaurant {
     width: 100%;

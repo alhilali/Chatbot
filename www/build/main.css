@@ -33373,6 +33373,18 @@ ion-navbar.toolbar {
   border-bottom: 1px solid #efefef;
 }
 
+ion-app > [padding-bottom-XL] {
+  padding-bottom: 80px;
+}
+
+ion-app > [padding-bottom] .scroll-content {
+  padding-bottom: 80px;
+}
+
+ion-app.ios [padding-bottom] .scroll-content {
+  padding-bottom: 30px;
+}
+
 order-status .tracking-progress-bar {
   margin: 10px 0;
   text-align: -webkit-center;
@@ -33496,8 +33508,10 @@ payment .card-container input[type='text'] {
 
 suggestions .suggestions {
   position: absolute;
-  bottom: 55px;
-  margin: auto;
+  bottom: 0;
+  margin-bottom: 55px;
+  margin-bottom: calc(env(safe-area-inset-bottom) + 53px);
+  margin-bottom: calc(constant(safe-area-inset-bottom) + 53px);
   width: 100%;
   left: 0;
   right: 0;
@@ -33753,8 +33767,18 @@ page-chat .bottom-bar {
   height: 55px;
 }
 
+page-chat .chat-content {
+  margin-bottom: 80px;
+}
+
 page-chat .scroll-content {
-  margin-bottom: 80px !important;
+  margin-bottom: 80px;
+  margin-bottom: calc(env(safe-area-inset-bottom) + 80px);
+  margin-bottom: calc(constant(safe-area-inset-bottom) + 80px);
+}
+
+page-chat ion-app.ios [padding-bottom] .scroll-content {
+  padding-bottom: 30px;
 }
 
 page-chat .restaurant {
