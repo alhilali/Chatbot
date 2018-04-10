@@ -34,14 +34,14 @@
         <ion-grid>
           <ion-row wrap style="text-align: -webkit-center;">
             <ion-col *ngFor="let item of msg.restaurant.menu">
-              <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>
+              <ion-card [@fadeInOut] class="fancy-card sm-card" no-margin>
                 <div class="image-placeholder" [ngStyle]="{ 'background-image': 'url('+item.image+')'}">
                 </div>
                 <ion-card-content>
                   <ion-card-title>
                     {{item.name}}
                   </ion-card-title>
-                  <p class="price">
+                  <p class="price" dir="rtl">
                     {{item.price}} ريال
                   </p>
                   <ion-row class="button-bar" wrap align-items-center justify-content-around>
@@ -70,24 +70,41 @@
       </div>
       <div class="fromThem nohover restaurant" *ngIf="msg.type === 'restaurants-list'">
         <ion-grid>
-          <ion-row wrap style="text-align: -webkit-center;">
-            <ion-col *ngFor="let restaurant of restaurants">
-              <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>
-                <div>
-                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
-                </div>
-                <ion-card-content padding-horizontal>
-                  <ion-card-title>
-                    {{restaurant.name}}
-                  </ion-card-title>
-                  <p class="price">
-                    {{restaurant.location}}
-                  </p>
+          <ion-row wrap *ngFor="let restaurant of restaurants">
+            <!-- <ion-col *ngFor="let restaurant of restaurants"> -->
 
-                  <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
+            <ion-card [@fadeInOut] class="fancy-card restaurants-list" no-margin>
+              <ion-item>
+                <ion-avatar item-start>
+                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />
+                </ion-avatar>
+                <h2> {{restaurant.name}}</h2>
+                <p>{{restaurant.location}}</p>
+              </ion-item>
+              <div>
+              </div>
+              <ion-row>
+                <ion-col>
+                  <button ion-button clear small>
+                    <rating [(ngModel)]="restaurant.rate" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+                      nullable="true">
+                    </rating>
+                  </button>
+                </ion-col>
+                <ion-col center text-center>
+                  <button ion-button clear small color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>
+                </ion-col>
+                <ion-col center text-center>
+                  <p>توصيل</p>
+                  <!-- <br> -->
+                  <p>
+                    ٣٠ دقيقة
+                  </p>
+                </ion-col>
+              </ion-row>
+              <hr>
+            </ion-card>
+            <!-- </ion-col> -->
           </ion-row>
           <button ion-button clear block icon-only (click)="loadMoreRestuarants()">
             <ion-icon color="red" name="ios-arrow-down"></ion-icon>
@@ -95,7 +112,7 @@
         </ion-grid>
       </div>
       <div class="fromThem nohover restaurant" *ngIf="msg.type === 'receipt'">
-        <ion-card class="receipt menuItem">
+        <ion-card class="receipt fancy-card">
           <ion-card-header class="receipt-header" text-center>
             ملخص الطلب من {{msg.restaurant.name}}
           </ion-card-header>
@@ -124,7 +141,7 @@
 
         </ion-card>
 
-        <!-- <ion-card class="receipt menuItem">
+        <!-- <ion-card class="receipt fancy-card">
           <ion-card-header class="receipt-header" text-center>
             موقع التوصيل
           </ion-card-header>

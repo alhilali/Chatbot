@@ -226,25 +226,24 @@ page-chat {
   .smallCard {
     height: 170px;
   }
-  .menuItem ion-card-title {
-    font-weight: 400;
-    font-size: 1.5rem;
-    text-align: center;
-    padding-bottom: 0px;
+  .restaurants-list {
+    width: 100%;
     direction: rtl;
+    border-radius: 8px;
+    border-bottom: solid 3px #d3d0d0;
+    margin-bottom: -14px;
+    height: 140px;
   }
-  .menuItem ion-card-content {
-    padding: 0px;
-  }
-  .menuItem .price {
-    text-align: center;
+  .restaurants-list *>p {
     font-size: 1.1rem;
     direction: rtl;
   }
-  .menuItem .restaurants-list-logo {
-    width: 80px !important;
-    height: 80px !important;
-    margin: auto;
+  .item ion-avatar[item-start] {
+    margin: 8px 9px 8px 0;
+  }
+  .fancy-card .restaurants-list-logo {
+    width: 45px !important;
+    height: 45px !important;
     border-radius: 10px;
   }
   .restaurantLogo {
@@ -283,5 +282,19 @@ page-chat {
   }
   .card-header {
     padding: 6px !important;
+  }
+  ul {
+    padding: 0px;
+    &.rating li {
+      padding: 5px 0px !important;
+      background: none;
+      color: #ffb400;
+      ion-icon {
+        font-size: 15px;
+      }
+    }
+  }
+  .item-ios.item-block .item-inner {
+    padding-right: 0px;
   }
 }

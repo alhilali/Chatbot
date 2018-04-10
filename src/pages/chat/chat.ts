@@ -47,16 +47,20 @@ export class ChatPage {
       'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'
     },
     {
-      'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'type': 'شاورما',
+      'name': 'شاورمر', 'location': 'ابو بكر - الربيع', 'type': 'شاورما',
       'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'
     },
     {
-      'name': 'برقركنق', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+      'name': 'برقركنق', 'location': 'الملك عبدالعزيز - النخيل', 'type': 'برقر',
       'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'
     },
     {
-      'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'type': 'بروستد',
+      'name': 'البيك', 'location': 'تركي الاول - حطين', 'type': 'بروستد',
       'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'
+    },
+    {
+      'name': 'بيت الشاورما', 'location': 'الملك عبدالعزيز - الخزامى', 'type': 'شاورما',
+      'logoImage': 'https://d3k9gkh6dvavto.cloudfront.net/h/restaurants/logo_ars/000/004/091/0a780aa9b334f270e12a3f12cfea4132-original.jpg'
     }
   ]
   menus: Array<any> = [[
@@ -82,6 +86,12 @@ export class ChatPage {
     { 'name': 'وجبة مسحب', 'price': 20, 'image': 'http://www.dishocean.com/media/uploads/foods/chicken-crispy-qtr-broast-chest-al-shaikh-restaurant-gulshan-e-iqbal-karachi.jpg' },
     { 'name': 'وجبة العائلة', 'price': 49, 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbuVLiU2aKG9VJLclvPTbef0eDVg1pkRslFOyBREUcN3zcKf718w' },
     { 'name': 'وجبة برقر بروستد', 'price': 18, 'image': 'http://albaikpizza.com.au/images/burger_zinger_menu.jpg' }
+  ],
+  [
+    { 'name': 'شاورما عربي', 'price': 15, 'image': 'http://www.shawarmer.com//images/Content/Products/Duo.jpg' },
+    { 'name': 'شاورما', 'price': 20, 'image': 'https://pbs.twimg.com/media/DOS4KaEW4AY89Bt.jpg' },
+    { 'name': 'صحن شاورما', 'price': 19, 'image': 'http://www.shawarmer.com//images/Content/Products/Shatshaweesh.jpg' },
+    { 'name': 'شيش طاووق', 'price': 40, 'image': 'http://www.shawarmer.com//images/Content/Products/Gatherings.jpg' }
   ]]
 
   constructor(public navCtrl: NavController,
@@ -303,6 +313,7 @@ export class ChatPage {
 
   findRestaurant(name: string): Promise<Restaurant> {
     return new Promise((resolve, reject) => {
+      this.restaurants = this.origRestaurants;
       this.restaurants.forEach((res, index) => {
         if (res.name === name) {
           const restaurant: Restaurant = res;

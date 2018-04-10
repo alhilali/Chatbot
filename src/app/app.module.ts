@@ -11,7 +11,6 @@ import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
 import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 
-
 import { MyApp } from './app.component';
 import { ConversationServiceProvider } from '../providers/conversation-service/conversation-service';
 

@@ -7,6 +7,7 @@ export class Restaurant {
 
   menu: Array<MenuItem>;
   total: number = 0;
+  rating: any;
 
   constructor(name: string, type: string, location?: string, logo?: string) {
     this.name = name;

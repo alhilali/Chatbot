@@ -33362,13 +33362,6 @@ ion-navbar.toolbar {
   font-family: "Helvetica Neue";
 }
 
-.menuItem {
-  padding: 0px;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
-  box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
-  border-radius: 4px;
-}
-
 .receipt-header {
   border-bottom: 1px solid #efefef;
 }
@@ -33383,6 +33376,30 @@ ion-app > [padding-bottom] .scroll-content {
 
 ion-app.ios [padding-bottom] .scroll-content {
   padding-bottom: 30px;
+}
+
+.toolbar .toolbar-background {
+  background: transparent;
+  background-image: none !important;
+}
+
+.fancy-card {
+  padding: 0px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(124, 37, 37, 0.1);
+  border-radius: 4px;
+}
+
+.fancy-card ion-card-title {
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 0px;
+  direction: rtl;
+}
+
+.fancy-card ion-card-content {
+  padding: 0px;
 }
 
 order-status .tracking-progress-bar {
@@ -33795,28 +33812,27 @@ page-chat .smallCard {
   height: 170px;
 }
 
-page-chat .menuItem ion-card-title {
-  font-weight: 400;
-  font-size: 1.5rem;
-  text-align: center;
-  padding-bottom: 0px;
+page-chat .restaurants-list {
+  width: 100%;
   direction: rtl;
+  border-radius: 8px;
+  border-bottom: solid 3px #d3d0d0;
+  margin-bottom: -14px;
+  height: 140px;
 }
 
-page-chat .menuItem ion-card-content {
-  padding: 0px;
-}
-
-page-chat .menuItem .price {
-  text-align: center;
+page-chat .restaurants-list * > p {
   font-size: 1.1rem;
   direction: rtl;
 }
 
-page-chat .menuItem .restaurants-list-logo {
-  width: 80px !important;
-  height: 80px !important;
-  margin: auto;
+page-chat .item ion-avatar[item-start] {
+  margin: 8px 9px 8px 0;
+}
+
+page-chat .fancy-card .restaurants-list-logo {
+  width: 45px !important;
+  height: 45px !important;
   border-radius: 10px;
 }
 
@@ -33865,4 +33881,22 @@ page-chat #map {
 
 page-chat .card-header {
   padding: 6px !important;
+}
+
+page-chat ul {
+  padding: 0px;
+}
+
+page-chat ul.rating li {
+  padding: 5px 0px !important;
+  background: none;
+  color: #ffb400;
+}
+
+page-chat ul.rating li ion-icon {
+  font-size: 15px;
+}
+
+page-chat .item-ios.item-block .item-inner {
+  padding-right: 0px;
 }

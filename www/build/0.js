@@ -6,10 +6,11 @@ webpackJsonp([0],{
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(420);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat__ = __webpack_require__(426);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic2_rating__ = __webpack_require__(429);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,17 +21,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var ChatPageModule = /** @class */ (function () {
     function ChatPageModule() {
     }
     ChatPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__chat__["a" /* ChatPage */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__components_components_module__["a" /* ComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__chat__["a" /* ChatPage */]),
+                __WEBPACK_IMPORTED_MODULE_4_ionic2_rating__["a" /* Ionic2RatingModule */]
             ],
         })
     ], ChatPageModule);
@@ -46,7 +49,7 @@ var ChatPageModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Restaurant; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuItem__ = __webpack_require__(424);
 
 var Restaurant = /** @class */ (function () {
     function Restaurant(name, type, location, logo) {
@@ -132,7 +135,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SuggestionsComponent = /** @class */ (function () {
     function SuggestionsComponent() {
         var _this = this;
-        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.originalSuggestions = ['ايش فيه مطاعم حولي؟', 'ابغى اطلب من شاورمر', 'مشتهي برقر وش تنصح؟', 'وش صار على الطلب؟', 'وريني آخر العروض'];
         this.suggestions = this.originalSuggestions;
         this.state = '*';
@@ -157,17 +160,17 @@ var SuggestionsComponent = /** @class */ (function () {
         this.state = 'show';
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
     ], SuggestionsComponent.prototype, "notify", void 0);
     SuggestionsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'suggestions',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/suggestions/suggestions.html"*/'<!-- Generated template for the SuggestionsComponent component -->\n<div [@fadeInOut]="state" class="suggestions">\n  <ion-scroll class="scrollable" scrollX="true">\n    <ion-row style="direction: rtl; width: 100vh;" nowrap>\n      <span *ngFor="let suggestion of suggestions">\n        <ion-chip (click)=\'pickSuggestion(suggestion)\' class="suggestion-chip">\n          <ion-label>{{suggestion}}</ion-label>\n        </ion-chip>\n      </span>\n    </ion-row>\n  </ion-scroll>\n</div>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/suggestions/suggestions.html"*/,
             animations: [
-                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* trigger */])('fadeInOut', [
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* style */])({ opacity: '0' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* state */])('show', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* style */])({ opacity: '1' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_22" /* transition */])('show <=> *', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* animate */])('300ms ease-in'))
+                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_24" /* trigger */])('fadeInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_22" /* style */])({ opacity: '0' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* state */])('show', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_22" /* style */])({ opacity: '1' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* transition */])('show <=> *', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* animate */])('300ms ease-in'))
                 ])
             ]
         }),
@@ -184,14 +187,198 @@ var SuggestionsComponent = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export RATING_CONTROL_VALUE_ACCESSOR */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ionic2Rating; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(23);
+
+
+var noop = function () {
+};
+var RATING_CONTROL_VALUE_ACCESSOR = {
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* NG_VALUE_ACCESSOR */],
+    useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* forwardRef */])(function () { return Ionic2Rating; }),
+    multi: true
+};
+var Ionic2Rating = (function () {
+    function Ionic2Rating() {
+        this._max = 5;
+        this._readOnly = false;
+        this._emptyStarIconName = 'star-outline';
+        this._halfStarIconName = 'star-half';
+        this._starIconName = 'star';
+        this._nullable = false;
+        this.onChangeCallback = noop;
+    }
+    Object.defineProperty(Ionic2Rating.prototype, "max", {
+        get: function () {
+            return this._max;
+        },
+        set: function (val) {
+            this._max = this.getNumberPropertyValue(val);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Ionic2Rating.prototype, "readOnly", {
+        get: function () {
+            return this._readOnly;
+        },
+        set: function (val) {
+            this._readOnly = this.isTrueProperty(val);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Ionic2Rating.prototype, "emptyStarIconName", {
+        get: function () {
+            return this._emptyStarIconName;
+        },
+        set: function (val) {
+            this._emptyStarIconName = val;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Ionic2Rating.prototype, "halfStarIconName", {
+        get: function () {
+            return this._halfStarIconName;
+        },
+        set: function (val) {
+            this._halfStarIconName = val;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Ionic2Rating.prototype, "starIconName", {
+        get: function () {
+            return this._starIconName;
+        },
+        set: function (val) {
+            this._starIconName = val;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Ionic2Rating.prototype, "nullable", {
+        get: function () {
+            return this._nullable;
+        },
+        set: function (val) {
+            this._nullable = this.isTrueProperty(val);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Ionic2Rating.prototype.ngOnInit = function () {
+        // ngFor needs an array
+        this.starIndexes = Array(this.max).fill(1).map(function (x, i) { return i; });
+    };
+    Ionic2Rating.prototype.getStarIconName = function (starIndex) {
+        if (this.value === undefined) {
+            return this.emptyStarIconName;
+        }
+        if (this.value > starIndex) {
+            if (this.value < starIndex + 1) {
+                return this.halfStarIconName;
+            }
+            else {
+                return this.starIconName;
+            }
+        }
+        else {
+            return this.emptyStarIconName;
+        }
+    };
+    Object.defineProperty(Ionic2Rating.prototype, "value", {
+        get: function () {
+            return this.innerValue;
+        },
+        set: function (value) {
+            if (value !== this.innerValue) {
+                this.innerValue = value;
+                this.onChangeCallback(value);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Ionic2Rating.prototype.writeValue = function (value) {
+        if (value !== this.innerValue) {
+            this.innerValue = value;
+        }
+    };
+    Ionic2Rating.prototype.registerOnChange = function (fn) {
+        this.onChangeCallback = fn;
+    };
+    Ionic2Rating.prototype.registerOnTouched = function (fn) {
+    };
+    Ionic2Rating.prototype.onKeyDown = function (event) {
+        if (/(37|38|39|40)/.test(event.which)) {
+            event.preventDefault();
+            event.stopPropagation();
+            var newValue = this.value + ((event.which == 38 || event.which == 39) ? 1 : -1);
+            return this.rate(newValue);
+        }
+    };
+    Ionic2Rating.prototype.rate = function (value) {
+        if (this.readOnly || value < 0 || value > this.max) {
+            return;
+        }
+        if (value === this.value && this.nullable) {
+            value = null;
+        }
+        this.value = value;
+    };
+    Ionic2Rating.prototype.isTrueProperty = function (val) {
+        if (typeof val === 'string') {
+            val = val.toLowerCase().trim();
+            return (val === 'true' || val === 'on');
+        }
+        return !!val;
+    };
+    Ionic2Rating.prototype.getNumberPropertyValue = function (val) {
+        if (typeof val === 'string') {
+            return parseInt(val.trim());
+        }
+        return val;
+    };
+    Ionic2Rating.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */], args: [{
+                    selector: 'rating',
+                    styles: ["\n    ul.rating li {\n      display: inline;\n      border: 0px;\n      background: none;\n      padding: 5px 10px;\n    }\n    ul.rating li i {\n      font-size: 30px;\n    }\n  "],
+                    template: "\n    <ul class=\"rating\" (keydown)=\"onKeyDown($event)\">\n      <li *ngFor=\"let starIndex of starIndexes\" tappable (click)=\"rate(starIndex + 1)\">\n        <ion-icon [name]=\"getStarIconName(starIndex)\">\n        </ion-icon>\n      </li>\n    </ul>",
+                    providers: [RATING_CONTROL_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    Ionic2Rating.ctorParameters = [];
+    Ionic2Rating.propDecorators = {
+        'max': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'readOnly': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'emptyStarIconName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'halfStarIconName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'starIconName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+        'nullable': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */] },],
+    };
+    return Ionic2Rating;
+}());
+//# sourceMappingURL=ionic2-rating.js.map
+
+/***/ }),
+
+/***/ 420:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_payment__ = __webpack_require__(420);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__ = __webpack_require__(422);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_payment__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_list_menu_list__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__restaurants_list_restaurants_list__ = __webpack_require__(425);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -209,7 +396,7 @@ var ComponentsModule = /** @class */ (function () {
     function ComponentsModule() {
     }
     ComponentsModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
             declarations: [__WEBPACK_IMPORTED_MODULE_2__suggestions_suggestions__["a" /* SuggestionsComponent */],
                 __WEBPACK_IMPORTED_MODULE_3__payment_payment__["a" /* PaymentComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__order_status_order_status__["a" /* OrderStatusComponent */],
@@ -236,7 +423,7 @@ var ComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 420:
+/***/ 421:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -260,7 +447,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var PaymentComponent = /** @class */ (function () {
     function PaymentComponent() {
-        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
         this.type = 'cash';
         this.change = '50';
         console.log('Hello PaymentComponent Component');
@@ -269,12 +456,12 @@ var PaymentComponent = /** @class */ (function () {
         this.notify.emit(this.type);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
     ], PaymentComponent.prototype, "notify", void 0);
     PaymentComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'payment',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/'<!-- Generated template for the PaymentComponent component -->\n<ion-card class="receipt menuItem">\n  <ion-card-header class="receipt-header" text-center>\n    <ion-segment [(ngModel)]="type">\n      <ion-segment-button class="payment-button" value="cash">\n        <ion-icon name="cash"></ion-icon>\n      </ion-segment-button>\n      <ion-segment-button class="payment-button" value="card">\n        <ion-icon name="card"></ion-icon>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-card-header>\n  <ion-card-content padding-horizontal>\n    <div [ngSwitch]="type">\n      <div *ngSwitchCase="\'cash\'">\n        <div padding text-center>\n          <p padding-bottom>💰 تحتاج صرف؟</p>\n          <ion-segment dir="rtl" [(ngModel)]="change">\n            <ion-segment-button class="change-button" value="50">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>50 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="100">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>100 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="500">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>500 ريال</h4>\n            </ion-segment-button>\n          </ion-segment>\n        </div>\n      </div>\n      <div *ngSwitchCase="\'card\'">\n        <div class="card-container">\n          <img src="http://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-Transparent-PNG.png" alt="">\n          <ion-item>\n            <ion-input type="text" placeholder="NAME ON CARD"></ion-input>\n          </ion-item>\n\n          <ion-item>\n            <ion-input type="text" placeholder="CARD NUMBER"></ion-input>\n          </ion-item>\n          <ion-row wrap justify-content-start>\n            <ion-col col-3>\n              <ion-item>\n                <ion-input type="text" placeholder="02"></ion-input>\n              </ion-item>\n\n            </ion-col>\n            <ion-col col-4>\n              <ion-item>\n                <ion-input type="text" placeholder="2017"></ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col push-1 col-4 style="padding-right: 0px;">\n              <ion-item>\n                <ion-input type="text" placeholder="CV"></ion-input>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n\n        </div>\n      </div>\n    </div>\n  </ion-card-content>\n</ion-card>\n<div class="bottom-btns">\n  <button ion-button color="red" block (click)="sendOrder()">ارسل الطلب</button>\n</div>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'payment',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/'<!-- Generated template for the PaymentComponent component -->\n<ion-card class="receipt fancy-card">\n  <ion-card-header class="receipt-header" text-center>\n    <ion-segment [(ngModel)]="type">\n      <ion-segment-button class="payment-button" value="cash">\n        <ion-icon name="cash"></ion-icon>\n      </ion-segment-button>\n      <ion-segment-button class="payment-button" value="card">\n        <ion-icon name="card"></ion-icon>\n      </ion-segment-button>\n    </ion-segment>\n  </ion-card-header>\n  <ion-card-content padding-horizontal>\n    <div [ngSwitch]="type">\n      <div *ngSwitchCase="\'cash\'">\n        <div padding text-center>\n          <p padding-bottom>💰 تحتاج صرف؟</p>\n          <ion-segment dir="rtl" [(ngModel)]="change">\n            <ion-segment-button class="change-button" value="50">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>50 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="100">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>100 ريال</h4>\n            </ion-segment-button>\n            <ion-segment-button class="change-button" value="500">\n              <ion-icon name="md-cash"></ion-icon>\n              <h4>500 ريال</h4>\n            </ion-segment-button>\n          </ion-segment>\n        </div>\n      </div>\n      <div *ngSwitchCase="\'card\'">\n        <div class="card-container">\n          <img src="http://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-Transparent-PNG.png" alt="">\n          <ion-item>\n            <ion-input type="text" placeholder="NAME ON CARD"></ion-input>\n          </ion-item>\n\n          <ion-item>\n            <ion-input type="text" placeholder="CARD NUMBER"></ion-input>\n          </ion-item>\n          <ion-row wrap justify-content-start>\n            <ion-col col-3>\n              <ion-item>\n                <ion-input type="text" placeholder="02"></ion-input>\n              </ion-item>\n\n            </ion-col>\n            <ion-col col-4>\n              <ion-item>\n                <ion-input type="text" placeholder="2017"></ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col push-1 col-4 style="padding-right: 0px;">\n              <ion-item>\n                <ion-input type="text" placeholder="CV"></ion-input>\n              </ion-item>\n            </ion-col>\n          </ion-row>\n\n        </div>\n      </div>\n    </div>\n  </ion-card-content>\n</ion-card>\n<div class="bottom-btns">\n  <button ion-button color="red" block (click)="sendOrder()">ارسل الطلب</button>\n</div>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/payment/payment.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], PaymentComponent);
@@ -285,7 +472,7 @@ var PaymentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 421:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -313,8 +500,8 @@ var OrderStatusComponent = /** @class */ (function () {
         this.text = 'Hello World';
     }
     OrderStatusComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'order-status',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/order-status/order-status.html"*/'<!-- Generated template for the PaymentComponent component -->\n<ion-card class="receipt menuItem">\n  <ion-card-header class="receipt-header" text-center>\n    <h2 dir="rtl">طلبك جاي في الطريق! 🚘</h2>\n  </ion-card-header>\n  <ion-card-content padding-horizontal>\n    <div>\n\n      <div class="tracking-progress-bar">\n        <div class="tracking-progress-bar__item tracking-progress-bar__item--first tracking-progress-bar__item--active">1</div>\n\n        <span class="tracking-progress-bar__item__bar tracking-progress-bar__item__bar--active"></span>\n        <div class="tracking-progress-bar__item tracking-progress-bar__item--active">2</div>\n\n        <span class="tracking-progress-bar__item__bar"></span>\n        <div class="tracking-progress-bar__item">3</div>\n\n        <span class="tracking-progress-bar__item__bar"></span>\n        <div class="tracking-progress-bar__item">4</div>\n      </div>\n      <!-- boleto__wrapper -->\n    </div>\n    <div class="status-info" text-center>\n      <h4 dir="rtl">حاليًا يتم تحضير الطلب ⏳</h4>\n    </div>\n  </ion-card-content>\n</ion-card>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/order-status/order-status.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'order-status',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/order-status/order-status.html"*/'<!-- Generated template for the PaymentComponent component -->\n<ion-card class="receipt fancy-card">\n  <ion-card-header class="receipt-header" text-center>\n    <h2 dir="rtl">طلبك جاي في الطريق! 🚘</h2>\n  </ion-card-header>\n  <ion-card-content padding-horizontal>\n    <div>\n\n      <div class="tracking-progress-bar">\n        <div class="tracking-progress-bar__item tracking-progress-bar__item--first tracking-progress-bar__item--active">1</div>\n\n        <span class="tracking-progress-bar__item__bar tracking-progress-bar__item__bar--active"></span>\n        <div class="tracking-progress-bar__item tracking-progress-bar__item--active">2</div>\n\n        <span class="tracking-progress-bar__item__bar"></span>\n        <div class="tracking-progress-bar__item">3</div>\n\n        <span class="tracking-progress-bar__item__bar"></span>\n        <div class="tracking-progress-bar__item">4</div>\n      </div>\n      <!-- boleto__wrapper -->\n    </div>\n    <div class="status-info" text-center>\n      <h4 dir="rtl">حاليًا يتم تحضير الطلب ⏳</h4>\n    </div>\n  </ion-card-content>\n</ion-card>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/order-status/order-status.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], OrderStatusComponent);
@@ -325,7 +512,7 @@ var OrderStatusComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 422:
+/***/ 423:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -357,17 +544,17 @@ var MenuListComponent = /** @class */ (function () {
         restaurant.addMenuItem('وجبة تويستر', 15, 'https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img/KFC/Web/kfc_pl/assets/uploads/twister-menu.jpg');
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Input */])('restaurant'),
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */])('restaurant'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */])
     ], MenuListComponent.prototype, "restaurant", void 0);
     MenuListComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
             selector: 'menu-list',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/menu-list/menu-list.html"*/'<img [@fadeInOut] class="restaurantLogo" src="{{restaurant.logoImage}}" />\n<h3 text-center no-margin>مطعم {{restaurant.name}}</h3>\n<ion-grid>\n  <ion-row wrap style="text-align: -webkit-center;">\n    <ion-col *ngFor="let item of restaurant.menu">\n      <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n        <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n        </div>\n        <ion-card-content>\n          <ion-card-title>\n            {{item.name}}\n          </ion-card-title>\n          <p class="price">\n            {{item.price}} ريال\n          </p>\n          <ion-row class="button-bar" wrap align-items-center justify-content-around>\n            <button color="smoke" ion-button icon-only small>\n              <ion-icon color="red" name="ios-settings"></ion-icon>\n            </button>\n            <button ion-button icon-only clear (click)="item.remove()">\n              <ion-icon color="red" name="remove"></ion-icon>\n            </button>\n            <p>{{item.quantitiy}}</p>\n            <button ion-button icon-only clear (click)="item.add()">\n              <ion-icon color="red" name="add"></ion-icon>\n            </button>\n          </ion-row>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n  </ion-row>\n  <div class="bottom-btns">\n    <button ion-button color="red" block (click)="order(restaurant)">اطلب</button>\n    <button ion-button clear block icon-only (click)="loadMoreItems(restaurant)">\n      <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n    </button>\n  </div>\n</ion-grid>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/menu-list/menu-list.html"*/,
             animations: [
-                Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* trigger */])('fadeInOut', [
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '0' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '1' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* animate */])('300ms ease-in'))
+                Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_24" /* trigger */])('fadeInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* style */])({ opacity: '0' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* style */])({ opacity: '1' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* animate */])('300ms ease-in'))
                 ])
             ]
         }),
@@ -380,7 +567,7 @@ var MenuListComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 423:
+/***/ 424:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -410,7 +597,7 @@ var MenuItem = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 424:
+/***/ 425:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -450,17 +637,17 @@ var RestaurantsListComponent = /** @class */ (function () {
         this.generateMenue(new __WEBPACK_IMPORTED_MODULE_0__models_restaurant__["a" /* Restaurant */]('البيك', 'الملك عبدالعزيز - النفل', 'بروستد', 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'));
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Input */])('restaurants'),
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* Input */])('restaurants'),
         __metadata("design:type", Array)
     ], RestaurantsListComponent.prototype, "restaurants", void 0);
     RestaurantsListComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
             selector: 'restaurants-list',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/restaurants-list/restaurants-list.html"*/'<!-- Generated template for the RestaurantsListComponent component -->\n<ion-grid>\n  <ion-row wrap style="text-align: -webkit-center;">\n    <ion-col *ngFor="let restaurant of restaurants">\n      <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n        <div>\n          <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n        </div>\n        <ion-card-content padding-horizontal>\n          <ion-card-title>\n            {{restaurant.name}}\n          </ion-card-title>\n          <p class="price">\n            {{restaurant.location}}\n          </p>\n\n          <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n  </ion-row>\n  <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n    <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n  </button>\n</ion-grid>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/components/restaurants-list/restaurants-list.html"*/,
             animations: [
-                Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* trigger */])('fadeInOut', [
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '0' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_20" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* style */])({ opacity: '1' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* animate */])('300ms ease-in'))
+                Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_24" /* trigger */])('fadeInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* style */])({ opacity: '0' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_21" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_22" /* style */])({ opacity: '1' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* animate */])('300ms ease-in'))
                 ])
             ]
         }),
@@ -473,14 +660,14 @@ var RestaurantsListComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 425:
+/***/ 426:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_context__ = __webpack_require__(426);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_context__ = __webpack_require__(427);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_restaurant__ = __webpack_require__(417);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_message__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_message__ = __webpack_require__(428);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
@@ -562,16 +749,20 @@ var ChatPage = /** @class */ (function () {
                 'logoImage': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png'
             },
             {
-                'name': 'شاورمر', 'location': 'الملك عبدالعزيز - الربيع', 'type': 'شاورما',
+                'name': 'شاورمر', 'location': 'ابو بكر - الربيع', 'type': 'شاورما',
                 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/6/64/Shawarmer_logo.jpg'
             },
             {
-                'name': 'برقركنق', 'location': 'الملك عبدالعزيز - النفل', 'type': 'برقر',
+                'name': 'برقركنق', 'location': 'الملك عبدالعزيز - النخيل', 'type': 'برقر',
                 'logoImage': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/1000px-Burger_King_Logo.svg.png'
             },
             {
-                'name': 'البيك', 'location': 'الملك عبدالعزيز - النفل', 'type': 'بروستد',
+                'name': 'البيك', 'location': 'تركي الاول - حطين', 'type': 'بروستد',
                 'logoImage': 'https://upload.wikimedia.org/wikipedia/ar/thumb/a/a1/Albaik_logo.svg/1200px-Albaik_logo.svg.png'
+            },
+            {
+                'name': 'بيت الشاورما', 'location': 'الملك عبدالعزيز - الخزامى', 'type': 'شاورما',
+                'logoImage': 'https://d3k9gkh6dvavto.cloudfront.net/h/restaurants/logo_ars/000/004/091/0a780aa9b334f270e12a3f12cfea4132-original.jpg'
             }
         ];
         this.menus = [[
@@ -597,6 +788,12 @@ var ChatPage = /** @class */ (function () {
                 { 'name': 'وجبة مسحب', 'price': 20, 'image': 'http://www.dishocean.com/media/uploads/foods/chicken-crispy-qtr-broast-chest-al-shaikh-restaurant-gulshan-e-iqbal-karachi.jpg' },
                 { 'name': 'وجبة العائلة', 'price': 49, 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbuVLiU2aKG9VJLclvPTbef0eDVg1pkRslFOyBREUcN3zcKf718w' },
                 { 'name': 'وجبة برقر بروستد', 'price': 18, 'image': 'http://albaikpizza.com.au/images/burger_zinger_menu.jpg' }
+            ],
+            [
+                { 'name': 'شاورما عربي', 'price': 15, 'image': 'http://www.shawarmer.com//images/Content/Products/Duo.jpg' },
+                { 'name': 'شاورما', 'price': 20, 'image': 'https://pbs.twimg.com/media/DOS4KaEW4AY89Bt.jpg' },
+                { 'name': 'صحن شاورما', 'price': 19, 'image': 'http://www.shawarmer.com//images/Content/Products/Shatshaweesh.jpg' },
+                { 'name': 'شيش طاووق', 'price': 40, 'image': 'http://www.shawarmer.com//images/Content/Products/Gatherings.jpg' }
             ]];
         this.messages = new Array();
         this.restaurants = new Array();
@@ -805,6 +1002,7 @@ var ChatPage = /** @class */ (function () {
     ChatPage.prototype.findRestaurant = function (name) {
         var _this = this;
         return new Promise(function (resolve, reject) {
+            _this.restaurants = _this.origRestaurants;
             _this.restaurants.forEach(function (res, index) {
                 if (res.name === name) {
                     var restaurant = res;
@@ -1036,29 +1234,29 @@ var ChatPage = /** @class */ (function () {
             .catch(function (reason) { return console.log(reason); });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */]),
+        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */]),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Content */]) === "function" && _a || Object)
     ], ChatPage.prototype, "content", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_8" /* ViewChild */])('suggestions'),
+        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_9" /* ViewChild */])('suggestions'),
         __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__["a" /* SuggestionsComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__components_suggestions_suggestions__["a" /* SuggestionsComponent */]) === "function" && _b || Object)
     ], ChatPage.prototype, "suggestions", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_core__["t" /* ElementRef */]) === "function" && _c || Object)
+        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_9" /* ViewChild */])('map'),
+        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["u" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_core__["u" /* ElementRef */]) === "function" && _c || Object)
     ], ChatPage.prototype, "mapElement", void 0);
     ChatPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-buttons end>\n      <button ion-button icon-only (click)="controlSuggestions()">\n        <ion-icon color="red" name="ios-information-circle-outline"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat" padding-bottom padding-bottom>\n  <div class="chat-content">\n    <div class="message" *ngFor="let msg of messages">\n      <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n        <p>{{msg.content}}</p>\n        <p class="date">{{msg.timestamp}}</p>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n        <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n        <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let item of msg.restaurant.menu">\n              <ion-card [@fadeInOut] class="menuItem sm-card" no-margin>\n                <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n                </div>\n                <ion-card-content>\n                  <ion-card-title>\n                    {{item.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{item.price}} ريال\n                  </p>\n                  <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                    <button color="smoke" ion-button icon-only small>\n                      <ion-icon color="red" name="ios-settings"></ion-icon>\n                    </button>\n                    <button ion-button icon-only clear (click)="item.remove()">\n                      <ion-icon color="red" name="remove"></ion-icon>\n                    </button>\n                    <p>{{item.quantitiy}}</p>\n                    <button ion-button icon-only clear (click)="item.add(1)">\n                      <ion-icon color="red" name="add"></ion-icon>\n                    </button>\n                  </ion-row>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n            <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n              <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n            </button>\n          </div>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let restaurant of restaurants">\n              <ion-card [@fadeInOut] class="menuItem sm-card smallCard" no-margin>\n                <div>\n                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n                </div>\n                <ion-card-content padding-horizontal>\n                  <ion-card-title>\n                    {{restaurant.name}}\n                  </ion-card-title>\n                  <p class="price">\n                    {{restaurant.location}}\n                  </p>\n\n                  <button ion-button outline small block color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n        <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            ملخص الطلب من {{msg.restaurant.name}}\n          </ion-card-header>\n          <ion-card-content>\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-start>\n                <h3 dir="rtl">الاجمالي</h3>\n                <h3 dir="rtl" class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card-content>\n\n        </ion-card>\n\n        <!-- <ion-card class="receipt menuItem">\n          <ion-card-header class="receipt-header" text-center>\n            موقع التوصيل\n          </ion-card-header>\n          <ion-card-content>\n            <div #map id="map"></div>\n          </ion-card-content>\n\n        </ion-card> -->\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n          <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n        </div>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n        <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'order_status\'">\n        <order-status></order-status>\n      </div>\n    </div>\n  </div>\n</ion-content>\n<suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <ion-row wrap>\n        <button ion-button icon-only clear color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n          <ion-icon name="send"></ion-icon>\n        </button>\n        <button ion-button icon-only clear [ngStyle]="{\'color\': recording ? \'#e30000\' : \'#f7c74d\'}" (touchstart)="touchSpeakButton($event);">\n          <ion-icon name="ios-mic"></ion-icon>\n        </button>\n      </ion-row>\n\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["n" /* Component */])({
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/'<!--\n  Generated template for the ChatPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="gold">\n    <ion-buttons end>\n      <button ion-button icon-only (click)="controlSuggestions()">\n        <ion-icon color="red" name="ios-information-circle-outline"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>\n      <img class="title-image" src="https://pizza-t.net/assets/front/food_oddappz/images/food_oddappz.png?1522516070" height="40"\n        alt="">\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="chat" padding-bottom padding-bottom>\n  <div class="chat-content">\n    <div class="message" *ngFor="let msg of messages">\n      <div *ngIf="msg.type === \'regular\'" [attr.class]="msg.isWatson ? \'fromThem\' : \'myMessage\'">\n        <p>{{msg.content}}</p>\n        <p class="date">{{msg.timestamp}}</p>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'menu\'">\n        <img [@fadeInOut] class="restaurantLogo" src="{{msg.restaurant.logoImage}}" />\n        <h3 text-center no-margin>مطعم {{msg.restaurant.name}}</h3>\n        <ion-grid>\n          <ion-row wrap style="text-align: -webkit-center;">\n            <ion-col *ngFor="let item of msg.restaurant.menu">\n              <ion-card [@fadeInOut] class="fancy-card sm-card" no-margin>\n                <div class="image-placeholder" [ngStyle]="{ \'background-image\': \'url(\'+item.image+\')\'}">\n                </div>\n                <ion-card-content>\n                  <ion-card-title>\n                    {{item.name}}\n                  </ion-card-title>\n                  <p class="price" dir="rtl">\n                    {{item.price}} ريال\n                  </p>\n                  <ion-row class="button-bar" wrap align-items-center justify-content-around>\n                    <button color="smoke" ion-button icon-only small>\n                      <ion-icon color="red" name="ios-settings"></ion-icon>\n                    </button>\n                    <button ion-button icon-only clear (click)="item.remove()">\n                      <ion-icon color="red" name="remove"></ion-icon>\n                    </button>\n                    <p>{{item.quantitiy}}</p>\n                    <button ion-button icon-only clear (click)="item.add(1)">\n                      <ion-icon color="red" name="add"></ion-icon>\n                    </button>\n                  </ion-row>\n                </ion-card-content>\n              </ion-card>\n            </ion-col>\n          </ion-row>\n          <div class="bottom-btns">\n            <button ion-button color="red" block (click)="order(msg.restaurant)">اطلب</button>\n            <button ion-button clear block icon-only (click)="loadMoreItems(msg.restaurant)">\n              <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n            </button>\n          </div>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'restaurants-list\'">\n        <ion-grid>\n          <ion-row wrap *ngFor="let restaurant of restaurants">\n            <!-- <ion-col *ngFor="let restaurant of restaurants"> -->\n\n            <ion-card [@fadeInOut] class="fancy-card restaurants-list" no-margin>\n              <ion-item>\n                <ion-avatar item-start>\n                  <img [@fadeInOut] class="restaurants-list-logo" src="{{restaurant.logoImage}}" />\n                </ion-avatar>\n                <h2> {{restaurant.name}}</h2>\n                <p>{{restaurant.location}}</p>\n              </ion-item>\n              <div>\n              </div>\n              <ion-row>\n                <ion-col>\n                  <button ion-button clear small>\n                    <rating [(ngModel)]="restaurant.rate" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"\n                      nullable="true">\n                    </rating>\n                  </button>\n                </ion-col>\n                <ion-col center text-center>\n                  <button ion-button clear small color="red" (click)="updateConversationWithRestaurant(restaurant)">اطلب</button>\n                </ion-col>\n                <ion-col center text-center>\n                  <p>توصيل</p>\n                  <!-- <br> -->\n                  <p>\n                    ٣٠ دقيقة\n                  </p>\n                </ion-col>\n              </ion-row>\n              <hr>\n            </ion-card>\n            <!-- </ion-col> -->\n          </ion-row>\n          <button ion-button clear block icon-only (click)="loadMoreRestuarants()">\n            <ion-icon color="red" name="ios-arrow-down"></ion-icon>\n          </button>\n        </ion-grid>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'receipt\'">\n        <ion-card class="receipt fancy-card">\n          <ion-card-header class="receipt-header" text-center>\n            ملخص الطلب من {{msg.restaurant.name}}\n          </ion-card-header>\n          <ion-card-content>\n            <ion-list>\n              <span *ngFor="let item of msg.restaurant.menu">\n                <ion-item *ngIf="item.quantitiy > 0">\n                  <ion-avatar item-start>\n                    <img src="{{item.image}}">\n                  </ion-avatar>\n                  <ion-row justify-content-between>\n                    <h2>{{item.name}}</h2>\n                    <h2 class="red">x {{item.quantitiy}}</h2>\n                  </ion-row>\n                  <p>\n                    {{item.price}} ريال\n                  </p>\n                </ion-item>\n              </span>\n              <ion-item item-start>\n                <h3 dir="rtl">الاجمالي</h3>\n                <h3 dir="rtl" class="red">{{msg.restaurant.total}} ريال</h3>\n              </ion-item>\n            </ion-list>\n          </ion-card-content>\n\n        </ion-card>\n\n        <!-- <ion-card class="receipt fancy-card">\n          <ion-card-header class="receipt-header" text-center>\n            موقع التوصيل\n          </ion-card-header>\n          <ion-card-content>\n            <div #map id="map"></div>\n          </ion-card-content>\n\n        </ion-card> -->\n        <div class="bottom-btns">\n          <button ion-button color="red" block (click)="pay(msg.restaurant)">ادفع</button>\n          <button ion-button color="red" block outline (click)="updateConversationWithRestaurant(msg.restaurant)">تعديل</button>\n        </div>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'payment\'">\n        <payment (notify)=\'sendOrder($event, msg.restaurant)\'></payment>\n      </div>\n      <div class="fromThem nohover restaurant" *ngIf="msg.type === \'order_status\'">\n        <order-status></order-status>\n      </div>\n    </div>\n  </div>\n</ion-content>\n<suggestions #suggestions (notify)=\'pickSuggestion($event)\'></suggestions>\n<ion-footer (touchstart)="footerTouchStart($event)">\n  <ion-toolbar class="bottom-bar">\n    <ion-buttons left>\n      <ion-row wrap>\n        <button ion-button icon-only clear color="red" (touchstart)="touchSendButton($event);" [disabled]="message == \'\'">\n          <ion-icon name="send"></ion-icon>\n        </button>\n        <button ion-button icon-only clear [ngStyle]="{\'color\': recording ? \'#e30000\' : \'#f7c74d\'}" (touchstart)="touchSpeakButton($event);">\n          <ion-icon name="ios-mic"></ion-icon>\n        </button>\n      </ion-row>\n\n    </ion-buttons>\n    <form>\n      <ion-input class="message" type="text" placeholder="ادخل رسالتك.." [(ngModel)]="message" (keyup.enter)="send();" name="message"></ion-input>\n    </form>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saudalhilali/Desktop/startUp/foodee/src/pages/chat/chat.html"*/,
             animations: [
-                Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_23" /* trigger */])('fadeInOut', [
-                    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_20" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_21" /* style */])({ opacity: '0' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_20" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_21" /* style */])({ opacity: '1' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_22" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_13" /* animate */])('300ms ease-in'))
+                Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_24" /* trigger */])('fadeInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_21" /* state */])('void', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_22" /* style */])({ opacity: '0' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_21" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_22" /* style */])({ opacity: '1' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_23" /* transition */])('void <=> *', Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["_14" /* animate */])('300ms ease-in'))
                 ])
             ]
         }),
-        __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__["a" /* SpeechRecognition */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__["a" /* SpeechRecognition */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["M" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_core__["M" /* NgZone */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__["a" /* TextToSpeech */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__["a" /* TextToSpeech */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_conversation_service_conversation_service__["a" /* ConversationServiceProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__["a" /* SpeechRecognition */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_speech_recognition__["a" /* SpeechRecognition */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__angular_core__["N" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_core__["N" /* NgZone */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__["a" /* TextToSpeech */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_text_to_speech__["a" /* TextToSpeech */]) === "function" && _h || Object])
     ], ChatPage);
     return ChatPage;
     var _a, _b, _c, _d, _e, _f, _g, _h;
@@ -1068,7 +1266,7 @@ var ChatPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 426:
+/***/ 427:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1128,7 +1326,7 @@ var Context = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 427:
+/***/ 428:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1152,6 +1350,61 @@ var Message = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=message.js.map
+
+/***/ }),
+
+/***/ 429:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic2_rating_module__ = __webpack_require__(430);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__ionic2_rating_module__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic2_rating__ = __webpack_require__(419);
+/* unused harmony reexport Ionic2Rating */
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 430:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ionic2RatingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic2_rating__ = __webpack_require__(419);
+
+
+
+
+var Ionic2RatingModule = (function () {
+    function Ionic2RatingModule() {
+    }
+    Ionic2RatingModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */], args: [{
+                    declarations: [
+                        __WEBPACK_IMPORTED_MODULE_3__ionic2_rating__["a" /* Ionic2Rating */]
+                    ],
+                    exports: [
+                        __WEBPACK_IMPORTED_MODULE_3__ionic2_rating__["a" /* Ionic2Rating */]
+                    ],
+                    imports: [
+                        __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
+                        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */]
+                    ],
+                    schemas: [
+                        __WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* CUSTOM_ELEMENTS_SCHEMA */]
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    Ionic2RatingModule.ctorParameters = [];
+    return Ionic2RatingModule;
+}());
+//# sourceMappingURL=ionic2-rating.module.js.map
 
 /***/ })
 
