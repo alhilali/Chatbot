@@ -86,8 +86,7 @@
               <ion-row>
                 <ion-col>
                   <button ion-button clear small>
-                    <rating [(ngModel)]="restaurant.rate" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
-                      nullable="true">
+                    <rating [(ngModel)]="restaurant.rate" value="3" nullable="true">
                     </rating>
                   </button>
                 </ion-col>
@@ -114,7 +113,8 @@
       <div class="fromThem nohover restaurant" *ngIf="msg.type === 'receipt'">
         <ion-card class="receipt fancy-card">
           <ion-card-header class="receipt-header" text-center>
-            ملخص الطلب من {{msg.restaurant.name}}
+            ملخص الطلب من
+            <span style="color: #e30000">{{msg.restaurant.name}}</span>
           </ion-card-header>
           <ion-card-content>
             <ion-list>
